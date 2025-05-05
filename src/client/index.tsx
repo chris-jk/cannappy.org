@@ -90,7 +90,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Cannappy Development Company</h1>
+      <h1>
+        Cann<span className="highlight">app</span>y Development Company
+      </h1>
       <h3>Where's everyone at?</h3>
       {counter !== 0 ? (
         <p>
@@ -105,6 +107,49 @@ function App() {
         ref={canvasRef as LegacyRef<HTMLCanvasElement>}
         style={{ width: 400, height: 400, maxWidth: "100%", aspectRatio: 1 }}
       />
+ <div className="service-card">
+            <h3>UI/UX Design</h3>
+            <p>User-centered design with intuitive interfaces</p>
+          </div>
+      {/* Services Section */}
+      <section className="services">
+        <h2>Our Services</h2>
+        <div className="services-grid">
+          <div className="service-card">
+            <h3>Mobile App Development</h3>
+            <p>Beautiful iOS and Android applications built with Flutter</p>
+          </div>
+          <div className="service-card">
+            <h3>Web Applications</h3>
+            <p>Modern web apps using React, TypeScript, and Node.js</p>
+          </div>
+         
+          <div className="service-card">
+            <h3>API Development</h3>
+            <p>Robust and scalable REST and GraphQL APIs</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="contact">
+        <h2>Get in Touch</h2>
+        <div className="contact-box">
+          <form className="contact-form">
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea placeholder="Tell us about your project" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+          <div className="contact-info">
+            <h3>Contact Information</h3>
+            <p>📍 6929 Fair Oaks Blvd 218 </p>
+            <p> Carmichael, CA</p>
+            <p>📧 hello@cannappy.org</p>
+            <p>📱 (916) 238-8086</p>
+          </div>
+        </div>
+      </section>
 
       {/* Let's give some credit */}
       <p>
@@ -112,6 +157,11 @@ function App() {
         <a href="https://www.npmjs.com/package/phenomenon">Phenomenon</a> and{" "}
         <a href="https://npmjs.com/package/partyserver/">🎈 PartyServer</a>
       </p>
+
+      {/* Copyright Section */}
+      <footer className="copyright">
+        <p>© 2025 Cannappy LLC Development Company. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
