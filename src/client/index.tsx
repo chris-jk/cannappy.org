@@ -147,6 +147,128 @@ function App() {
         </div>
       </section>
 
+      {/* Portfolio Section */}
+      <section className="portfolio">
+        <h2>Our Apps</h2>
+        <p className="section-subtitle">
+          Explore our growing portfolio of apps across multiple platforms
+        </p>
+
+        <div className="portfolio-category">
+          <h3 className="category-title">Productivity & Utilities</h3>
+          <div className="portfolio-grid">
+            <a href="https://quickertext.cannappy.org" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">🎤</div>
+              <h4>quickerText</h4>
+              <p>AI-powered voice dictation with granular controls. Toggle filler removal, grammar, punctuation, and more.</p>
+            </a>
+            <div className="portfolio-card coming-soon">
+              <div className="portfolio-icon">👁</div>
+              <h4>TextGrabber</h4>
+              <p>Select any region of your screen and instantly grab the text. Fast OCR-powered text extraction for macOS.</p>
+              <span className="badge">Coming Soon</span>
+            </div>
+            <div className="portfolio-card coming-soon">
+              <div className="portfolio-icon">📄</div>
+              <h4>New File</h4>
+              <p>Add a new file anywhere with one click. macOS lets you create folders easily, but not files — New File fixes that.</p>
+              <span className="badge">Coming Soon</span>
+            </div>
+            <div className="portfolio-card coming-soon">
+              <div className="portfolio-icon">⚡</div>
+              <h4>Kill All</h4>
+              <p>Close every open app in one shot. Free up your memory and start with a clean slate.</p>
+              <span className="badge">Coming Soon</span>
+            </div>
+            <a href="https://apps.apple.com/us/app/hogalytics/id6741347952" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">📊</div>
+              <h4>Hogalytics</h4>
+              <p>PostHog analytics accessible via mobile app for viewing charts and managing multiple projects.</p>
+            </a>
+          </div>
+        </div>
+
+        <div className="portfolio-category">
+          <h3 className="category-title">Health & Lifestyle</h3>
+          <div className="portfolio-grid">
+            <a href="https://onefast-6u8.pages.dev" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">⏱</div>
+              <h4>OneFast</h4>
+              <p>Track your fasts, understand the science, and own your health. Live timer, body phase tracking, and built-in fasting plans.</p>
+            </a>
+            <a href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">✨</div>
+              <h4>Awaken</h4>
+              <p>190+ sacred texts, one truth. A 365-day progressive journey through five universal truths across 14+ spiritual traditions.</p>
+            </a>
+            <a href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">🌟</div>
+              <h4>Virtu Vista</h4>
+              <p>Guided daily reflections through the 7 Habits framework with reminders, audio playback, and principle-centered living.</p>
+            </a>
+          </div>
+        </div>
+
+        <div className="portfolio-category">
+          <h3 className="category-title">Social</h3>
+          <div className="portfolio-grid">
+            <a href="https://itsmybirthday.app" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">🎂</div>
+              <h4>It's My Birthday</h4>
+              <p>Find free birthday deals from nearby businesses and never forget a loved one's special day.</p>
+            </a>
+            <a href="https://lets.askthis.app" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">❓</div>
+              <h4>AskThis</h4>
+              <p>A new way to ask questions and get answers from relevant people and communities.</p>
+            </a>
+          </div>
+        </div>
+
+        <div className="portfolio-category">
+          <h3 className="category-title">Cannabis</h3>
+          <div className="portfolio-grid">
+            <a href="https://strainguide.app" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">🌿</div>
+              <h4>Strain Guide</h4>
+              <p>Discover thousands of cannabis strains with AI BudTender, advanced search, and expert growing tips. 7,000+ strains.</p>
+            </a>
+            <a href="https://growguide.app" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">🌱</div>
+              <h4>Grow Guide</h4>
+              <p>Complete cannabis grow journal with daily tracking, AI Plant Doctor, time-lapse video, and growing calculators.</p>
+            </a>
+            <a href="https://games.strainguide.app/" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">🎮</div>
+              <h4>Canna Arcade</h4>
+              <p>Cannabis-themed gaming hub featuring multiple games with leaderboards, daily challenges, and achievements.</p>
+            </a>
+          </div>
+        </div>
+
+        <div className="portfolio-category">
+          <h3 className="category-title">Creative & Legal</h3>
+          <div className="portfolio-grid">
+            <a href="https://inkflo.studio" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">✏️</div>
+              <h4>Ink Flo Studio</h4>
+              <p>The all-in-one app for tattoo artists and studios. Manage clients, showcase your portfolio, and grow your business.</p>
+            </a>
+            <a href="https://freecustodyhelp.com" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">⚖️</div>
+              <h4>Free Custody Help</h4>
+              <p>AI-powered case assistant for custody disputes. Upload evidence, build timelines, and get personalized action plans.</p>
+            </a>
+          </div>
+        </div>
+
+        <div className="portfolio-cta">
+          <a href="https://apps-portal.pages.dev/" target="_blank" rel="noopener noreferrer" className="portfolio-link">
+            View All Apps &rarr;
+          </a>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section className="contact">
         <h2>Let's Work Together</h2>
