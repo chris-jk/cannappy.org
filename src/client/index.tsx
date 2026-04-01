@@ -158,7 +158,7 @@ function App() {
           <h3 className="category-title">Productivity & Utilities</h3>
           <div className="portfolio-grid">
             <a href="https://quickertext.cannappy.org" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">🎤</div>
+              <div className="portfolio-icon"><img src="https://quickertext.cannappy.org/static/logo-512.png" alt="quickerText" /></div>
               <h4>quickerText</h4>
               <p>AI-powered voice dictation with granular controls. Toggle filler removal, grammar, punctuation, and more.</p>
             </a>
@@ -181,7 +181,7 @@ function App() {
               <span className="badge">Coming Soon</span>
             </div>
             <a href="https://apps.apple.com/us/app/hogalytics/id6741347952" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">📊</div>
+              <div className="portfolio-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/37/b8/b0/37b8b08a-2d44-6bf4-77e4-65791b03e544/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Hogalytics" /></div>
               <h4>Hogalytics</h4>
               <p>PostHog analytics accessible via mobile app for viewing charts and managing multiple projects.</p>
             </a>
@@ -202,12 +202,12 @@ function App() {
               <p>Track your fasts, understand the science, and own your health. Live timer, body phase tracking, and built-in fasting plans.</p>
             </a>
             <a href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">✨</div>
+              <div className="portfolio-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4b/6f/44/4b6f444d-5505-9a67-bdea-316e775a7e98/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Awaken" /></div>
               <h4>Awaken</h4>
               <p>190+ sacred texts, one truth. A 365-day progressive journey through five universal truths across 14+ spiritual traditions.</p>
             </a>
             <a href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">🌟</div>
+              <div className="portfolio-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/c0/0e/4cc00e97-534b-aeb6-e343-2c7fdc09b860/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg" alt="Virtu Vista" /></div>
               <h4>Virtu Vista</h4>
               <p>Guided daily reflections through the 7 Habits framework with reminders, audio playback, and principle-centered living.</p>
             </a>
@@ -218,7 +218,7 @@ function App() {
           <h3 className="category-title">Social</h3>
           <div className="portfolio-grid">
             <a href="https://itsmybirthday.app" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">🎂</div>
+              <div className="portfolio-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7b/33/a1/7b33a1a4-8f60-2cc6-8899-67e17428b328/AppIcon-1x_U007emarketing-0-7-0-0-85-220-0.png/512x512bb.jpg" alt="It's My Birthday" /></div>
               <h4>It's My Birthday</h4>
               <p>Find free birthday deals from nearby businesses and never forget a loved one's special day.</p>
             </a>
@@ -234,12 +234,12 @@ function App() {
           <h3 className="category-title">Cannabis</h3>
           <div className="portfolio-grid">
             <a href="https://strainguide.app" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">🌿</div>
+              <div className="portfolio-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/b4/ec/67b4ecd6-06bf-e277-2991-b4e67063e065/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Strain Guide" /></div>
               <h4>Strain Guide</h4>
               <p>Discover thousands of cannabis strains with AI BudTender, advanced search, and expert growing tips. 7,000+ strains.</p>
             </a>
             <a href="https://growguide.app" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">🌱</div>
+              <div className="portfolio-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2f/78/94/2f7894d8-1a5e-8d27-8bd3-f7adf13f61d1/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Grow Guide" /></div>
               <h4>Grow Guide</h4>
               <p>Complete cannabis grow journal with daily tracking, AI Plant Doctor, time-lapse video, and growing calculators.</p>
             </a>
