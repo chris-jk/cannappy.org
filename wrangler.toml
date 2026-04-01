@@ -1,0 +1,8 @@
+name = "cannappy"
+main = "src/server/index.ts"
+compatibility_date = "2024-12-01"
+account_id = "a5c588da001d1dd63e92d484fc248076"
+
+[[routes]]
+pattern = "cannappy.cannappy.org"
+zone_id = "c0ac319cacaee3f1e6c8e24cf59b5915"

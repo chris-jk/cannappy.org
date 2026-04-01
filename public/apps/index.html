@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cannappy Apps</title>
+  <meta name="description" content="Apps built by Cannappy LLC — tools that solve real problems.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface-hover: #1a1a1a;
+      --border: #222;
+      --border-hover: #333;
+      --text: #e8e8e8;
+      --text-muted: #888;
+      --accent: #22c55e;
+      --accent-dim: rgba(34, 197, 94, 0.1);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 48px 0 24px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 17px;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Section headers */
+    .section-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 40px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Grid */
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .card:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-hover);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card .desc {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .card .links {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .card .domain {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .store-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.08);
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .store-badge:hover { background: rgba(255,255,255,0.12); color: var(--text); }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .tag-health      { background: rgba(59,130,246,0.15); color: #60a5fa; }
+    .tag-creative    { background: rgba(168,85,247,0.15); color: #c084fc; }
+    .tag-social      { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    .tag-legal       { background: rgba(239,68,68,0.15); color: #f87171; }
+    .tag-cannabis    { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .tag-productivity{ background: rgba(14,165,233,0.15); color: #38bdf8; }
+    .tag-lifestyle   { background: rgba(244,114,182,0.15); color: #f472b6; }
+    .tag-devtools    { background: rgba(161,161,170,0.15); color: #a1a1aa; }
+    .tag-gaming      { background: rgba(251,146,60,0.15); color: #fb923c; }
+    .tag-utility     { background: rgba(99,102,241,0.15); color: #818cf8; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 0 32px;
+      margin-top: 60px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    .store-links {
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .store-links a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+      header { padding: 36px 0 20px; }
+      h1 { font-size: 30px; }
+      .apps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">Cannappy LLC</div>
+      <h1>Our Apps</h1>
+      <p>Tools that solve real problems — built to ship fast and iterate faster.</p>
+    </header>
+
+    <!-- PRODUCTIVITY & UTILITIES -->
+    <div class="section-label">Productivity &amp; Utilities</div>
+    <div class="apps">
+
+      <a class="card" href="https://quickertext.cannappy.org" target="_blank" rel="noopener">
+        <div class="card-icon">&#127908;</div>
+        <span class="tag tag-productivity">Productivity</span>
+        <h2>quickerText</h2>
+        <p class="desc">AI-powered voice dictation with granular controls. Toggle filler removal, grammar, punctuation, and more independently. See exactly what changed with diff view.</p>
+        <div class="links">
+          <span class="domain">quickertext.cannappy.org</span>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank" rel="noopener">
+        <div class="card-icon">&#128065;</div>
+        <span class="tag tag-productivity">Productivity</span>
+        <h2>TextGrabber</h2>
+        <p class="desc">Select any region of your screen and instantly grab the text. Fast OCR-powered text extraction for macOS — copy text from images, videos, or anything on screen.</p>
+        <div class="links">
+          <span class="domain">Coming soon</span>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank" rel="noopener">
+        <div class="card-icon">&#128196;</div>
+        <span class="tag tag-utility">Utility</span>
+        <h2>New File</h2>
+        <p class="desc">Add a new file anywhere with one click. macOS lets you create folders easily, but not files — New File fixes that. Right-click or click and you're done.</p>
+        <div class="links">
+          <span class="domain">Coming soon</span>
+        </div>
+      </a>
+
+      <a class="card" href="#" target="_blank" rel="noopener">
+        <div class="card-icon">&#9889;</div>
+        <span class="tag tag-utility">Utility</span>
+        <h2>Kill All</h2>
+        <p class="desc">Close every open app in one shot. When you have a dozen apps running and want a clean slate, hit Kill All and free up your memory instantly.</p>
+        <div class="links">
+          <span class="domain">Coming soon</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://apps.apple.com/us/app/hogalytics/id6741347952" target="_blank" rel="noopener">
+        <div class="card-icon">&#128202;</div>
+        <span class="tag tag-devtools">Dev Tools</span>
+        <h2>Hogalytics</h2>
+        <p class="desc">PostHog analytics on your phone. View charts, sort data, and manage multiple projects from a native mobile app.</p>
+        <div class="links">
+          <span class="store-badge">App Store</span>
+          <span class="store-badge">Google Play</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://draftengine.cannappy.org" target="_blank" rel="noopener">
+        <div class="card-icon">&#128221;</div>
+        <span class="tag tag-productivity">Productivity</span>
+        <h2>DraftEngine</h2>
+        <p class="desc">Ideas to content in seconds. Record your screen, enhance with AI, and publish directly to Twitter/X and YouTube. Screen recording, thread generation, and saved snippets.</p>
+        <div class="links">
+          <span class="domain">draftengine.cannappy.org</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- HEALTH & LIFESTYLE -->
+    <div class="section-label">Health &amp; Lifestyle</div>
+    <div class="apps">
+
+      <a class="card" href="https://onefast-6u8.pages.dev" target="_blank" rel="noopener">
+        <div class="card-icon">&#9201;</div>
+        <span class="tag tag-health">Health</span>
+        <h2>OneFast</h2>
+        <p class="desc">Track your fasts, understand the science, and own your health. Live timer, body phase tracking, and built-in fasting plans from 16:8 to 72-hour extended fasts.</p>
+        <div class="links">
+          <span class="domain">onefast.cannappy.org</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" target="_blank" rel="noopener">
+        <div class="card-icon">&#10024;</div>
+        <span class="tag tag-lifestyle">Lifestyle</span>
+        <h2>Awaken</h2>
+        <p class="desc">190+ sacred texts, one truth. A 365-day progressive journey through five universal truths across 14+ spiritual traditions.</p>
+        <div class="links">
+          <span class="store-badge">App Store</span>
+          <span class="store-badge">Google Play</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" target="_blank" rel="noopener">
+        <div class="card-icon">&#127775;</div>
+        <span class="tag tag-lifestyle">Lifestyle</span>
+        <h2>Virtu Vista</h2>
+        <p class="desc">Elevate your everyday. Guided daily reflections through the 7 Habits framework with reminders, audio playback, and principle-centered living.</p>
+        <div class="links">
+          <span class="store-badge">App Store</span>
+          <span class="store-badge">Google Play</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="section-label">Social</div>
+    <div class="apps">
+
+      <a class="card" href="https://itsmybirthday.app" target="_blank" rel="noopener">
+        <div class="card-icon">&#127874;</div>
+        <span class="tag tag-social">Social</span>
+        <h2>It's My Birthday</h2>
+        <p class="desc">Find free birthday deals from nearby businesses and never forget a loved one's special day. Gift ideas, reminders, and local offers all in one place.</p>
+        <div class="links">
+          <span class="domain">itsmybirthday.app</span>
+          <span class="store-badge">App Store</span>
+          <span class="store-badge">Google Play</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://lets.askthis.app" target="_blank" rel="noopener">
+        <div class="card-icon">&#10067;</div>
+        <span class="tag tag-social">Social</span>
+        <h2>AskThis</h2>
+        <p class="desc">A new way to ask questions and get answers from the people and communities that matter most.</p>
+        <div class="links">
+          <span class="domain">lets.askthis.app</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- CANNABIS -->
+    <div class="section-label">Cannabis</div>
+    <div class="apps">
+
+      <a class="card" href="https://strainguide.app" target="_blank" rel="noopener">
+        <div class="card-icon">&#127807;</div>
+        <span class="tag tag-cannabis">Cannabis</span>
+        <h2>Strain Guide</h2>
+        <p class="desc">Discover thousands of cannabis strains with AI BudTender, advanced search, personalized notes, and expert growing tips. 7,000+ strains and counting.</p>
+        <div class="links">
+          <span class="domain">strainguide.app</span>
+          <span class="store-badge">App Store</span>
+          <span class="store-badge">Google Play</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://growguide.app" target="_blank" rel="noopener">
+        <div class="card-icon">&#127793;</div>
+        <span class="tag tag-cannabis">Cannabis</span>
+        <h2>Grow Guide</h2>
+        <p class="desc">Complete cannabis grow journal with daily tracking, AI Plant Doctor, time-lapse video, community, and professional growing calculators.</p>
+        <div class="links">
+          <span class="domain">growguide.app</span>
+          <span class="store-badge">App Store</span>
+          <span class="store-badge">Google Play</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://games.strainguide.app/" target="_blank" rel="noopener">
+        <div class="card-icon">&#127918;</div>
+        <span class="tag tag-gaming">Gaming</span>
+        <h2>Canna Arcade</h2>
+        <p class="desc">Cannabis-themed gaming hub. Play Bud Defender, Blazed Runner, Grow Tycoon, Strain Blender, and Harvest Rush. Leaderboards, daily challenges, and achievements.</p>
+        <div class="links">
+          <span class="domain">games.strainguide.app</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- CREATIVE -->
+    <div class="section-label">Creative</div>
+    <div class="apps">
+
+      <a class="card" href="https://inkflo.studio" target="_blank" rel="noopener">
+        <div class="card-icon">&#9999;</div>
+        <span class="tag tag-creative">Creative</span>
+        <h2>Ink Flo Studio</h2>
+        <p class="desc">The all-in-one app for tattoo artists and studios. Manage clients, showcase your portfolio, handle scheduling, payments, and grow your business.</p>
+        <div class="links">
+          <span class="domain">inkflo.studio</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- LEGAL -->
+    <div class="section-label">Legal</div>
+    <div class="apps">
+
+      <a class="card" href="https://freecustodyhelp.com" target="_blank" rel="noopener">
+        <div class="card-icon">&#9878;</div>
+        <span class="tag tag-legal">Legal</span>
+        <h2>Free Custody Help</h2>
+        <p class="desc">AI-powered case assistant for custody disputes. Upload evidence, build timelines, chat with an AI advisor, and get personalized action plans for family court.</p>
+        <div class="links">
+          <span class="domain">freecustodyhelp.com</span>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      &copy; 2026 <a href="https://cannappy.org">Cannappy LLC</a>. All rights reserved.
+      <div class="store-links">
+        <a href="https://apps.apple.com/us/developer/phannafest-llc/id1209901791" target="_blank" rel="noopener">App Store</a>
+        <a href="https://play.google.com/store/apps/developer?id=Phannafestllc" target="_blank" rel="noopener">Google Play</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -185,6 +185,11 @@ function App() {
               <h4>Hogalytics</h4>
               <p>PostHog analytics accessible via mobile app for viewing charts and managing multiple projects.</p>
             </a>
+            <a href="https://draftengine.cannappy.org" className="portfolio-card" target="_blank" rel="noopener noreferrer">
+              <div className="portfolio-icon">📝</div>
+              <h4>DraftEngine</h4>
+              <p>Ideas to content in seconds. Record your screen, enhance with AI, and publish to Twitter/X and YouTube.</p>
+            </a>
           </div>
         </div>
 
@@ -263,7 +268,7 @@ function App() {
         </div>
 
         <div className="portfolio-cta">
-          <a href="https://apps-portal.pages.dev/" target="_blank" rel="noopener noreferrer" className="portfolio-link">
+          <a href="/apps" className="portfolio-link">
             View All Apps &rarr;
           </a>
         </div>
