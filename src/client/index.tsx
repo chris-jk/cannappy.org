@@ -60,16 +60,16 @@ function App() {
       width: 400 * 2,
       height: 400 * 2,
       phi: 0,
-      theta: 0,
+      theta: 0.1,
       dark: 1,
-      diffuse: 0.8,
+      diffuse: 0.9,
       mapSamples: 16000,
-      mapBrightness: 6,
-      baseColor: [0.3, 0.3, 0.3],
-      markerColor: [0.8, 0.1, 0.1],
-      glowColor: [0.2, 0.2, 0.2],
+      mapBrightness: 5,
+      baseColor: [0.32, 0.29, 0.26],
+      markerColor: [0.37, 0.84, 0.54],
+      glowColor: [0.13, 0.11, 0.09],
       markers: [],
-      opacity: 0.7,
+      opacity: 0.85,
       onRender: (state) => {
         // Called on every animation frame.
         // `state` will be an empty object, return updated params.
@@ -79,7 +79,7 @@ function App() {
 
         // Rotate the globe
         state.phi = phi;
-        phi += 0.01;
+        phi += 0.005;
       },
     });
 
@@ -90,218 +90,387 @@ function App() {
 
   return (
     <div className="App">
-      {/* Hero Section */}
+      <nav className="nav">
+        <a className="wordmark" href="/">
+          Cann<span>app</span>y
+        </a>
+        <a className="nav-link" href="/apps">
+          All apps &#8599;
+        </a>
+      </nav>
+
+      {/* Hero */}
       <header className="hero">
-        <h1>
-          Cann<span className="highlight">app</span>y
-        </h1>
-        <p className="tagline">Development Company</p>
-        <p className="subtitle">
-          Building exceptional digital experiences with modern technology
-        </p>
-        {counter !== 0 && (
-          <div className="live-indicator">
-            <span className="pulse"></span>
-            <span className="live-text">
-              {counter} {counter === 1 ? "visitor" : "visitors"} online
-            </span>
-          </div>
-        )}
+        <div className="hero-text">
+          <p className="eyebrow">Cannappy LLC &middot; App Studio</p>
+          <h1>
+            We build apps people actually <em>keep</em> on their phone.
+          </h1>
+          <p className="lede">
+            A small studio shipping focused tools that solve real, everyday
+            problems &mdash; for travelers, growers, creators, and everyone the
+            big apps overlook.
+          </p>
+          {counter !== 0 && (
+            <div className="live-indicator">
+              <span className="pulse"></span>
+              <span className="live-text">
+                {counter} {counter === 1 ? "person" : "people"} here right now
+              </span>
+            </div>
+          )}
+        </div>
+        <div className="globe-container">
+          <canvas
+            ref={canvasRef as LegacyRef<HTMLCanvasElement>}
+            style={{ width: 400, height: 400, maxWidth: "100%", aspectRatio: 1 }}
+          />
+        </div>
       </header>
 
-      {/* The canvas where we'll render the globe */}
-      <div className="globe-container">
-        <canvas
-          ref={canvasRef as LegacyRef<HTMLCanvasElement>}
-          style={{ width: 400, height: 400, maxWidth: "100%", aspectRatio: 1 }}
-        />
-      </div>
-
-      {/* Services Section */}
+      {/* What we do */}
       <section className="services">
-        <h2>Our Services</h2>
-        <p className="section-subtitle">
-          Comprehensive solutions for your digital needs
-        </p>
-        <div className="services-grid">
-          <div className="service-card">
-            <div className="service-icon">📱</div>
-            <h3>Mobile App Development</h3>
-            <p>Beautiful iOS and Android applications built with Flutter</p>
+        <p className="section-label">What we do</p>
+        <div className="services-list">
+          <div className="service">
+            <span className="service-num">01</span>
+            <h3>Mobile apps</h3>
+            <p>Native iOS and Android experiences people reach for every day.</p>
           </div>
-          <div className="service-card">
-            <div className="service-icon">💻</div>
-            <h3>Web Applications</h3>
-            <p>Modern web apps using React, TypeScript, and Node.js</p>
+          <div className="service">
+            <span className="service-num">02</span>
+            <h3>Web apps</h3>
+            <p>Fast, focused tools that work the moment they load.</p>
           </div>
-          <div className="service-card">
-            <div className="service-icon">🎨</div>
-            <h3>UI/UX Design</h3>
-            <p>User-centered design with intuitive interfaces</p>
+          <div className="service">
+            <span className="service-num">03</span>
+            <h3>Product &amp; design</h3>
+            <p>Interfaces so obvious people just get them &mdash; no manual needed.</p>
           </div>
-          <div className="service-card">
-            <div className="service-icon">🔌</div>
-            <h3>API Development</h3>
-            <p>Robust and scalable REST and GraphQL APIs</p>
+          <div className="service">
+            <span className="service-num">04</span>
+            <h3>Growth</h3>
+            <p>We make sure the right people actually find what we build.</p>
           </div>
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section className="portfolio">
-        <h2>Our Apps</h2>
-        <p className="section-subtitle">
-          Explore our growing portfolio of apps across multiple platforms
-        </p>
+      {/* Portfolio */}
+      <section className="portfolio" id="apps">
+        <p className="section-label">Our apps</p>
+        <h2>
+          Each one starts with a real problem &mdash; then we <em>sweat the
+          details</em>.
+        </h2>
 
-        <div className="portfolio-category">
-          <h3 className="category-title">Productivity & Utilities</h3>
-          <div className="portfolio-grid">
-            <a href="https://quickertext.cannappy.org" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon"><img src="https://quickertext.cannappy.org/static/logo-512.png" alt="quickerText" /></div>
-              <h4>quickerText</h4>
-              <p>AI-powered voice dictation with granular controls. Toggle filler removal, grammar, punctuation, and more.</p>
+        <div className="cat">
+          <h3 className="cat-title">Productivity &amp; Utilities</h3>
+          <div className="app-grid">
+            <a href="https://quickertext.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon"><img src="https://quickertext.cannappy.org/static/logo-512.png" alt="quickerText" /></div>
+              <div className="app-text">
+                <h4>quickerText</h4>
+                <p>Talk instead of type. Get clean, formatted text from your voice &mdash; and decide exactly what gets fixed before you keep it.</p>
+                <div className="app-meta"><span className="where">macOS</span></div>
+              </div>
             </a>
-            <div className="portfolio-card coming-soon">
-              <div className="portfolio-icon">👁</div>
-              <h4>TextGrabber</h4>
-              <p>Select any region of your screen and instantly grab the text. Fast OCR-powered text extraction for macOS.</p>
-              <span className="badge">Coming Soon</span>
+            <a href="https://apps.apple.com/us/app/hogalytics/id6741347952" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/37/b8/b0/37b8b08a-2d44-6bf4-77e4-65791b03e544/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Hogalytics" /></div>
+              <div className="app-text">
+                <h4>Hogalytics</h4>
+                <p>Your product numbers in your pocket. Check what&rsquo;s moving and spot trends without ever opening a laptop.</p>
+                <div className="app-meta"><span className="store">App Store</span><span className="store">Google Play</span></div>
+              </div>
+            </a>
+            <a href="https://draftengine.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">&#128221;</div>
+              <div className="app-text">
+                <h4>DraftEngine</h4>
+                <p>Turn a rough idea into a finished post in minutes. Record, polish, and publish to your audience without the busywork.</p>
+                <div className="app-meta"><span className="where">draftengine.cannappy.org</span></div>
+              </div>
+            </a>
+            <div className="app">
+              <div className="app-icon">&#128065;</div>
+              <div className="app-text">
+                <h4>TextGrabber</h4>
+                <p>Grab text from anything on screen &mdash; images, video, PDFs &mdash; with one shortcut. Never retype again.</p>
+                <div className="app-meta"><span className="store">macOS</span></div>
+              </div>
             </div>
-            <div className="portfolio-card coming-soon">
-              <div className="portfolio-icon">📄</div>
-              <h4>New File</h4>
-              <p>Add a new file anywhere with one click. macOS lets you create folders easily, but not files — New File fixes that.</p>
-              <span className="badge">Coming Soon</span>
+            <div className="app">
+              <div className="app-icon">&#128196;</div>
+              <div className="app-text">
+                <h4>New File</h4>
+                <p>Create a new file anywhere in one click &mdash; the thing your Mac should have done all along.</p>
+                <div className="app-meta"><span className="store">macOS</span></div>
+              </div>
             </div>
-            <div className="portfolio-card coming-soon">
-              <div className="portfolio-icon">⚡</div>
-              <h4>Kill All</h4>
-              <p>Close every open app in one shot. Free up your memory and start with a clean slate.</p>
-              <span className="badge">Coming Soon</span>
+            <div className="app">
+              <div className="app-icon">&#9889;</div>
+              <div className="app-text">
+                <h4>Kill All</h4>
+                <p>Close every open app at once and get a clean, fast machine back instantly.</p>
+                <div className="app-meta"><span className="store">macOS</span></div>
+              </div>
             </div>
-            <a href="https://apps.apple.com/us/app/hogalytics/id6741347952" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/37/b8/b0/37b8b08a-2d44-6bf4-77e4-65791b03e544/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Hogalytics" /></div>
-              <h4>Hogalytics</h4>
-              <p>PostHog analytics accessible via mobile app for viewing charts and managing multiple projects.</p>
+          </div>
+        </div>
+
+        <div className="cat">
+          <h3 className="cat-title">Health &amp; Lifestyle</h3>
+          <div className="app-grid">
+            <a href="https://onefast-6u8.pages.dev" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">&#9201;</div>
+              <div className="app-text">
+                <h4>OneFast</h4>
+                <p>Fast with confidence. A live timer, the science behind each stage, and plans that fit your life &mdash; from a daily window to a multi-day reset.</p>
+                <div className="app-meta"><span className="where">onefast.cannappy.org</span></div>
+              </div>
             </a>
-            <a href="https://draftengine.cannappy.org" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">📝</div>
-              <h4>DraftEngine</h4>
-              <p>Ideas to content in seconds. Record your screen, enhance with AI, and publish to Twitter/X and YouTube.</p>
+            <a href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4b/6f/44/4b6f444d-5505-9a67-bdea-316e775a7e98/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Awaken" /></div>
+              <div className="app-text">
+                <h4>Awaken</h4>
+                <p>One year, one daily practice. A guided journey through the wisdom shared by spiritual traditions across the world.</p>
+                <div className="app-meta"><span className="store">App Store</span><span className="store">Google Play</span></div>
+              </div>
+            </a>
+            <a href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/c0/0e/4cc00e97-534b-aeb6-e343-2c7fdc09b860/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg" alt="Virtu Vista" /></div>
+              <div className="app-text">
+                <h4>Virtu Vista</h4>
+                <p>A two-minute daily reflection that keeps what matters in front of you &mdash; and helps you actually live by it.</p>
+                <div className="app-meta"><span className="store">App Store</span><span className="store">Google Play</span></div>
+              </div>
+            </a>
+            <a href="https://peptidessacramento.com" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">&#129514;</div>
+              <div className="app-text">
+                <h4>Capital Peptides</h4>
+                <p>Straight answers on research peptides, plus a reconstitution calculator that does the dosing math for you.</p>
+                <div className="app-meta"><span className="where">peptidessacramento.com</span></div>
+              </div>
             </a>
           </div>
         </div>
 
-        <div className="portfolio-category">
-          <h3 className="category-title">Health & Lifestyle</h3>
-          <div className="portfolio-grid">
-            <a href="https://onefast-6u8.pages.dev" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">⏱</div>
-              <h4>OneFast</h4>
-              <p>Track your fasts, understand the science, and own your health. Live timer, body phase tracking, and built-in fasting plans.</p>
+        <div className="cat">
+          <h3 className="cat-title">Cannabis</h3>
+          <div className="app-grid">
+            <a href="https://strainguide.app" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/b4/ec/67b4ecd6-06bf-e277-2991-b4e67063e065/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Strain Guide" /></div>
+              <div className="app-text">
+                <h4>Strain Guide</h4>
+                <p>Find your perfect strain. Search thousands with an AI budtender, save what works for you, and learn how to grow it.</p>
+                <div className="app-meta"><span className="where">strainguide.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+              </div>
             </a>
-            <a href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4b/6f/44/4b6f444d-5505-9a67-bdea-316e775a7e98/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Awaken" /></div>
-              <h4>Awaken</h4>
-              <p>190+ sacred texts, one truth. A 365-day progressive journey through five universal truths across 14+ spiritual traditions.</p>
+            <a href="https://growguide.app" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2f/78/94/2f7894d8-1a5e-8d27-8bd3-f7adf13f61d1/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Grow Guide" /></div>
+              <div className="app-text">
+                <h4>Grow Guide</h4>
+                <p>Grow better. Track every day, get an AI plant doctor the moment something looks off, and capture the whole journey on time-lapse.</p>
+                <div className="app-meta"><span className="where">growguide.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+              </div>
             </a>
-            <a href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/c0/0e/4cc00e97-534b-aeb6-e343-2c7fdc09b860/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg" alt="Virtu Vista" /></div>
-              <h4>Virtu Vista</h4>
-              <p>Guided daily reflections through the 7 Habits framework with reminders, audio playback, and principle-centered living.</p>
-            </a>
-          </div>
-        </div>
-
-        <div className="portfolio-category">
-          <h3 className="category-title">Social</h3>
-          <div className="portfolio-grid">
-            <a href="https://itsmybirthday.app" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7b/33/a1/7b33a1a4-8f60-2cc6-8899-67e17428b328/AppIcon-1x_U007emarketing-0-7-0-0-85-220-0.png/512x512bb.jpg" alt="It's My Birthday" /></div>
-              <h4>It's My Birthday</h4>
-              <p>Find free birthday deals from nearby businesses and never forget a loved one's special day.</p>
-            </a>
-            <a href="https://lets.askthis.app" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">❓</div>
-              <h4>AskThis</h4>
-              <p>A new way to ask questions and get answers from relevant people and communities.</p>
+            <a href="https://games.strainguide.app/" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">&#127918;</div>
+              <div className="app-text">
+                <h4>Canna Arcade</h4>
+                <p>Quick, cannabis-themed games with leaderboards and daily challenges. Easy fun for a spare few minutes.</p>
+                <div className="app-meta"><span className="where">games.strainguide.app</span></div>
+              </div>
             </a>
           </div>
         </div>
 
-        <div className="portfolio-category">
-          <h3 className="category-title">Cannabis</h3>
-          <div className="portfolio-grid">
-            <a href="https://strainguide.app" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/b4/ec/67b4ecd6-06bf-e277-2991-b4e67063e065/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Strain Guide" /></div>
-              <h4>Strain Guide</h4>
-              <p>Discover thousands of cannabis strains with AI BudTender, advanced search, and expert growing tips. 7,000+ strains.</p>
+        <div className="cat">
+          <h3 className="cat-title">Travel</h3>
+          <div className="app-grid">
+            <a href="https://apps.apple.com/us/app/snap-currency/id6763781236" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/4c/d8/954cd831-e76b-4b51-b4fe-cf67d57f978d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Snap Currency" /></div>
+              <div className="app-text">
+                <h4>Snap Currency</h4>
+                <p>Know what anything really costs, instantly. Point your camera at a price, say it, or type the math &mdash; and half of every profit goes to charity.</p>
+                <div className="app-meta"><span className="where">snapcurrency.com</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+              </div>
             </a>
-            <a href="https://growguide.app" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2f/78/94/2f7894d8-1a5e-8d27-8bd3-f7adf13f61d1/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Grow Guide" /></div>
-              <h4>Grow Guide</h4>
-              <p>Complete cannabis grow journal with daily tracking, AI Plant Doctor, time-lapse video, and growing calculators.</p>
-            </a>
-            <a href="https://games.strainguide.app/" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">🎮</div>
-              <h4>Canna Arcade</h4>
-              <p>Cannabis-themed gaming hub featuring multiple games with leaderboards, daily challenges, and achievements.</p>
+            <a href="https://nomadaigent.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">&#127757;</div>
+              <div className="app-text">
+                <h4>Nomad Aigent</h4>
+                <p>Find a place to live abroad without the scams. Tell a chat what you&rsquo;re after and get real listings that fit &mdash; no endless group-scrolling.</p>
+                <div className="app-meta"><span className="where">nomadaigent.cannappy.org</span></div>
+              </div>
             </a>
           </div>
         </div>
 
-        <div className="portfolio-category">
-          <h3 className="category-title">Creative & Legal</h3>
-          <div className="portfolio-grid">
-            <a href="https://inkflo.studio" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">✏️</div>
-              <h4>Ink Flo Studio</h4>
-              <p>The all-in-one app for tattoo artists and studios. Manage clients, showcase your portfolio, and grow your business.</p>
+        <div className="cat">
+          <h3 className="cat-title">Social</h3>
+          <div className="app-grid">
+            <a href="https://itsmybirthday.app" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7b/33/a1/7b33a1a4-8f60-2cc6-8899-67e17428b328/AppIcon-1x_U007emarketing-0-7-0-0-85-220-0.png/512x512bb.jpg" alt="It's My Birthday" /></div>
+              <div className="app-text">
+                <h4>It&rsquo;s My Birthday</h4>
+                <p>Never miss the people who matter &mdash; and cash in on free birthday perks from places near you.</p>
+                <div className="app-meta"><span className="where">itsmybirthday.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+              </div>
             </a>
-            <a href="https://freecustodyhelp.com" className="portfolio-card" target="_blank" rel="noopener noreferrer">
-              <div className="portfolio-icon">⚖️</div>
-              <h4>Free Custody Help</h4>
-              <p>AI-powered case assistant for custody disputes. Upload evidence, build timelines, and get personalized action plans.</p>
+            <a href="https://lets.askthis.app" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">&#10067;</div>
+              <div className="app-text">
+                <h4>AskThis</h4>
+                <p>Ask anything and get real answers from the people and communities who actually know.</p>
+                <div className="app-meta"><span className="where">lets.askthis.app</span></div>
+              </div>
             </a>
+          </div>
+        </div>
+
+        <div className="cat">
+          <h3 className="cat-title">Education</h3>
+          <div className="app-grid">
+            <a href="https://storylingo-web.pages.dev" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">&#128483;</div>
+              <div className="app-text">
+                <h4>StoryLingo</h4>
+                <p>Learn a language the way you picked up your first &mdash; short, current stories you actually want to read, with quick drills that make it stick.</p>
+                <div className="app-meta"><span className="where">storylingo.com</span></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div className="cat">
+          <h3 className="cat-title">Creative &amp; Legal</h3>
+          <div className="app-grid">
+            <a href="https://inkflo.studio" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">&#9999;</div>
+              <div className="app-text">
+                <h4>Ink Flo Studio</h4>
+                <p>Everything a tattoo artist needs to run the business side &mdash; clients, bookings, payments, and a portfolio that wins work.</p>
+                <div className="app-meta"><span className="where">inkflo.studio</span></div>
+              </div>
+            </a>
+            <a href="https://freecustodyhelp.com" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">&#9878;</div>
+              <div className="app-text">
+                <h4>Free Custody Help</h4>
+                <p>Face a custody case with a plan. Organize your evidence, build a timeline, and get clear, personalized next steps for court.</p>
+                <div className="app-meta"><span className="where">freecustodyhelp.com</span></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div className="cat">
+          <h3 className="cat-title">Business &amp; Marketing</h3>
+          <div className="app-grid">
+            <a href="https://letsgosite.com" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">&#128640;</div>
+              <div className="app-text">
+                <h4>LetsGoSite</h4>
+                <p>We build local businesses a website before they ever pay &mdash; so they can see exactly what they&rsquo;re getting, then make it theirs.</p>
+                <div className="app-meta"><span className="where">letsgosite.com</span></div>
+              </div>
+            </a>
+            <a href="https://celebstrendtoday.com" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">&#11088;</div>
+              <div className="app-text">
+                <h4>CelebsTrendToday</h4>
+                <p>How much are they really worth? Clear, sourced net-worth profiles, kept up to date.</p>
+                <div className="app-meta"><span className="where">celebstrendtoday.com</span></div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div className="cat">
+          <h3 className="cat-title">From our own workshop</h3>
+          <div className="app-grid">
+            <div className="app is-muted">
+              <div className="app-icon">&#128200;</div>
+              <div className="app-text">
+                <h4>RankItRalph</h4>
+                <p>Our in-house growth engine. It finds what people are searching for and turns it into content that earns its place &mdash; on autopilot.</p>
+                <div className="app-meta"><span className="pill">Internal</span></div>
+              </div>
+            </div>
+            <div className="app is-muted">
+              <div className="app-icon">&#128202;</div>
+              <div className="app-text">
+                <h4>Ralph Portal</h4>
+                <p>One dashboard to see how every one of our sites is performing at a glance.</p>
+                <div className="app-meta"><span className="pill">Internal</span></div>
+              </div>
+            </div>
+            <div className="app is-muted">
+              <div className="app-icon">&#128240;</div>
+              <div className="app-text">
+                <h4>PitchRalph</h4>
+                <p>Gets our work in front of the journalists and writers who cover our world.</p>
+                <div className="app-meta"><span className="pill">Internal</span></div>
+              </div>
+            </div>
+            <div className="app is-muted">
+              <div className="app-icon">&#128222;</div>
+              <div className="app-text">
+                <h4>Cold Caller</h4>
+                <p>A streamlined dialer our team uses to reach prospects with a familiar local number.</p>
+                <div className="app-meta"><span className="pill">Internal</span></div>
+              </div>
+            </div>
+            <div className="app is-muted">
+              <div className="app-icon">&#128123;</div>
+              <div className="app-text">
+                <h4>Ghost Domain Hunter</h4>
+                <p>Finds valuable web addresses that have been abandoned, so we can put their leftover traffic to good use.</p>
+                <div className="app-meta"><span className="pill">Internal</span></div>
+              </div>
+            </div>
+            <div className="app is-muted">
+              <div className="app-icon">&#128226;</div>
+              <div className="app-text">
+                <h4>Social Poster</h4>
+                <p>Shares what we build with the right communities &mdash; helpfully, after earning a place in them.</p>
+                <div className="app-meta"><span className="pill">Internal</span></div>
+              </div>
+            </div>
           </div>
         </div>
 
         <div className="portfolio-cta">
           <a href="/apps" className="portfolio-link">
-            View All Apps &rarr;
+            See every app &rarr;
           </a>
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact */}
       <section className="contact">
-        <h2>Let's Work Together</h2>
-        <p className="section-subtitle">
-          Ready to bring your project to life? Get in touch with us today.
+        <p className="section-label">Get in touch</p>
+        <h2>
+          Have a problem worth <em>solving</em>?
+        </h2>
+        <p className="lede">
+          Tell us what&rsquo;s slowing people down. If it&rsquo;s the kind of
+          thing an app can fix, we&rsquo;d love to hear about it.
         </p>
         <div className="contact-box">
           <form className="contact-form">
-            <div className="form-group">
-              <input type="text" placeholder="Your Name" required />
-            </div>
-            <div className="form-group">
-              <input type="email" placeholder="Your Email" required />
-            </div>
-            <div className="form-group">
-              <textarea
-                placeholder="Tell us about your project"
-                required
-              ></textarea>
-            </div>
-            <button type="submit">Send Message</button>
+            <input type="text" placeholder="Your name" required />
+            <input type="email" placeholder="Your email" required />
+            <textarea placeholder="What are you trying to solve?" required></textarea>
+            <button type="submit">Send message</button>
           </form>
           <div className="contact-info">
-            <h3>Contact Information</h3>
+            <h3>Where we are</h3>
             <div className="info-item">
-              <span className="info-icon">📍</span>
+              <span className="info-icon">&#9679;</span>
               <div>
-                <p>1401 21st ST # 12541</p>
+                <p>1401 21st St #12541</p>
                 <p>Sacramento, CA</p>
               </div>
             </div>
@@ -312,14 +481,19 @@ function App() {
       {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
-          <p className="powered-by">
-            Powered by <a href="https://cobe.vercel.app/">Cobe</a>,{" "}
-            <a href="https://www.npmjs.com/package/phenomenon">Phenomenon</a>{" "}
-            and <a href="https://npmjs.com/package/partyserver/">PartyServer</a>
-          </p>
-          <p className="copyright">
-            © 2025 Cannappy LLC Development Company. All rights reserved.
-          </p>
+          <div>
+            <a className="wordmark" href="/">
+              Cann<span>app</span>y
+            </a>
+            <p className="footer-tag">Apps that solve real problems.</p>
+          </div>
+          <div className="footer-right">
+            <div className="footer-stores">
+              <a href="https://apps.apple.com/us/developer/phannafest-llc/id1209901791" target="_blank" rel="noopener noreferrer">App Store</a>
+              <a href="https://play.google.com/store/apps/developer?id=Phannafestllc" target="_blank" rel="noopener noreferrer">Google Play</a>
+            </div>
+            <p className="copyright">© 2026 Cannappy LLC. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </div>

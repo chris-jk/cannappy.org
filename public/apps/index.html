@@ -3,442 +3,550 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cannappy Apps</title>
-  <meta name="description" content="Apps built by Cannappy LLC — tools that solve real problems.">
+  <title>Cannappy — Our Apps</title>
+  <meta name="description" content="Every app from Cannappy LLC — focused tools built to solve real, everyday problems.">
+  <meta name="theme-color" content="#100c0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0a0a0a;
-      --surface: #141414;
-      --surface-hover: #1a1a1a;
-      --border: #222;
-      --border-hover: #333;
-      --text: #e8e8e8;
-      --text-muted: #888;
-      --accent: #22c55e;
-      --accent-dim: rgba(34, 197, 94, 0.1);
+      --bg: #100c0a;
+      --bg-raise: #17120e;
+      --surface-hover: rgba(255, 249, 240, 0.05);
+      --border: rgba(245, 238, 228, 0.09);
+      --border-hover: rgba(245, 238, 228, 0.2);
+      --text: #f4ede2;
+      --text-2: #b4a99a;
+      --text-3: #7d7264;
+      --accent: #5fd68a;
+      --accent-soft: rgba(95, 214, 138, 0.12);
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --max: 1080px;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: var(--sans);
       background: var(--bg);
-      color: var(--text);
+      background-image:
+        radial-gradient(60% 50% at 85% 0%, rgba(95, 214, 138, 0.07) 0%, transparent 60%),
+        radial-gradient(55% 45% at 0% 22%, rgba(212, 160, 90, 0.05) 0%, transparent 55%);
+      background-attachment: fixed;
+      color: var(--text-2);
       min-height: 100vh;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    .container {
-      max-width: 960px;
+    a { color: var(--accent); text-decoration: none; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+
+    /* Nav */
+    nav {
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
+
+    .wordmark {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .wordmark span { color: var(--accent); font-style: italic; }
+
+    .nav-link { font-size: 0.9rem; font-weight: 500; color: var(--text-2); }
+    .nav-link:hover { color: var(--text); }
 
     /* Header */
-    header {
-      padding: 48px 0 24px;
-      text-align: center;
+    header.page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 4rem 2rem 3rem;
     }
 
-    .logo {
-      font-size: 14px;
+    .eyebrow {
+      font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 2px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 16px;
+      margin-bottom: 1.5rem;
     }
 
-    h1 {
-      font-size: 40px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
+    header.page h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.015em;
+      line-height: 1.08;
+      max-width: 16ch;
+      margin-bottom: 1.25rem;
+    }
+    header.page h1 em { font-style: italic; color: var(--accent); }
+
+    header.page p {
+      font-size: 1.15rem;
+      color: var(--text-2);
+      max-width: 46ch;
     }
 
-    header p {
-      color: var(--text-muted);
-      font-size: 17px;
-      max-width: 480px;
-      margin: 0 auto;
-      line-height: 1.5;
-    }
-
-    /* Section headers */
-    .section-label {
-      font-size: 13px;
+    /* Sections */
+    .cat-title {
+      font-family: var(--sans);
+      font-size: 0.74rem;
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin: 40px 0 16px;
-      padding-bottom: 8px;
+      color: var(--text-3);
+      margin: 3rem 0 0.25rem;
+      padding-bottom: 0.9rem;
       border-bottom: 1px solid var(--border);
     }
 
-    /* Grid */
     .apps {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      column-gap: 2.5rem;
     }
 
-    /* Card */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px 24px;
-      text-decoration: none;
+    .app {
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+      padding: 1.5rem 0.5rem 1.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
       color: inherit;
-      display: flex;
-      flex-direction: column;
-      transition: background 0.15s, border-color 0.15s;
+      border-radius: 10px;
+      transition: background 0.2s ease, padding 0.2s ease;
     }
 
-    .card:hover {
-      background: var(--surface-hover);
-      border-color: var(--border-hover);
-    }
+    a.app:hover { background: var(--surface-hover); padding-left: 1rem; }
+    a.app:hover h2 { color: var(--accent); }
 
-    .card-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: var(--accent-dim);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      margin-bottom: 16px;
+    .app.is-muted { opacity: 0.72; }
+
+    .app-icon {
+      flex-shrink: 0;
+      width: 52px; height: 52px;
+      border-radius: 13px;
+      background: var(--accent-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
       overflow: hidden;
     }
+    .app-icon img { width: 100%; height: 100%; object-fit: cover; }
 
-    .card-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-    }
+    .app-text { min-width: 0; }
 
-    .card h2 {
-      font-size: 18px;
+    .app-text h2 {
+      font-family: var(--serif);
+      font-size: 1.22rem;
       font-weight: 600;
-      margin-bottom: 8px;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.35rem;
+      transition: color 0.18s ease;
     }
 
-    .card .desc {
-      color: var(--text-muted);
-      font-size: 14px;
-      line-height: 1.55;
-      flex: 1;
-    }
+    .app-text .desc { font-size: 0.92rem; color: var(--text-2); line-height: 1.55; }
 
-    .card .links {
-      margin-top: 16px;
+    .app-meta {
+      margin-top: 0.7rem;
       display: flex;
-      gap: 12px;
       flex-wrap: wrap;
       align-items: center;
+      gap: 0.5rem 0.85rem;
+      font-size: 0.78rem;
     }
-
-    .card .domain {
-      font-size: 13px;
-      color: var(--accent);
+    .app-meta .where { color: var(--accent); font-weight: 500; }
+    .app-meta .store { color: var(--text-3); }
+    .app-meta .pill {
+      color: var(--text-3);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.1rem 0.6rem;
       font-weight: 500;
     }
-
-    .store-badge {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.08);
-      color: var(--text-muted);
-      text-decoration: none;
-    }
-
-    .store-badge:hover { background: rgba(255,255,255,0.12); color: var(--text); }
-
-    .tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      margin-bottom: 12px;
-    }
-
-    .tag-health      { background: rgba(59,130,246,0.15); color: #60a5fa; }
-    .tag-creative    { background: rgba(168,85,247,0.15); color: #c084fc; }
-    .tag-social      { background: rgba(251,191,36,0.15); color: #fbbf24; }
-    .tag-legal       { background: rgba(239,68,68,0.15); color: #f87171; }
-    .tag-cannabis    { background: rgba(34,197,94,0.15); color: #4ade80; }
-    .tag-productivity{ background: rgba(14,165,233,0.15); color: #38bdf8; }
-    .tag-lifestyle   { background: rgba(244,114,182,0.15); color: #f472b6; }
-    .tag-devtools    { background: rgba(161,161,170,0.15); color: #a1a1aa; }
-    .tag-gaming      { background: rgba(251,146,60,0.15); color: #fb923c; }
-    .tag-utility     { background: rgba(99,102,241,0.15); color: #818cf8; }
 
     /* Footer */
     footer {
-      text-align: center;
-      padding: 40px 0 32px;
-      margin-top: 60px;
       border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 13px;
+      background: var(--bg-raise);
+      margin-top: 4rem;
     }
-
-    footer a {
-      color: var(--text-muted);
-      text-decoration: none;
-    }
-
-    footer a:hover { color: var(--text); }
-
-    .store-links {
-      margin-top: 8px;
+    .footer-content {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3rem 2rem;
       display: flex;
-      justify-content: center;
-      gap: 16px;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
     }
-
-    .store-links a {
-      color: var(--accent);
-      font-weight: 500;
-    }
+    .footer-tag { font-size: 0.9rem; color: var(--text-3); margin-top: 0.4rem; }
+    .footer-right { display: flex; flex-direction: column; gap: 0.6rem; text-align: right; }
+    .footer-stores { display: flex; gap: 1.25rem; justify-content: flex-end; }
+    .footer-stores a { color: var(--text-2); font-size: 0.9rem; }
+    .footer-stores a:hover { color: var(--accent); }
+    .copyright { font-size: 0.82rem; color: var(--text-3); }
 
     @media (max-width: 640px) {
-      header { padding: 36px 0 20px; }
-      h1 { font-size: 30px; }
-      .apps { grid-template-columns: 1fr; }
+      nav { padding: 1.25rem 1.5rem; }
+      .container, header.page { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .apps { grid-template-columns: 1fr; column-gap: 0; }
+      .footer-content { flex-direction: column; }
+      .footer-right { text-align: left; }
+      .footer-stores { justify-content: flex-start; }
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a class="wordmark" href="/">Cann<span>app</span>y</a>
+    <a class="nav-link" href="/">&#8592; Home</a>
+  </nav>
+
+  <header class="page">
+    <p class="eyebrow">Cannappy LLC</p>
+    <h1>Every app we&rsquo;ve <em>shipped</em>.</h1>
+    <p>Focused tools, each built to solve one real problem well — for travelers, growers, creators, and everyone the big apps overlook.</p>
+  </header>
+
   <div class="container">
-    <header>
-      <div class="logo">Cannappy LLC</div>
-      <h1>Our Apps</h1>
-      <p>Tools that solve real problems — built to ship fast and iterate faster.</p>
-    </header>
 
     <!-- PRODUCTIVITY & UTILITIES -->
-    <div class="section-label">Productivity &amp; Utilities</div>
+    <h2 class="cat-title">Productivity &amp; Utilities</h2>
     <div class="apps">
 
-      <a class="card" href="https://quickertext.cannappy.org" target="_blank" rel="noopener">
-        <div class="card-icon"><img src="https://quickertext.cannappy.org/static/logo-512.png" alt="quickerText"></div>
-        <span class="tag tag-productivity">Productivity</span>
-        <h2>quickerText</h2>
-        <p class="desc">AI-powered voice dictation with granular controls. Toggle filler removal, grammar, punctuation, and more independently. See exactly what changed with diff view.</p>
-        <div class="links">
-          <span class="domain">quickertext.cannappy.org</span>
+      <a class="app" href="https://quickertext.cannappy.org" target="_blank" rel="noopener">
+        <div class="app-icon"><img src="https://quickertext.cannappy.org/static/logo-512.png" alt="quickerText"></div>
+        <div class="app-text">
+          <h2>quickerText</h2>
+          <p class="desc">Talk instead of type. Get clean, formatted text from your voice — and decide exactly what gets fixed before you keep it.</p>
+          <div class="app-meta"><span class="where">quickertext.cannappy.org</span></div>
         </div>
       </a>
 
-      <a class="card" href="#" target="_blank" rel="noopener">
-        <div class="card-icon">&#128065;</div>
-        <span class="tag tag-productivity">Productivity</span>
-        <h2>TextGrabber</h2>
-        <p class="desc">Select any region of your screen and instantly grab the text. Fast OCR-powered text extraction for macOS — copy text from images, videos, or anything on screen.</p>
-        <div class="links">
-          <span class="domain">Coming soon</span>
+      <a class="app" href="https://apps.apple.com/us/app/hogalytics/id6741347952" target="_blank" rel="noopener">
+        <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/37/b8/b0/37b8b08a-2d44-6bf4-77e4-65791b03e544/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Hogalytics"></div>
+        <div class="app-text">
+          <h2>Hogalytics</h2>
+          <p class="desc">Your product numbers in your pocket. Check what&rsquo;s moving and spot trends without ever opening a laptop.</p>
+          <div class="app-meta"><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
 
-      <a class="card" href="#" target="_blank" rel="noopener">
-        <div class="card-icon">&#128196;</div>
-        <span class="tag tag-utility">Utility</span>
-        <h2>New File</h2>
-        <p class="desc">Add a new file anywhere with one click. macOS lets you create folders easily, but not files — New File fixes that. Right-click or click and you're done.</p>
-        <div class="links">
-          <span class="domain">Coming soon</span>
+      <a class="app" href="https://draftengine.cannappy.org" target="_blank" rel="noopener">
+        <div class="app-icon">&#128221;</div>
+        <div class="app-text">
+          <h2>DraftEngine</h2>
+          <p class="desc">Turn a rough idea into a finished post in minutes. Record, polish, and publish to your audience without the busywork.</p>
+          <div class="app-meta"><span class="where">draftengine.cannappy.org</span></div>
         </div>
       </a>
 
-      <a class="card" href="#" target="_blank" rel="noopener">
-        <div class="card-icon">&#9889;</div>
-        <span class="tag tag-utility">Utility</span>
-        <h2>Kill All</h2>
-        <p class="desc">Close every open app in one shot. When you have a dozen apps running and want a clean slate, hit Kill All and free up your memory instantly.</p>
-        <div class="links">
-          <span class="domain">Coming soon</span>
+      <div class="app">
+        <div class="app-icon">&#128065;</div>
+        <div class="app-text">
+          <h2>TextGrabber</h2>
+          <p class="desc">Grab text from anything on screen — images, video, PDFs — with one shortcut. Never retype again.</p>
+          <div class="app-meta"><span class="store">macOS</span></div>
         </div>
-      </a>
+      </div>
 
-      <a class="card" href="https://apps.apple.com/us/app/hogalytics/id6741347952" target="_blank" rel="noopener">
-        <div class="card-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/37/b8/b0/37b8b08a-2d44-6bf4-77e4-65791b03e544/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Hogalytics"></div>
-        <span class="tag tag-devtools">Dev Tools</span>
-        <h2>Hogalytics</h2>
-        <p class="desc">PostHog analytics on your phone. View charts, sort data, and manage multiple projects from a native mobile app.</p>
-        <div class="links">
-          <span class="store-badge">App Store</span>
-          <span class="store-badge">Google Play</span>
+      <div class="app">
+        <div class="app-icon">&#128196;</div>
+        <div class="app-text">
+          <h2>New File</h2>
+          <p class="desc">Create a new file anywhere in one click — the thing your Mac should have done all along.</p>
+          <div class="app-meta"><span class="store">macOS</span></div>
         </div>
-      </a>
+      </div>
 
-      <a class="card" href="https://draftengine.cannappy.org" target="_blank" rel="noopener">
-        <div class="card-icon">&#128221;</div>
-        <span class="tag tag-productivity">Productivity</span>
-        <h2>DraftEngine</h2>
-        <p class="desc">Ideas to content in seconds. Record your screen, enhance with AI, and publish directly to Twitter/X and YouTube. Screen recording, thread generation, and saved snippets.</p>
-        <div class="links">
-          <span class="domain">draftengine.cannappy.org</span>
+      <div class="app">
+        <div class="app-icon">&#9889;</div>
+        <div class="app-text">
+          <h2>Kill All</h2>
+          <p class="desc">Close every open app at once and get a clean, fast machine back instantly.</p>
+          <div class="app-meta"><span class="store">macOS</span></div>
         </div>
-      </a>
+      </div>
 
     </div>
 
     <!-- HEALTH & LIFESTYLE -->
-    <div class="section-label">Health &amp; Lifestyle</div>
+    <h2 class="cat-title">Health &amp; Lifestyle</h2>
     <div class="apps">
 
-      <a class="card" href="https://onefast-6u8.pages.dev" target="_blank" rel="noopener">
-        <div class="card-icon">&#9201;</div>
-        <span class="tag tag-health">Health</span>
-        <h2>OneFast</h2>
-        <p class="desc">Track your fasts, understand the science, and own your health. Live timer, body phase tracking, and built-in fasting plans from 16:8 to 72-hour extended fasts.</p>
-        <div class="links">
-          <span class="domain">onefast.cannappy.org</span>
+      <a class="app" href="https://onefast-6u8.pages.dev" target="_blank" rel="noopener">
+        <div class="app-icon">&#9201;</div>
+        <div class="app-text">
+          <h2>OneFast</h2>
+          <p class="desc">Fast with confidence. A live timer, the science behind each stage, and plans that fit your life — from a daily window to a multi-day reset.</p>
+          <div class="app-meta"><span class="where">onefast.cannappy.org</span></div>
         </div>
       </a>
 
-      <a class="card" href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" target="_blank" rel="noopener">
-        <div class="card-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4b/6f/44/4b6f444d-5505-9a67-bdea-316e775a7e98/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Awaken"></div>
-        <span class="tag tag-lifestyle">Lifestyle</span>
-        <h2>Awaken</h2>
-        <p class="desc">190+ sacred texts, one truth. A 365-day progressive journey through five universal truths across 14+ spiritual traditions.</p>
-        <div class="links">
-          <span class="store-badge">App Store</span>
-          <span class="store-badge">Google Play</span>
+      <a class="app" href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" target="_blank" rel="noopener">
+        <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4b/6f/44/4b6f444d-5505-9a67-bdea-316e775a7e98/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Awaken"></div>
+        <div class="app-text">
+          <h2>Awaken</h2>
+          <p class="desc">One year, one daily practice. A guided journey through the wisdom shared by spiritual traditions across the world.</p>
+          <div class="app-meta"><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
 
-      <a class="card" href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" target="_blank" rel="noopener">
-        <div class="card-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/c0/0e/4cc00e97-534b-aeb6-e343-2c7fdc09b860/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg" alt="Virtu Vista"></div>
-        <span class="tag tag-lifestyle">Lifestyle</span>
-        <h2>Virtu Vista</h2>
-        <p class="desc">Elevate your everyday. Guided daily reflections through the 7 Habits framework with reminders, audio playback, and principle-centered living.</p>
-        <div class="links">
-          <span class="store-badge">App Store</span>
-          <span class="store-badge">Google Play</span>
+      <a class="app" href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" target="_blank" rel="noopener">
+        <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/c0/0e/4cc00e97-534b-aeb6-e343-2c7fdc09b860/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg" alt="Virtu Vista"></div>
+        <div class="app-text">
+          <h2>Virtu Vista</h2>
+          <p class="desc">A two-minute daily reflection that keeps what matters in front of you — and helps you actually live by it.</p>
+          <div class="app-meta"><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
 
-    </div>
-
-    <!-- SOCIAL -->
-    <div class="section-label">Social</div>
-    <div class="apps">
-
-      <a class="card" href="https://itsmybirthday.app" target="_blank" rel="noopener">
-        <div class="card-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7b/33/a1/7b33a1a4-8f60-2cc6-8899-67e17428b328/AppIcon-1x_U007emarketing-0-7-0-0-85-220-0.png/512x512bb.jpg" alt="It's My Birthday"></div>
-        <span class="tag tag-social">Social</span>
-        <h2>It's My Birthday</h2>
-        <p class="desc">Find free birthday deals from nearby businesses and never forget a loved one's special day. Gift ideas, reminders, and local offers all in one place.</p>
-        <div class="links">
-          <span class="domain">itsmybirthday.app</span>
-          <span class="store-badge">App Store</span>
-          <span class="store-badge">Google Play</span>
-        </div>
-      </a>
-
-      <a class="card" href="https://lets.askthis.app" target="_blank" rel="noopener">
-        <div class="card-icon">&#10067;</div>
-        <span class="tag tag-social">Social</span>
-        <h2>AskThis</h2>
-        <p class="desc">A new way to ask questions and get answers from the people and communities that matter most.</p>
-        <div class="links">
-          <span class="domain">lets.askthis.app</span>
+      <a class="app" href="https://peptidessacramento.com" target="_blank" rel="noopener">
+        <div class="app-icon">&#129514;</div>
+        <div class="app-text">
+          <h2>Capital Peptides</h2>
+          <p class="desc">Straight answers on research peptides, plus a reconstitution calculator that does the dosing math for you.</p>
+          <div class="app-meta"><span class="where">peptidessacramento.com</span></div>
         </div>
       </a>
 
     </div>
 
     <!-- CANNABIS -->
-    <div class="section-label">Cannabis</div>
+    <h2 class="cat-title">Cannabis</h2>
     <div class="apps">
 
-      <a class="card" href="https://strainguide.app" target="_blank" rel="noopener">
-        <div class="card-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/b4/ec/67b4ecd6-06bf-e277-2991-b4e67063e065/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Strain Guide"></div>
-        <span class="tag tag-cannabis">Cannabis</span>
-        <h2>Strain Guide</h2>
-        <p class="desc">Discover thousands of cannabis strains with AI BudTender, advanced search, personalized notes, and expert growing tips. 7,000+ strains and counting.</p>
-        <div class="links">
-          <span class="domain">strainguide.app</span>
-          <span class="store-badge">App Store</span>
-          <span class="store-badge">Google Play</span>
+      <a class="app" href="https://strainguide.app" target="_blank" rel="noopener">
+        <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/b4/ec/67b4ecd6-06bf-e277-2991-b4e67063e065/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Strain Guide"></div>
+        <div class="app-text">
+          <h2>Strain Guide</h2>
+          <p class="desc">Find your perfect strain. Search thousands with an AI budtender, save what works for you, and learn how to grow it.</p>
+          <div class="app-meta"><span class="where">strainguide.app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
 
-      <a class="card" href="https://growguide.app" target="_blank" rel="noopener">
-        <div class="card-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2f/78/94/2f7894d8-1a5e-8d27-8bd3-f7adf13f61d1/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Grow Guide"></div>
-        <span class="tag tag-cannabis">Cannabis</span>
-        <h2>Grow Guide</h2>
-        <p class="desc">Complete cannabis grow journal with daily tracking, AI Plant Doctor, time-lapse video, community, and professional growing calculators.</p>
-        <div class="links">
-          <span class="domain">growguide.app</span>
-          <span class="store-badge">App Store</span>
-          <span class="store-badge">Google Play</span>
+      <a class="app" href="https://growguide.app" target="_blank" rel="noopener">
+        <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2f/78/94/2f7894d8-1a5e-8d27-8bd3-f7adf13f61d1/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Grow Guide"></div>
+        <div class="app-text">
+          <h2>Grow Guide</h2>
+          <p class="desc">Grow better. Track every day, get an AI plant doctor the moment something looks off, and capture the whole journey on time-lapse.</p>
+          <div class="app-meta"><span class="where">growguide.app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
 
-      <a class="card" href="https://games.strainguide.app/" target="_blank" rel="noopener">
-        <div class="card-icon">&#127918;</div>
-        <span class="tag tag-gaming">Gaming</span>
-        <h2>Canna Arcade</h2>
-        <p class="desc">Cannabis-themed gaming hub. Play Bud Defender, Blazed Runner, Grow Tycoon, Strain Blender, and Harvest Rush. Leaderboards, daily challenges, and achievements.</p>
-        <div class="links">
-          <span class="domain">games.strainguide.app</span>
+      <a class="app" href="https://games.strainguide.app/" target="_blank" rel="noopener">
+        <div class="app-icon">&#127918;</div>
+        <div class="app-text">
+          <h2>Canna Arcade</h2>
+          <p class="desc">Quick, cannabis-themed games with leaderboards and daily challenges. Easy fun for a spare few minutes.</p>
+          <div class="app-meta"><span class="where">games.strainguide.app</span></div>
         </div>
       </a>
 
     </div>
 
-    <!-- CREATIVE -->
-    <div class="section-label">Creative</div>
+    <!-- TRAVEL -->
+    <h2 class="cat-title">Travel</h2>
     <div class="apps">
 
-      <a class="card" href="https://inkflo.studio" target="_blank" rel="noopener">
-        <div class="card-icon">&#9999;</div>
-        <span class="tag tag-creative">Creative</span>
-        <h2>Ink Flo Studio</h2>
-        <p class="desc">The all-in-one app for tattoo artists and studios. Manage clients, showcase your portfolio, handle scheduling, payments, and grow your business.</p>
-        <div class="links">
-          <span class="domain">inkflo.studio</span>
+      <a class="app" href="https://apps.apple.com/us/app/snap-currency/id6763781236" target="_blank" rel="noopener">
+        <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/4c/d8/954cd831-e76b-4b51-b4fe-cf67d57f978d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Snap Currency"></div>
+        <div class="app-text">
+          <h2>Snap Currency</h2>
+          <p class="desc">Know what anything really costs, instantly. Point your camera at a price, say it, or type the math — and half of every profit goes to charity.</p>
+          <div class="app-meta"><span class="where">snapcurrency.com</span><span class="store">App Store</span><span class="store">Google Play</span></div>
+        </div>
+      </a>
+
+      <a class="app" href="https://nomadaigent.cannappy.org" target="_blank" rel="noopener">
+        <div class="app-icon">&#127757;</div>
+        <div class="app-text">
+          <h2>Nomad Aigent</h2>
+          <p class="desc">Find a place to live abroad without the scams. Tell a chat what you&rsquo;re after and get real listings that fit — no endless group-scrolling.</p>
+          <div class="app-meta"><span class="where">nomadaigent.cannappy.org</span></div>
         </div>
       </a>
 
     </div>
 
-    <!-- LEGAL -->
-    <div class="section-label">Legal</div>
+    <!-- SOCIAL -->
+    <h2 class="cat-title">Social</h2>
     <div class="apps">
 
-      <a class="card" href="https://freecustodyhelp.com" target="_blank" rel="noopener">
-        <div class="card-icon">&#9878;</div>
-        <span class="tag tag-legal">Legal</span>
-        <h2>Free Custody Help</h2>
-        <p class="desc">AI-powered case assistant for custody disputes. Upload evidence, build timelines, chat with an AI advisor, and get personalized action plans for family court.</p>
-        <div class="links">
-          <span class="domain">freecustodyhelp.com</span>
+      <a class="app" href="https://itsmybirthday.app" target="_blank" rel="noopener">
+        <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7b/33/a1/7b33a1a4-8f60-2cc6-8899-67e17428b328/AppIcon-1x_U007emarketing-0-7-0-0-85-220-0.png/512x512bb.jpg" alt="It's My Birthday"></div>
+        <div class="app-text">
+          <h2>It&rsquo;s My Birthday</h2>
+          <p class="desc">Never miss the people who matter — and cash in on free birthday perks from places near you.</p>
+          <div class="app-meta"><span class="where">itsmybirthday.app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
+
+      <a class="app" href="https://lets.askthis.app" target="_blank" rel="noopener">
+        <div class="app-icon">&#10067;</div>
+        <div class="app-text">
+          <h2>AskThis</h2>
+          <p class="desc">Ask anything and get real answers from the people and communities who actually know.</p>
+          <div class="app-meta"><span class="where">lets.askthis.app</span></div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- EDUCATION -->
+    <h2 class="cat-title">Education</h2>
+    <div class="apps">
+
+      <a class="app" href="https://storylingo-web.pages.dev" target="_blank" rel="noopener">
+        <div class="app-icon">&#128483;</div>
+        <div class="app-text">
+          <h2>StoryLingo</h2>
+          <p class="desc">Learn a language the way you picked up your first — short, current stories you actually want to read, with quick drills that make it stick.</p>
+          <div class="app-meta"><span class="where">storylingo.com</span></div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- CREATIVE & LEGAL -->
+    <h2 class="cat-title">Creative &amp; Legal</h2>
+    <div class="apps">
+
+      <a class="app" href="https://inkflo.studio" target="_blank" rel="noopener">
+        <div class="app-icon">&#9999;</div>
+        <div class="app-text">
+          <h2>Ink Flo Studio</h2>
+          <p class="desc">Everything a tattoo artist needs to run the business side — clients, bookings, payments, and a portfolio that wins work.</p>
+          <div class="app-meta"><span class="where">inkflo.studio</span></div>
+        </div>
+      </a>
+
+      <a class="app" href="https://freecustodyhelp.com" target="_blank" rel="noopener">
+        <div class="app-icon">&#9878;</div>
+        <div class="app-text">
+          <h2>Free Custody Help</h2>
+          <p class="desc">Face a custody case with a plan. Organize your evidence, build a timeline, and get clear, personalized next steps for court.</p>
+          <div class="app-meta"><span class="where">freecustodyhelp.com</span></div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- BUSINESS & MARKETING -->
+    <h2 class="cat-title">Business &amp; Marketing</h2>
+    <div class="apps">
+
+      <a class="app" href="https://letsgosite.com" target="_blank" rel="noopener">
+        <div class="app-icon">&#128640;</div>
+        <div class="app-text">
+          <h2>LetsGoSite</h2>
+          <p class="desc">We build local businesses a website before they ever pay — so they can see exactly what they&rsquo;re getting, then make it theirs.</p>
+          <div class="app-meta"><span class="where">letsgosite.com</span></div>
+        </div>
+      </a>
+
+      <a class="app" href="https://celebstrendtoday.com" target="_blank" rel="noopener">
+        <div class="app-icon">&#11088;</div>
+        <div class="app-text">
+          <h2>CelebsTrendToday</h2>
+          <p class="desc">How much are they really worth? Clear, sourced net-worth profiles, kept up to date.</p>
+          <div class="app-meta"><span class="where">celebstrendtoday.com</span></div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- FROM OUR OWN WORKSHOP -->
+    <h2 class="cat-title">From our own workshop</h2>
+    <div class="apps">
+
+      <div class="app is-muted">
+        <div class="app-icon">&#128200;</div>
+        <div class="app-text">
+          <h2>RankItRalph</h2>
+          <p class="desc">Our in-house growth engine. It finds what people are searching for and turns it into content that earns its place — on autopilot.</p>
+          <div class="app-meta"><span class="pill">Internal</span></div>
+        </div>
+      </div>
+
+      <div class="app is-muted">
+        <div class="app-icon">&#128202;</div>
+        <div class="app-text">
+          <h2>Ralph Portal</h2>
+          <p class="desc">One dashboard to see how every one of our sites is performing at a glance.</p>
+          <div class="app-meta"><span class="pill">Internal</span></div>
+        </div>
+      </div>
+
+      <div class="app is-muted">
+        <div class="app-icon">&#128240;</div>
+        <div class="app-text">
+          <h2>PitchRalph</h2>
+          <p class="desc">Gets our work in front of the journalists and writers who cover our world.</p>
+          <div class="app-meta"><span class="pill">Internal</span></div>
+        </div>
+      </div>
+
+      <div class="app is-muted">
+        <div class="app-icon">&#128222;</div>
+        <div class="app-text">
+          <h2>Cold Caller</h2>
+          <p class="desc">A streamlined dialer our team uses to reach prospects with a familiar local number.</p>
+          <div class="app-meta"><span class="pill">Internal</span></div>
+        </div>
+      </div>
+
+      <div class="app is-muted">
+        <div class="app-icon">&#128123;</div>
+        <div class="app-text">
+          <h2>Ghost Domain Hunter</h2>
+          <p class="desc">Finds valuable web addresses that have been abandoned, so we can put their leftover traffic to good use.</p>
+          <div class="app-meta"><span class="pill">Internal</span></div>
+        </div>
+      </div>
+
+      <div class="app is-muted">
+        <div class="app-icon">&#128226;</div>
+        <div class="app-text">
+          <h2>Social Poster</h2>
+          <p class="desc">Shares what we build with the right communities — helpfully, after earning a place in them.</p>
+          <div class="app-meta"><span class="pill">Internal</span></div>
+        </div>
+      </div>
 
     </div>
 
   </div>
 
   <footer>
-    <div class="container">
-      &copy; 2026 <a href="https://cannappy.org">Cannappy LLC</a>. All rights reserved.
-      <div class="store-links">
-        <a href="https://apps.apple.com/us/developer/phannafest-llc/id1209901791" target="_blank" rel="noopener">App Store</a>
-        <a href="https://play.google.com/store/apps/developer?id=Phannafestllc" target="_blank" rel="noopener">Google Play</a>
+    <div class="footer-content">
+      <div>
+        <a class="wordmark" href="/">Cann<span>app</span>y</a>
+        <p class="footer-tag">Apps that solve real problems.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-stores">
+          <a href="https://apps.apple.com/us/developer/phannafest-llc/id1209901791" target="_blank" rel="noopener">App Store</a>
+          <a href="https://play.google.com/store/apps/developer?id=Phannafestllc" target="_blank" rel="noopener">Google Play</a>
+        </div>
+        <p class="copyright">&copy; 2026 Cannappy LLC. All rights reserved.</p>
       </div>
     </div>
   </footer>
