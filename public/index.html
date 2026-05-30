@@ -18,12 +18,21 @@
     />
     <meta name="author" content="Cannappy LLC" />
     <!-- Theme Colour -->
-    <meta name="theme-color" content="#100c0a" />
+    <meta name="theme-color" content="#0d0f0e" />
+    <script>
+      (() => {
+        const theme = localStorage.getItem("theme") === "light" ? "light" : "dark";
+        document.documentElement.dataset.theme = theme;
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute("content", theme === "dark" ? "#0d0f0e" : "#f7f6f2");
+      })();
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/normalize.css" />

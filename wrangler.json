@@ -11,6 +11,10 @@
   "assets": {
     "directory": "public"
   },
+  "vars": {
+    "CONTACT_TO": "amgmpro@gmail.com",
+    "CONTACT_FROM": "Cannappy Website <cannappy-website@letsgosite.com>"
+  },
   "build": {
     "command": "npx esbuild src/client/index.tsx --bundle --outdir=public/dist --splitting --sourcemap --format=esm"
   },

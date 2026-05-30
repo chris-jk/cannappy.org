@@ -77,8 +77,108 @@ export class Globe extends Server {
   }
 }
 
+// Extra bindings the contact endpoint expects. These are set as secrets/vars
+// (RESEND_API_KEY via `wrangler secret put`); CONTACT_TO / CONTACT_FROM are
+// optional overrides with sensible defaults below.
+type ContactEnv = Env & {
+  RESEND_API_KEY?: string;
+  CONTACT_TO?: string;
+  CONTACT_FROM?: string;
+};
+
+const JSON_HEADERS = { "content-type": "application/json" };
+
+function escapeHtml(value: string): string {
+  return value.replace(
+    /[&<>"']/g,
+    (c) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      })[c] as string,
+  );
+}
+
+async function handleContact(
+  request: Request,
+  env: ContactEnv,
+): Promise<Response> {
+  let body: { name?: string; email?: string; message?: string };
+  try {
+    body = (await request.json()) as typeof body;
+  } catch {
+    return Response.json({ error: "Invalid request." }, { status: 400 });
+  }
+
+  const name = (body.name ?? "").trim();
+  const email = (body.email ?? "").trim();
+  const message = (body.message ?? "").trim();
+
+  if (!name || !email || !message) {
+    return Response.json(
+      { error: "Please fill in every field." },
+      { status: 400 },
+    );
+  }
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    return Response.json(
+      { error: "That email address looks off." },
+      { status: 400 },
+    );
+  }
+  if (message.length > 5000) {
+    return Response.json({ error: "That message is too long." }, { status: 400 });
+  }
+
+  if (!env.RESEND_API_KEY) {
+    console.error("Contact form: RESEND_API_KEY is not set");
+    return Response.json(
+      { error: "Email isn't configured yet — please reach out directly." },
+      { status: 500 },
+    );
+  }
+
+  const to = env.CONTACT_TO ?? "amgmpro@gmail.com";
+  const from = env.CONTACT_FROM ?? "Cannappy Contact <onboarding@resend.dev>";
+
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${env.RESEND_API_KEY}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      from,
+      to: [to],
+      reply_to: email,
+      subject: `New message from ${name} — cannappy.org`,
+      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+      html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p>
+<p><strong>Email:</strong> ${escapeHtml(email)}</p>
+<p style="white-space:pre-wrap">${escapeHtml(message)}</p>`,
+    }),
+  });
+
+  if (!res.ok) {
+    console.error("Contact form: Resend error", res.status, await res.text());
+    return Response.json(
+      { error: "Something went wrong sending your message." },
+      { status: 502 },
+    );
+  }
+
+  return Response.json({ ok: true });
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+    if (request.method === "POST" && url.pathname === "/contact") {
+      return handleContact(request, env as ContactEnv);
+    }
     return (
       (await routePartykitRequest(request, { ...env })) ||
       new Response("Not Found", { status: 404 })

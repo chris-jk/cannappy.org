@@ -5,36 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cannappy — Our Apps</title>
   <meta name="description" content="Every app from Cannappy LLC — focused tools built to solve real, everyday problems.">
-  <meta name="theme-color" content="#100c0a">
+  <meta name="theme-color" content="#0d0f0e">
+  <script>
+    (() => {
+      const theme = localStorage.getItem("theme") === "light" ? "light" : "dark";
+      document.documentElement.dataset.theme = theme;
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute("content", theme === "dark" ? "#0d0f0e" : "#f7f6f2");
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #100c0a;
-      --bg-raise: #17120e;
-      --surface-hover: rgba(255, 249, 240, 0.05);
-      --border: rgba(245, 238, 228, 0.09);
-      --border-hover: rgba(245, 238, 228, 0.2);
-      --text: #f4ede2;
-      --text-2: #b4a99a;
-      --text-3: #7d7264;
-      --accent: #5fd68a;
-      --accent-soft: rgba(95, 214, 138, 0.12);
-      --serif: "Fraunces", Georgia, "Times New Roman", serif;
-      --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --max: 1080px;
+      color-scheme: dark;
+      --bg: #0d0f0e;
+      --surface: #151816;
+      --surface-2: #1e231f;
+      --surface-hover: rgba(255, 255, 255, 0.035);
+      --border: #272d28;
+      --border-hover: #3a443d;
+      --text: #f3f1eb;
+      --text-2: #a5aaa3;
+      --text-3: #6f766f;
+      --accent: #7bd88f;
+      --accent-soft: rgba(123, 216, 143, 0.13);
+      --body-wash: linear-gradient(180deg, rgba(25, 31, 27, 0.92), rgba(13, 15, 14, 0) 420px);
+      --nav-bg: rgba(13, 15, 14, 0.72);
+      --hover-bg: rgba(255, 255, 255, 0.04);
+      --footer-bg: #101311;
+      --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --serif: var(--sans);
+      --max: 1160px;
+    }
+
+    [data-theme="light"] {
+      color-scheme: light;
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --surface-2: #efede6;
+      --surface-hover: rgba(255, 255, 255, 0.62);
+      --border: #dedbd2;
+      --border-hover: #c9c4b8;
+      --text: #171717;
+      --text-2: #5f625f;
+      --text-3: #8b8f8a;
+      --accent: #2f6f4e;
+      --accent-soft: #e4efe7;
+      --body-wash: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(247, 246, 242, 0) 420px);
+      --nav-bg: rgba(247, 246, 242, 0.72);
+      --hover-bg: rgba(255, 255, 255, 0.76);
+      --footer-bg: #ebe8df;
     }
 
     body {
       font-family: var(--sans);
-      background: var(--bg);
-      background-image:
-        radial-gradient(60% 50% at 85% 0%, rgba(95, 214, 138, 0.07) 0%, transparent 60%),
-        radial-gradient(55% 45% at 0% 22%, rgba(212, 160, 90, 0.05) 0%, transparent 55%);
-      background-attachment: fixed;
+      background: var(--body-wash), var(--bg);
       color: var(--text-2);
       min-height: 100vh;
       line-height: 1.6;
@@ -50,67 +80,114 @@
     nav {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 1.75rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      background: var(--nav-bg);
+      backdrop-filter: blur(18px);
     }
 
     .wordmark {
-      font-family: var(--serif);
-      font-size: 1.4rem;
-      font-weight: 600;
+      font-size: 1.05rem;
+      font-weight: 750;
       color: var(--text);
       letter-spacing: -0.01em;
     }
-    .wordmark span { color: var(--accent); font-style: italic; }
+    .wordmark span { color: var(--accent); }
 
-    .nav-link { font-size: 0.9rem; font-weight: 500; color: var(--text-2); }
-    .nav-link:hover { color: var(--text); }
+    .nav-link {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text-2);
+      font-size: 0.86rem;
+      font-weight: 650;
+      padding: 0.5rem 0.85rem;
+    }
+    .nav-link:hover { background: var(--hover-bg); border-color: var(--border-hover); color: var(--text); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .theme-toggle {
+      min-width: 84px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text-2);
+      display: inline-grid;
+      grid-template-columns: 22px 1fr;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0 0.75rem 0 0.45rem;
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+    }
+
+    .theme-toggle-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
 
     /* Header */
     header.page {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 4rem 2rem 3rem;
+      padding: 5rem 2rem 3.5rem;
+      border-bottom: 1px solid var(--border);
     }
 
     .eyebrow {
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 1.5rem;
     }
 
     header.page h1 {
-      font-family: var(--serif);
-      font-size: clamp(2.4rem, 5.5vw, 4rem);
-      font-weight: 500;
+      font-size: clamp(2.6rem, 7vw, 5.6rem);
+      font-weight: 720;
       color: var(--text);
-      letter-spacing: -0.015em;
+      letter-spacing: -0.03em;
       line-height: 1.08;
-      max-width: 16ch;
+      max-width: 13ch;
       margin-bottom: 1.25rem;
     }
-    header.page h1 em { font-style: italic; color: var(--accent); }
+    header.page h1 em { font-style: normal; color: inherit; }
 
     header.page p {
-      font-size: 1.15rem;
+      font-size: 1.08rem;
       color: var(--text-2);
       max-width: 46ch;
     }
 
     /* Sections */
     .cat-title {
-      font-family: var(--sans);
       font-size: 0.74rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
+      font-weight: 700;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--text-3);
-      margin: 3rem 0 0.25rem;
+      margin: 3rem 0 0;
       padding-bottom: 0.9rem;
       border-bottom: 1px solid var(--border);
     }
@@ -118,32 +195,35 @@
     .apps {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      column-gap: 2.5rem;
     }
 
     .app {
-      display: flex;
-      gap: 1.1rem;
-      align-items: flex-start;
-      padding: 1.5rem 0.5rem 1.5rem 0.75rem;
+      min-height: 176px;
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 1rem;
+      align-items: start;
+      padding: 1.25rem 1.15rem 1.35rem 0;
       border-bottom: 1px solid var(--border);
       color: inherit;
-      border-radius: 10px;
-      transition: background 0.2s ease, padding 0.2s ease;
+      transition: background 0.18s ease, box-shadow 0.18s ease;
     }
 
-    a.app:hover { background: var(--surface-hover); padding-left: 1rem; }
-    a.app:hover h2 { color: var(--accent); }
+    a.app:hover { background: var(--surface-hover); box-shadow: inset 3px 0 0 var(--accent); }
+    a.app:hover h2 { color: var(--text); }
 
     .app.is-muted { opacity: 0.72; }
 
     .app-icon {
-      flex-shrink: 0;
       width: 52px; height: 52px;
-      border-radius: 13px;
-      background: var(--accent-soft);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      display: grid; place-items: center;
+      font-size: 0.78rem;
+      font-weight: 780;
+      letter-spacing: 0.02em;
       overflow: hidden;
     }
     .app-icon img { width: 100%; height: 100%; object-fit: cover; }
@@ -151,45 +231,48 @@
     .app-text { min-width: 0; }
 
     .app-text h2 {
-      font-family: var(--serif);
-      font-size: 1.22rem;
-      font-weight: 600;
+      font-size: 1.03rem;
+      font-weight: 720;
       color: var(--text);
-      letter-spacing: -0.01em;
+      letter-spacing: 0;
       margin-bottom: 0.35rem;
       transition: color 0.18s ease;
     }
 
-    .app-text .desc { font-size: 0.92rem; color: var(--text-2); line-height: 1.55; }
+    .app-text .desc { font-size: 0.9rem; color: var(--text-2); line-height: 1.55; }
 
     .app-meta {
       margin-top: 0.7rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 0.5rem 0.85rem;
-      font-size: 0.78rem;
+      gap: 0.45rem;
+      font-size: 0.76rem;
+      font-weight: 650;
     }
-    .app-meta .where { color: var(--accent); font-weight: 500; }
+    .app-meta span {
+      padding-right: 0.55rem;
+      border-right: 1px solid var(--border-hover);
+    }
+    .app-meta span:last-child { padding-right: 0; border-right: 0; }
+    .app-meta .type { color: var(--text); }
+    .app-meta .where { color: var(--accent); font-weight: 650; }
     .app-meta .store { color: var(--text-3); }
     .app-meta .pill {
       color: var(--text-3);
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      padding: 0.1rem 0.6rem;
       font-weight: 500;
     }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--border);
-      background: var(--bg-raise);
+      background: var(--footer-bg);
       margin-top: 4rem;
     }
     .footer-content {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 3rem 2rem;
+      padding: 2.2rem 2rem;
       display: flex;
       flex-wrap: wrap;
       align-items: baseline;
@@ -205,6 +288,21 @@
 
     @media (max-width: 640px) {
       nav { padding: 1.25rem 1.5rem; }
+      .nav-actions { gap: 0.5rem; }
+      .theme-toggle {
+        min-width: 38px;
+        width: 38px;
+        padding: 0;
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+      .theme-toggle-text {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+      }
       .container, header.page { padding-left: 1.5rem; padding-right: 1.5rem; }
       .apps { grid-template-columns: 1fr; column-gap: 0; }
       .footer-content { flex-direction: column; }
@@ -216,13 +314,19 @@
 <body>
   <nav>
     <a class="wordmark" href="/">Cann<span>app</span>y</a>
-    <a class="nav-link" href="/">&#8592; Home</a>
+    <div class="nav-actions">
+      <button class="theme-toggle" type="button" aria-label="Switch to light theme">
+        <span class="theme-toggle-dot" aria-hidden="true"></span>
+        <span class="theme-toggle-text">Dark</span>
+      </button>
+      <a class="nav-link" href="/">&#8592; Home</a>
+    </div>
   </nav>
 
   <header class="page">
     <p class="eyebrow">Cannappy LLC</p>
-    <h1>Every app we&rsquo;ve <em>shipped</em>.</h1>
-    <p>Focused tools, each built to solve one real problem well — for travelers, growers, creators, and everyone the big apps overlook.</p>
+    <h1>Every Cannappy product in one place.</h1>
+    <p>Focused tools for travelers, growers, creators, operators, and small teams. Each product is narrow on purpose and useful from the first session.</p>
   </header>
 
   <div class="container">
@@ -236,7 +340,7 @@
         <div class="app-text">
           <h2>quickerText</h2>
           <p class="desc">Talk instead of type. Get clean, formatted text from your voice — and decide exactly what gets fixed before you keep it.</p>
-          <div class="app-meta"><span class="where">quickertext.cannappy.org</span></div>
+          <div class="app-meta"><span class="type">Mac app</span><span class="where">quickertext.cannappy.org</span></div>
         </div>
       </a>
 
@@ -245,43 +349,43 @@
         <div class="app-text">
           <h2>Hogalytics</h2>
           <p class="desc">Your product numbers in your pocket. Check what&rsquo;s moving and spot trends without ever opening a laptop.</p>
-          <div class="app-meta"><span class="store">App Store</span><span class="store">Google Play</span></div>
+          <div class="app-meta"><span class="type">Mobile app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
 
       <a class="app" href="https://draftengine.cannappy.org" target="_blank" rel="noopener">
-        <div class="app-icon">&#128221;</div>
+        <div class="app-icon">DE</div>
         <div class="app-text">
           <h2>DraftEngine</h2>
           <p class="desc">Turn a rough idea into a finished post in minutes. Record, polish, and publish to your audience without the busywork.</p>
-          <div class="app-meta"><span class="where">draftengine.cannappy.org</span></div>
+          <div class="app-meta"><span class="type">Website</span><span class="where">draftengine.cannappy.org</span></div>
         </div>
       </a>
 
       <div class="app">
-        <div class="app-icon">&#128065;</div>
+        <div class="app-icon">TG</div>
         <div class="app-text">
           <h2>TextGrabber</h2>
           <p class="desc">Grab text from anything on screen — images, video, PDFs — with one shortcut. Never retype again.</p>
-          <div class="app-meta"><span class="store">macOS</span></div>
+          <div class="app-meta"><span class="type">Mac app</span></div>
         </div>
       </div>
 
       <div class="app">
-        <div class="app-icon">&#128196;</div>
+        <div class="app-icon">NF</div>
         <div class="app-text">
           <h2>New File</h2>
           <p class="desc">Create a new file anywhere in one click — the thing your Mac should have done all along.</p>
-          <div class="app-meta"><span class="store">macOS</span></div>
+          <div class="app-meta"><span class="type">Mac app</span></div>
         </div>
       </div>
 
       <div class="app">
-        <div class="app-icon">&#9889;</div>
+        <div class="app-icon">KA</div>
         <div class="app-text">
           <h2>Kill All</h2>
           <p class="desc">Close every open app at once and get a clean, fast machine back instantly.</p>
-          <div class="app-meta"><span class="store">macOS</span></div>
+          <div class="app-meta"><span class="type">Mac app</span></div>
         </div>
       </div>
 
@@ -292,11 +396,11 @@
     <div class="apps">
 
       <a class="app" href="https://onefast-6u8.pages.dev" target="_blank" rel="noopener">
-        <div class="app-icon">&#9201;</div>
+        <div class="app-icon">OF</div>
         <div class="app-text">
           <h2>OneFast</h2>
           <p class="desc">Fast with confidence. A live timer, the science behind each stage, and plans that fit your life — from a daily window to a multi-day reset.</p>
-          <div class="app-meta"><span class="where">onefast.cannappy.org</span></div>
+          <div class="app-meta"><span class="type">Website</span><span class="where">onefast.cannappy.org</span></div>
         </div>
       </a>
 
@@ -305,7 +409,7 @@
         <div class="app-text">
           <h2>Awaken</h2>
           <p class="desc">One year, one daily practice. A guided journey through the wisdom shared by spiritual traditions across the world.</p>
-          <div class="app-meta"><span class="store">App Store</span><span class="store">Google Play</span></div>
+          <div class="app-meta"><span class="type">Mobile app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
 
@@ -314,16 +418,16 @@
         <div class="app-text">
           <h2>Virtu Vista</h2>
           <p class="desc">A two-minute daily reflection that keeps what matters in front of you — and helps you actually live by it.</p>
-          <div class="app-meta"><span class="store">App Store</span><span class="store">Google Play</span></div>
+          <div class="app-meta"><span class="type">Mobile app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
 
       <a class="app" href="https://peptidessacramento.com" target="_blank" rel="noopener">
-        <div class="app-icon">&#129514;</div>
+        <div class="app-icon">CP</div>
         <div class="app-text">
           <h2>Capital Peptides</h2>
           <p class="desc">Straight answers on research peptides, plus a reconstitution calculator that does the dosing math for you.</p>
-          <div class="app-meta"><span class="where">peptidessacramento.com</span></div>
+          <div class="app-meta"><span class="type">Website</span><span class="where">peptidessacramento.com</span></div>
         </div>
       </a>
 
@@ -338,7 +442,7 @@
         <div class="app-text">
           <h2>Strain Guide</h2>
           <p class="desc">Find your perfect strain. Search thousands with an AI budtender, save what works for you, and learn how to grow it.</p>
-          <div class="app-meta"><span class="where">strainguide.app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
+          <div class="app-meta"><span class="type">Website + mobile app</span><span class="where">strainguide.app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
 
@@ -347,16 +451,16 @@
         <div class="app-text">
           <h2>Grow Guide</h2>
           <p class="desc">Grow better. Track every day, get an AI plant doctor the moment something looks off, and capture the whole journey on time-lapse.</p>
-          <div class="app-meta"><span class="where">growguide.app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
+          <div class="app-meta"><span class="type">Website + mobile app</span><span class="where">growguide.app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
 
       <a class="app" href="https://games.strainguide.app/" target="_blank" rel="noopener">
-        <div class="app-icon">&#127918;</div>
+        <div class="app-icon">CA</div>
         <div class="app-text">
           <h2>Canna Arcade</h2>
           <p class="desc">Quick, cannabis-themed games with leaderboards and daily challenges. Easy fun for a spare few minutes.</p>
-          <div class="app-meta"><span class="where">games.strainguide.app</span></div>
+          <div class="app-meta"><span class="type">Website</span><span class="where">games.strainguide.app</span></div>
         </div>
       </a>
 
@@ -371,16 +475,16 @@
         <div class="app-text">
           <h2>Snap Currency</h2>
           <p class="desc">Know what anything really costs, instantly. Point your camera at a price, say it, or type the math — and half of every profit goes to charity.</p>
-          <div class="app-meta"><span class="where">snapcurrency.com</span><span class="store">App Store</span><span class="store">Google Play</span></div>
+          <div class="app-meta"><span class="type">Website + mobile app</span><span class="where">snapcurrency.com</span><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
 
       <a class="app" href="https://nomadaigent.cannappy.org" target="_blank" rel="noopener">
-        <div class="app-icon">&#127757;</div>
+        <div class="app-icon">NA</div>
         <div class="app-text">
           <h2>Nomad Aigent</h2>
           <p class="desc">Find a place to live abroad without the scams. Tell a chat what you&rsquo;re after and get real listings that fit — no endless group-scrolling.</p>
-          <div class="app-meta"><span class="where">nomadaigent.cannappy.org</span></div>
+          <div class="app-meta"><span class="type">Website</span><span class="where">nomadaigent.cannappy.org</span></div>
         </div>
       </a>
 
@@ -395,16 +499,16 @@
         <div class="app-text">
           <h2>It&rsquo;s My Birthday</h2>
           <p class="desc">Never miss the people who matter — and cash in on free birthday perks from places near you.</p>
-          <div class="app-meta"><span class="where">itsmybirthday.app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
+          <div class="app-meta"><span class="type">Website + mobile app</span><span class="where">itsmybirthday.app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
         </div>
       </a>
 
       <a class="app" href="https://lets.askthis.app" target="_blank" rel="noopener">
-        <div class="app-icon">&#10067;</div>
+        <div class="app-icon">AT</div>
         <div class="app-text">
           <h2>AskThis</h2>
           <p class="desc">Ask anything and get real answers from the people and communities who actually know.</p>
-          <div class="app-meta"><span class="where">lets.askthis.app</span></div>
+          <div class="app-meta"><span class="type">Website</span><span class="where">lets.askthis.app</span></div>
         </div>
       </a>
 
@@ -415,11 +519,11 @@
     <div class="apps">
 
       <a class="app" href="https://storylingo-web.pages.dev" target="_blank" rel="noopener">
-        <div class="app-icon">&#128483;</div>
+        <div class="app-icon"><img src="/icons/storylingo.png" alt="StoryLingo"></div>
         <div class="app-text">
           <h2>StoryLingo</h2>
           <p class="desc">Learn a language the way you picked up your first — short, current stories you actually want to read, with quick drills that make it stick.</p>
-          <div class="app-meta"><span class="where">storylingo.com</span></div>
+          <div class="app-meta"><span class="type">Website</span><span class="where">storylingo.com</span></div>
         </div>
       </a>
 
@@ -430,20 +534,20 @@
     <div class="apps">
 
       <a class="app" href="https://inkflo.studio" target="_blank" rel="noopener">
-        <div class="app-icon">&#9999;</div>
+        <div class="app-icon"><img src="/icons/inkflo.png" alt="Ink Flo Studio"></div>
         <div class="app-text">
           <h2>Ink Flo Studio</h2>
           <p class="desc">Everything a tattoo artist needs to run the business side — clients, bookings, payments, and a portfolio that wins work.</p>
-          <div class="app-meta"><span class="where">inkflo.studio</span></div>
+          <div class="app-meta"><span class="type">Website</span><span class="where">inkflo.studio</span></div>
         </div>
       </a>
 
       <a class="app" href="https://freecustodyhelp.com" target="_blank" rel="noopener">
-        <div class="app-icon">&#9878;</div>
+        <div class="app-icon"><img src="/icons/freecustodyhelp.png" alt="Free Custody Help"></div>
         <div class="app-text">
           <h2>Free Custody Help</h2>
           <p class="desc">Face a custody case with a plan. Organize your evidence, build a timeline, and get clear, personalized next steps for court.</p>
-          <div class="app-meta"><span class="where">freecustodyhelp.com</span></div>
+          <div class="app-meta"><span class="type">Website</span><span class="where">freecustodyhelp.com</span></div>
         </div>
       </a>
 
@@ -454,20 +558,20 @@
     <div class="apps">
 
       <a class="app" href="https://letsgosite.com" target="_blank" rel="noopener">
-        <div class="app-icon">&#128640;</div>
+        <div class="app-icon"><img src="/icons/letsgosite.png" alt="LetsGoSite"></div>
         <div class="app-text">
           <h2>LetsGoSite</h2>
           <p class="desc">We build local businesses a website before they ever pay — so they can see exactly what they&rsquo;re getting, then make it theirs.</p>
-          <div class="app-meta"><span class="where">letsgosite.com</span></div>
+          <div class="app-meta"><span class="type">Website</span><span class="where">letsgosite.com</span></div>
         </div>
       </a>
 
       <a class="app" href="https://celebstrendtoday.com" target="_blank" rel="noopener">
-        <div class="app-icon">&#11088;</div>
+        <div class="app-icon"><img src="/icons/celebstrendtoday.svg" alt="CelebsTrendToday"></div>
         <div class="app-text">
           <h2>CelebsTrendToday</h2>
           <p class="desc">How much are they really worth? Clear, sourced net-worth profiles, kept up to date.</p>
-          <div class="app-meta"><span class="where">celebstrendtoday.com</span></div>
+          <div class="app-meta"><span class="type">Website</span><span class="where">celebstrendtoday.com</span></div>
         </div>
       </a>
 
@@ -478,56 +582,56 @@
     <div class="apps">
 
       <div class="app is-muted">
-        <div class="app-icon">&#128200;</div>
+        <div class="app-icon">RR</div>
         <div class="app-text">
           <h2>RankItRalph</h2>
           <p class="desc">Our in-house growth engine. It finds what people are searching for and turns it into content that earns its place — on autopilot.</p>
-          <div class="app-meta"><span class="pill">Internal</span></div>
+          <div class="app-meta"><span class="type">Internal tool</span></div>
         </div>
       </div>
 
       <div class="app is-muted">
-        <div class="app-icon">&#128202;</div>
+        <div class="app-icon">RP</div>
         <div class="app-text">
           <h2>Ralph Portal</h2>
           <p class="desc">One dashboard to see how every one of our sites is performing at a glance.</p>
-          <div class="app-meta"><span class="pill">Internal</span></div>
+          <div class="app-meta"><span class="type">Internal tool</span></div>
         </div>
       </div>
 
       <div class="app is-muted">
-        <div class="app-icon">&#128240;</div>
+        <div class="app-icon">PR</div>
         <div class="app-text">
           <h2>PitchRalph</h2>
           <p class="desc">Gets our work in front of the journalists and writers who cover our world.</p>
-          <div class="app-meta"><span class="pill">Internal</span></div>
+          <div class="app-meta"><span class="type">Internal tool</span></div>
         </div>
       </div>
 
       <div class="app is-muted">
-        <div class="app-icon">&#128222;</div>
+        <div class="app-icon">CC</div>
         <div class="app-text">
           <h2>Cold Caller</h2>
           <p class="desc">A streamlined dialer our team uses to reach prospects with a familiar local number.</p>
-          <div class="app-meta"><span class="pill">Internal</span></div>
+          <div class="app-meta"><span class="type">Internal tool</span></div>
         </div>
       </div>
 
       <div class="app is-muted">
-        <div class="app-icon">&#128123;</div>
+        <div class="app-icon">GD</div>
         <div class="app-text">
           <h2>Ghost Domain Hunter</h2>
           <p class="desc">Finds valuable web addresses that have been abandoned, so we can put their leftover traffic to good use.</p>
-          <div class="app-meta"><span class="pill">Internal</span></div>
+          <div class="app-meta"><span class="type">Internal tool</span></div>
         </div>
       </div>
 
       <div class="app is-muted">
-        <div class="app-icon">&#128226;</div>
+        <div class="app-icon">SP</div>
         <div class="app-text">
           <h2>Social Poster</h2>
           <p class="desc">Shares what we build with the right communities — helpfully, after earning a place in them.</p>
-          <div class="app-meta"><span class="pill">Internal</span></div>
+          <div class="app-meta"><span class="type">Internal tool</span></div>
         </div>
       </div>
 
@@ -550,5 +654,28 @@
       </div>
     </div>
   </footer>
+  <script>
+    (() => {
+      const button = document.querySelector(".theme-toggle");
+      const label = document.querySelector(".theme-toggle-text");
+      const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+      function setTheme(theme) {
+        document.documentElement.dataset.theme = theme;
+        localStorage.setItem("theme", theme);
+        themeMeta?.setAttribute("content", theme === "dark" ? "#0d0f0e" : "#f7f6f2");
+        button?.setAttribute(
+          "aria-label",
+          `Switch to ${theme === "dark" ? "light" : "dark"} theme`,
+        );
+        if (label) label.textContent = theme === "dark" ? "Dark" : "Light";
+      }
+
+      setTheme(localStorage.getItem("theme") === "light" ? "light" : "dark");
+      button?.addEventListener("click", () => {
+        setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+      });
+    })();
+  </script>
 </body>
 </html>

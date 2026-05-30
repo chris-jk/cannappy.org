@@ -9,11 +9,61 @@ import usePartySocket from "partysocket/react";
 import type { OutgoingMessage } from "../shared";
 import type { LegacyRef } from "react";
 
+type Theme = "dark" | "light";
+
+function getInitialTheme(): Theme {
+  if (typeof window === "undefined") return "dark";
+  const savedTheme = window.localStorage.getItem("theme");
+  return savedTheme === "light" ? "light" : "dark";
+}
+
 function App() {
   // A reference to the canvas element where we'll render the globe
   const canvasRef = useRef<HTMLCanvasElement>();
   // The number of markers we're currently displaying
   const [counter, setCounter] = useState(0);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  // Contact form submission state
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "sending" | "sent" | "error"
+  >("idle");
+  const [formError, setFormError] = useState("");
+
+  async function handleContactSubmit(
+    event: React.FormEvent<HTMLFormElement>,
+  ) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const payload = {
+      name: String(data.get("name") ?? ""),
+      email: String(data.get("email") ?? ""),
+      message: String(data.get("message") ?? ""),
+    };
+
+    setFormStatus("sending");
+    setFormError("");
+    try {
+      const res = await fetch("/contact", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const detail = (await res.json().catch(() => ({}))) as {
+          error?: string;
+        };
+        throw new Error(detail.error ?? "Something went wrong.");
+      }
+      setFormStatus("sent");
+      form.reset();
+    } catch (err) {
+      setFormStatus("error");
+      setFormError(
+        err instanceof Error ? err.message : "Something went wrong.",
+      );
+    }
+  }
   // A map of marker IDs to their positions
   // Note that we use a ref because the globe's `onRender` callback
   // is called on every animation frame, and we don't want to re-render
@@ -51,6 +101,14 @@ function App() {
   });
 
   useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", theme === "dark" ? "#0d0f0e" : "#f7f6f2");
+    window.localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  useEffect(() => {
     // The angle of rotation of the globe
     // We'll update this on every frame to make the globe spin
     let phi = 0;
@@ -61,13 +119,14 @@ function App() {
       height: 400 * 2,
       phi: 0,
       theta: 0.1,
-      dark: 1,
+      dark: theme === "dark" ? 1 : 0,
       diffuse: 0.9,
       mapSamples: 16000,
-      mapBrightness: 5,
-      baseColor: [0.32, 0.29, 0.26],
-      markerColor: [0.37, 0.84, 0.54],
-      glowColor: [0.13, 0.11, 0.09],
+      mapBrightness: theme === "dark" ? 4.2 : 2.6,
+      baseColor: theme === "dark" ? [0.18, 0.2, 0.18] : [0.83, 0.84, 0.79],
+      markerColor:
+        theme === "dark" ? [0.48, 0.85, 0.56] : [0.18, 0.44, 0.31],
+      glowColor: theme === "dark" ? [0.04, 0.05, 0.04] : [0.95, 0.94, 0.9],
       markers: [],
       opacity: 0.85,
       onRender: (state) => {
@@ -86,7 +145,7 @@ function App() {
     return () => {
       globe.destroy();
     };
-  }, []);
+  }, [theme]);
 
   return (
     <div className="App">
@@ -94,22 +153,35 @@ function App() {
         <a className="wordmark" href="/">
           Cann<span>app</span>y
         </a>
-        <a className="nav-link" href="/apps">
-          All apps &#8599;
-        </a>
+        <div className="nav-actions">
+          <button
+            className="theme-toggle"
+            type="button"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+            onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
+          >
+            <span className="theme-toggle-dot" aria-hidden="true"></span>
+            <span className="theme-toggle-text">
+              {theme === "dark" ? "Dark" : "Light"}
+            </span>
+          </button>
+          <a className="nav-link" href="/apps">
+            All apps &#8599;
+          </a>
+        </div>
       </nav>
 
       {/* Hero */}
       <header className="hero">
         <div className="hero-text">
-          <p className="eyebrow">Cannappy LLC &middot; App Studio</p>
+          <p className="eyebrow">Independent app studio</p>
           <h1>
-            We build apps people actually <em>keep</em> on their phone.
+            Practical software for overlooked everyday problems.
           </h1>
           <p className="lede">
-            A small studio shipping focused tools that solve real, everyday
-            problems &mdash; for travelers, growers, creators, and everyone the
-            big apps overlook.
+            Cannappy designs and ships focused tools for travelers, growers,
+            creators, operators, and small teams. Each product is narrow on
+            purpose, fast to understand, and useful from the first session.
           </p>
           {counter !== 0 && (
             <div className="live-indicator">
@@ -159,8 +231,8 @@ function App() {
       <section className="portfolio" id="apps">
         <p className="section-label">Our apps</p>
         <h2>
-          Each one starts with a real problem &mdash; then we <em>sweat the
-          details</em>.
+          Products with a clear job, a working business model, and room to
+          improve.
         </h2>
 
         <div className="cat">
@@ -171,7 +243,7 @@ function App() {
               <div className="app-text">
                 <h4>quickerText</h4>
                 <p>Talk instead of type. Get clean, formatted text from your voice &mdash; and decide exactly what gets fixed before you keep it.</p>
-                <div className="app-meta"><span className="where">macOS</span></div>
+                <div className="app-meta"><span className="type">Mac app</span><span className="where">quickertext.cannappy.org</span></div>
               </div>
             </a>
             <a href="https://apps.apple.com/us/app/hogalytics/id6741347952" className="app" target="_blank" rel="noopener noreferrer">
@@ -179,39 +251,39 @@ function App() {
               <div className="app-text">
                 <h4>Hogalytics</h4>
                 <p>Your product numbers in your pocket. Check what&rsquo;s moving and spot trends without ever opening a laptop.</p>
-                <div className="app-meta"><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Mobile app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
               </div>
             </a>
             <a href="https://draftengine.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">&#128221;</div>
+              <div className="app-icon">DE</div>
               <div className="app-text">
                 <h4>DraftEngine</h4>
                 <p>Turn a rough idea into a finished post in minutes. Record, polish, and publish to your audience without the busywork.</p>
-                <div className="app-meta"><span className="where">draftengine.cannappy.org</span></div>
+                <div className="app-meta"><span className="type">Website</span><span className="where">draftengine.cannappy.org</span></div>
               </div>
             </a>
             <div className="app">
-              <div className="app-icon">&#128065;</div>
+              <div className="app-icon">TG</div>
               <div className="app-text">
                 <h4>TextGrabber</h4>
                 <p>Grab text from anything on screen &mdash; images, video, PDFs &mdash; with one shortcut. Never retype again.</p>
-                <div className="app-meta"><span className="store">macOS</span></div>
+                <div className="app-meta"><span className="type">Mac app</span></div>
               </div>
             </div>
             <div className="app">
-              <div className="app-icon">&#128196;</div>
+              <div className="app-icon">NF</div>
               <div className="app-text">
                 <h4>New File</h4>
                 <p>Create a new file anywhere in one click &mdash; the thing your Mac should have done all along.</p>
-                <div className="app-meta"><span className="store">macOS</span></div>
+                <div className="app-meta"><span className="type">Mac app</span></div>
               </div>
             </div>
             <div className="app">
-              <div className="app-icon">&#9889;</div>
+              <div className="app-icon">KA</div>
               <div className="app-text">
                 <h4>Kill All</h4>
                 <p>Close every open app at once and get a clean, fast machine back instantly.</p>
-                <div className="app-meta"><span className="store">macOS</span></div>
+                <div className="app-meta"><span className="type">Mac app</span></div>
               </div>
             </div>
           </div>
@@ -221,11 +293,11 @@ function App() {
           <h3 className="cat-title">Health &amp; Lifestyle</h3>
           <div className="app-grid">
             <a href="https://onefast-6u8.pages.dev" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">&#9201;</div>
+              <div className="app-icon">OF</div>
               <div className="app-text">
                 <h4>OneFast</h4>
                 <p>Fast with confidence. A live timer, the science behind each stage, and plans that fit your life &mdash; from a daily window to a multi-day reset.</p>
-                <div className="app-meta"><span className="where">onefast.cannappy.org</span></div>
+                <div className="app-meta"><span className="type">Website</span><span className="where">onefast.cannappy.org</span></div>
               </div>
             </a>
             <a href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" className="app" target="_blank" rel="noopener noreferrer">
@@ -233,7 +305,7 @@ function App() {
               <div className="app-text">
                 <h4>Awaken</h4>
                 <p>One year, one daily practice. A guided journey through the wisdom shared by spiritual traditions across the world.</p>
-                <div className="app-meta"><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Mobile app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
               </div>
             </a>
             <a href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" className="app" target="_blank" rel="noopener noreferrer">
@@ -241,15 +313,15 @@ function App() {
               <div className="app-text">
                 <h4>Virtu Vista</h4>
                 <p>A two-minute daily reflection that keeps what matters in front of you &mdash; and helps you actually live by it.</p>
-                <div className="app-meta"><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Mobile app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
               </div>
             </a>
             <a href="https://peptidessacramento.com" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">&#129514;</div>
+              <div className="app-icon">CP</div>
               <div className="app-text">
                 <h4>Capital Peptides</h4>
                 <p>Straight answers on research peptides, plus a reconstitution calculator that does the dosing math for you.</p>
-                <div className="app-meta"><span className="where">peptidessacramento.com</span></div>
+                <div className="app-meta"><span className="type">Website</span><span className="where">peptidessacramento.com</span></div>
               </div>
             </a>
           </div>
@@ -263,7 +335,7 @@ function App() {
               <div className="app-text">
                 <h4>Strain Guide</h4>
                 <p>Find your perfect strain. Search thousands with an AI budtender, save what works for you, and learn how to grow it.</p>
-                <div className="app-meta"><span className="where">strainguide.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">strainguide.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
               </div>
             </a>
             <a href="https://growguide.app" className="app" target="_blank" rel="noopener noreferrer">
@@ -271,15 +343,15 @@ function App() {
               <div className="app-text">
                 <h4>Grow Guide</h4>
                 <p>Grow better. Track every day, get an AI plant doctor the moment something looks off, and capture the whole journey on time-lapse.</p>
-                <div className="app-meta"><span className="where">growguide.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">growguide.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
               </div>
             </a>
             <a href="https://games.strainguide.app/" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">&#127918;</div>
+              <div className="app-icon">CA</div>
               <div className="app-text">
                 <h4>Canna Arcade</h4>
                 <p>Quick, cannabis-themed games with leaderboards and daily challenges. Easy fun for a spare few minutes.</p>
-                <div className="app-meta"><span className="where">games.strainguide.app</span></div>
+                <div className="app-meta"><span className="type">Website</span><span className="where">games.strainguide.app</span></div>
               </div>
             </a>
           </div>
@@ -293,15 +365,15 @@ function App() {
               <div className="app-text">
                 <h4>Snap Currency</h4>
                 <p>Know what anything really costs, instantly. Point your camera at a price, say it, or type the math &mdash; and half of every profit goes to charity.</p>
-                <div className="app-meta"><span className="where">snapcurrency.com</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">snapcurrency.com</span><span className="store">App Store</span><span className="store">Google Play</span></div>
               </div>
             </a>
             <a href="https://nomadaigent.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">&#127757;</div>
+              <div className="app-icon">NA</div>
               <div className="app-text">
                 <h4>Nomad Aigent</h4>
                 <p>Find a place to live abroad without the scams. Tell a chat what you&rsquo;re after and get real listings that fit &mdash; no endless group-scrolling.</p>
-                <div className="app-meta"><span className="where">nomadaigent.cannappy.org</span></div>
+                <div className="app-meta"><span className="type">Website</span><span className="where">nomadaigent.cannappy.org</span></div>
               </div>
             </a>
           </div>
@@ -315,15 +387,15 @@ function App() {
               <div className="app-text">
                 <h4>It&rsquo;s My Birthday</h4>
                 <p>Never miss the people who matter &mdash; and cash in on free birthday perks from places near you.</p>
-                <div className="app-meta"><span className="where">itsmybirthday.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">itsmybirthday.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
               </div>
             </a>
             <a href="https://lets.askthis.app" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">&#10067;</div>
+              <div className="app-icon">AT</div>
               <div className="app-text">
                 <h4>AskThis</h4>
                 <p>Ask anything and get real answers from the people and communities who actually know.</p>
-                <div className="app-meta"><span className="where">lets.askthis.app</span></div>
+                <div className="app-meta"><span className="type">Website</span><span className="where">lets.askthis.app</span></div>
               </div>
             </a>
           </div>
@@ -333,11 +405,11 @@ function App() {
           <h3 className="cat-title">Education</h3>
           <div className="app-grid">
             <a href="https://storylingo-web.pages.dev" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">&#128483;</div>
+              <div className="app-icon"><img src="/icons/storylingo.png" alt="StoryLingo" /></div>
               <div className="app-text">
                 <h4>StoryLingo</h4>
                 <p>Learn a language the way you picked up your first &mdash; short, current stories you actually want to read, with quick drills that make it stick.</p>
-                <div className="app-meta"><span className="where">storylingo.com</span></div>
+                <div className="app-meta"><span className="type">Website</span><span className="where">storylingo.com</span></div>
               </div>
             </a>
           </div>
@@ -347,19 +419,19 @@ function App() {
           <h3 className="cat-title">Creative &amp; Legal</h3>
           <div className="app-grid">
             <a href="https://inkflo.studio" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">&#9999;</div>
+              <div className="app-icon"><img src="/icons/inkflo.png" alt="Ink Flo Studio" /></div>
               <div className="app-text">
                 <h4>Ink Flo Studio</h4>
                 <p>Everything a tattoo artist needs to run the business side &mdash; clients, bookings, payments, and a portfolio that wins work.</p>
-                <div className="app-meta"><span className="where">inkflo.studio</span></div>
+                <div className="app-meta"><span className="type">Website</span><span className="where">inkflo.studio</span></div>
               </div>
             </a>
             <a href="https://freecustodyhelp.com" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">&#9878;</div>
+              <div className="app-icon"><img src="/icons/freecustodyhelp.png" alt="Free Custody Help" /></div>
               <div className="app-text">
                 <h4>Free Custody Help</h4>
                 <p>Face a custody case with a plan. Organize your evidence, build a timeline, and get clear, personalized next steps for court.</p>
-                <div className="app-meta"><span className="where">freecustodyhelp.com</span></div>
+                <div className="app-meta"><span className="type">Website</span><span className="where">freecustodyhelp.com</span></div>
               </div>
             </a>
           </div>
@@ -369,19 +441,19 @@ function App() {
           <h3 className="cat-title">Business &amp; Marketing</h3>
           <div className="app-grid">
             <a href="https://letsgosite.com" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">&#128640;</div>
+              <div className="app-icon"><img src="/icons/letsgosite.png" alt="LetsGoSite" /></div>
               <div className="app-text">
                 <h4>LetsGoSite</h4>
                 <p>We build local businesses a website before they ever pay &mdash; so they can see exactly what they&rsquo;re getting, then make it theirs.</p>
-                <div className="app-meta"><span className="where">letsgosite.com</span></div>
+                <div className="app-meta"><span className="type">Website</span><span className="where">letsgosite.com</span></div>
               </div>
             </a>
             <a href="https://celebstrendtoday.com" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">&#11088;</div>
+              <div className="app-icon"><img src="/icons/celebstrendtoday.svg" alt="CelebsTrendToday" /></div>
               <div className="app-text">
                 <h4>CelebsTrendToday</h4>
                 <p>How much are they really worth? Clear, sourced net-worth profiles, kept up to date.</p>
-                <div className="app-meta"><span className="where">celebstrendtoday.com</span></div>
+                <div className="app-meta"><span className="type">Website</span><span className="where">celebstrendtoday.com</span></div>
               </div>
             </a>
           </div>
@@ -391,51 +463,51 @@ function App() {
           <h3 className="cat-title">From our own workshop</h3>
           <div className="app-grid">
             <div className="app is-muted">
-              <div className="app-icon">&#128200;</div>
+              <div className="app-icon">RR</div>
               <div className="app-text">
                 <h4>RankItRalph</h4>
                 <p>Our in-house growth engine. It finds what people are searching for and turns it into content that earns its place &mdash; on autopilot.</p>
-                <div className="app-meta"><span className="pill">Internal</span></div>
+                <div className="app-meta"><span className="type">Internal tool</span></div>
               </div>
             </div>
             <div className="app is-muted">
-              <div className="app-icon">&#128202;</div>
+              <div className="app-icon">RP</div>
               <div className="app-text">
                 <h4>Ralph Portal</h4>
                 <p>One dashboard to see how every one of our sites is performing at a glance.</p>
-                <div className="app-meta"><span className="pill">Internal</span></div>
+                <div className="app-meta"><span className="type">Internal tool</span></div>
               </div>
             </div>
             <div className="app is-muted">
-              <div className="app-icon">&#128240;</div>
+              <div className="app-icon">PR</div>
               <div className="app-text">
                 <h4>PitchRalph</h4>
                 <p>Gets our work in front of the journalists and writers who cover our world.</p>
-                <div className="app-meta"><span className="pill">Internal</span></div>
+                <div className="app-meta"><span className="type">Internal tool</span></div>
               </div>
             </div>
             <div className="app is-muted">
-              <div className="app-icon">&#128222;</div>
+              <div className="app-icon">CC</div>
               <div className="app-text">
                 <h4>Cold Caller</h4>
                 <p>A streamlined dialer our team uses to reach prospects with a familiar local number.</p>
-                <div className="app-meta"><span className="pill">Internal</span></div>
+                <div className="app-meta"><span className="type">Internal tool</span></div>
               </div>
             </div>
             <div className="app is-muted">
-              <div className="app-icon">&#128123;</div>
+              <div className="app-icon">GD</div>
               <div className="app-text">
                 <h4>Ghost Domain Hunter</h4>
                 <p>Finds valuable web addresses that have been abandoned, so we can put their leftover traffic to good use.</p>
-                <div className="app-meta"><span className="pill">Internal</span></div>
+                <div className="app-meta"><span className="type">Internal tool</span></div>
               </div>
             </div>
             <div className="app is-muted">
-              <div className="app-icon">&#128226;</div>
+              <div className="app-icon">SP</div>
               <div className="app-text">
                 <h4>Social Poster</h4>
                 <p>Shares what we build with the right communities &mdash; helpfully, after earning a place in them.</p>
-                <div className="app-meta"><span className="pill">Internal</span></div>
+                <div className="app-meta"><span className="type">Internal tool</span></div>
               </div>
             </div>
           </div>
@@ -452,18 +524,28 @@ function App() {
       <section className="contact">
         <p className="section-label">Get in touch</p>
         <h2>
-          Have a problem worth <em>solving</em>?
+          Have a problem worth solving?
         </h2>
         <p className="lede">
           Tell us what&rsquo;s slowing people down. If it&rsquo;s the kind of
           thing an app can fix, we&rsquo;d love to hear about it.
         </p>
         <div className="contact-box">
-          <form className="contact-form">
-            <input type="text" placeholder="Your name" required />
-            <input type="email" placeholder="Your email" required />
-            <textarea placeholder="What are you trying to solve?" required></textarea>
-            <button type="submit">Send message</button>
+          <form className="contact-form" onSubmit={handleContactSubmit}>
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Your email" required />
+            <textarea name="message" placeholder="What are you trying to solve?" required></textarea>
+            <button type="submit" disabled={formStatus === "sending"}>
+              {formStatus === "sending" ? "Sending…" : "Send message"}
+            </button>
+            {formStatus === "sent" && (
+              <p className="form-note form-note-ok">
+                Thanks — your message is on its way. We&rsquo;ll be in touch soon.
+              </p>
+            )}
+            {formStatus === "error" && (
+              <p className="form-note form-note-err">{formError}</p>
+            )}
           </form>
           <div className="contact-info">
             <h3>Where we are</h3>
