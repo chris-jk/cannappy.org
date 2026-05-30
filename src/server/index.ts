@@ -154,9 +154,15 @@ async function handleContact(
       from,
       to: [to],
       reply_to: email,
-      subject: `New message from ${name} — cannappy.org`,
-      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-      html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p>
+      subject: `[cannappy.org contact form] New message from ${name}`,
+      text: `This message was submitted through the contact form on cannappy.org.
+
+Name: ${name}
+Email: ${email}
+
+${message}`,
+      html: `<p style="color:#5f625f;font-size:13px;margin:0 0 16px">This message was submitted through the contact form on <strong>cannappy.org</strong>.</p>
+<p><strong>Name:</strong> ${escapeHtml(name)}</p>
 <p><strong>Email:</strong> ${escapeHtml(email)}</p>
 <p style="white-space:pre-wrap">${escapeHtml(message)}</p>`,
     }),
