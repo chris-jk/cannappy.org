@@ -195,6 +195,8 @@ function App() {
         <div className="globe-container">
           <canvas
             ref={canvasRef as LegacyRef<HTMLCanvasElement>}
+            role="img"
+            aria-label="Rotating globe showing the locations of people currently visiting this site"
             style={{ width: 400, height: 400, maxWidth: "100%", aspectRatio: 1 }}
           />
         </div>
@@ -206,22 +208,22 @@ function App() {
         <div className="services-list">
           <div className="service">
             <span className="service-num">01</span>
-            <h3>Mobile apps</h3>
+            <h2>Mobile apps</h2>
             <p>Native iOS and Android experiences people reach for every day.</p>
           </div>
           <div className="service">
             <span className="service-num">02</span>
-            <h3>Web apps</h3>
+            <h2>Web apps</h2>
             <p>Fast, focused tools that work the moment they load.</p>
           </div>
           <div className="service">
             <span className="service-num">03</span>
-            <h3>Product &amp; design</h3>
+            <h2>Product &amp; design</h2>
             <p>Interfaces so obvious people just get them &mdash; no manual needed.</p>
           </div>
           <div className="service">
             <span className="service-num">04</span>
-            <h3>Growth</h3>
+            <h2>Growth</h2>
             <p>We make sure the right people actually find what we build.</p>
           </div>
         </div>
@@ -239,7 +241,7 @@ function App() {
           <h3 className="cat-title">Productivity &amp; Utilities</h3>
           <div className="app-grid">
             <a href="https://quickertext.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="https://quickertext.cannappy.org/static/logo-512.png" alt="quickerText" /></div>
+              <div className="app-icon"><img src="https://quickertext.cannappy.org/static/logo-512.png" alt="quickerText" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>quickerText</h4>
                 <p>Talk instead of type. Get clean, formatted text from your voice &mdash; and decide exactly what gets fixed before you keep it.</p>
@@ -247,7 +249,7 @@ function App() {
               </div>
             </a>
             <a href="https://apps.apple.com/us/app/hogalytics/id6741347952" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/37/b8/b0/37b8b08a-2d44-6bf4-77e4-65791b03e544/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Hogalytics" /></div>
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/37/b8/b0/37b8b08a-2d44-6bf4-77e4-65791b03e544/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Hogalytics" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>Hogalytics</h4>
                 <p>Your product numbers in your pocket. Check what&rsquo;s moving and spot trends without ever opening a laptop.</p>
@@ -301,7 +303,7 @@ function App() {
               </div>
             </a>
             <a href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4b/6f/44/4b6f444d-5505-9a67-bdea-316e775a7e98/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Awaken" /></div>
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4b/6f/44/4b6f444d-5505-9a67-bdea-316e775a7e98/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Awaken" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>Awaken</h4>
                 <p>One year, one daily practice. A guided journey through the wisdom shared by spiritual traditions across the world.</p>
@@ -309,7 +311,7 @@ function App() {
               </div>
             </a>
             <a href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/c0/0e/4cc00e97-534b-aeb6-e343-2c7fdc09b860/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg" alt="Virtu Vista" /></div>
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/c0/0e/4cc00e97-534b-aeb6-e343-2c7fdc09b860/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg" alt="Virtu Vista" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>Virtu Vista</h4>
                 <p>A two-minute daily reflection that keeps what matters in front of you &mdash; and helps you actually live by it.</p>
@@ -331,7 +333,7 @@ function App() {
           <h3 className="cat-title">Cannabis</h3>
           <div className="app-grid">
             <a href="https://strainguide.app" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/b4/ec/67b4ecd6-06bf-e277-2991-b4e67063e065/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Strain Guide" /></div>
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/b4/ec/67b4ecd6-06bf-e277-2991-b4e67063e065/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Strain Guide" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>Strain Guide</h4>
                 <p>Find your perfect strain. Search thousands with an AI budtender, save what works for you, and learn how to grow it.</p>
@@ -339,7 +341,7 @@ function App() {
               </div>
             </a>
             <a href="https://growguide.app" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2f/78/94/2f7894d8-1a5e-8d27-8bd3-f7adf13f61d1/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Grow Guide" /></div>
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2f/78/94/2f7894d8-1a5e-8d27-8bd3-f7adf13f61d1/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Grow Guide" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>Grow Guide</h4>
                 <p>Grow better. Track every day, get an AI plant doctor the moment something looks off, and capture the whole journey on time-lapse.</p>
@@ -361,7 +363,7 @@ function App() {
           <h3 className="cat-title">Travel</h3>
           <div className="app-grid">
             <a href="https://apps.apple.com/us/app/snap-currency/id6763781236" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/4c/d8/954cd831-e76b-4b51-b4fe-cf67d57f978d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Snap Currency" /></div>
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/4c/d8/954cd831-e76b-4b51-b4fe-cf67d57f978d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Snap Currency" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>Snap Currency</h4>
                 <p>Know what anything really costs, instantly. Point your camera at a price, say it, or type the math &mdash; and half of every profit goes to charity.</p>
@@ -383,7 +385,7 @@ function App() {
           <h3 className="cat-title">Social</h3>
           <div className="app-grid">
             <a href="https://itsmybirthday.app" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7b/33/a1/7b33a1a4-8f60-2cc6-8899-67e17428b328/AppIcon-1x_U007emarketing-0-7-0-0-85-220-0.png/512x512bb.jpg" alt="It's My Birthday" /></div>
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7b/33/a1/7b33a1a4-8f60-2cc6-8899-67e17428b328/AppIcon-1x_U007emarketing-0-7-0-0-85-220-0.png/512x512bb.jpg" alt="It's My Birthday" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>It&rsquo;s My Birthday</h4>
                 <p>Never miss the people who matter &mdash; and cash in on free birthday perks from places near you.</p>
@@ -405,7 +407,7 @@ function App() {
           <h3 className="cat-title">Education</h3>
           <div className="app-grid">
             <a href="https://storylingo-web.pages.dev" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="/icons/storylingo.png" alt="StoryLingo" /></div>
+              <div className="app-icon"><img src="/icons/storylingo.png" alt="StoryLingo" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>StoryLingo</h4>
                 <p>Learn a language the way you picked up your first &mdash; short, current stories you actually want to read, with quick drills that make it stick.</p>
@@ -419,7 +421,7 @@ function App() {
           <h3 className="cat-title">Creative &amp; Legal</h3>
           <div className="app-grid">
             <a href="https://inkflo.studio" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="/icons/inkflo.png" alt="Ink Flo Studio" /></div>
+              <div className="app-icon"><img src="/icons/inkflo.png" alt="Ink Flo Studio" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>Ink Flo Studio</h4>
                 <p>Everything a tattoo artist needs to run the business side &mdash; clients, bookings, payments, and a portfolio that wins work.</p>
@@ -427,7 +429,7 @@ function App() {
               </div>
             </a>
             <a href="https://freecustodyhelp.com" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="/icons/freecustodyhelp.png" alt="Free Custody Help" /></div>
+              <div className="app-icon"><img src="/icons/freecustodyhelp.png" alt="Free Custody Help" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>Free Custody Help</h4>
                 <p>Face a custody case with a plan. Organize your evidence, build a timeline, and get clear, personalized next steps for court.</p>
@@ -441,7 +443,7 @@ function App() {
           <h3 className="cat-title">Business &amp; Marketing</h3>
           <div className="app-grid">
             <a href="https://letsgosite.com" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="/icons/letsgosite.png" alt="LetsGoSite" /></div>
+              <div className="app-icon"><img src="/icons/letsgosite.png" alt="LetsGoSite" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>LetsGoSite</h4>
                 <p>We build local businesses a website before they ever pay &mdash; so they can see exactly what they&rsquo;re getting, then make it theirs.</p>
@@ -449,7 +451,7 @@ function App() {
               </div>
             </a>
             <a href="https://celebstrendtoday.com" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="/icons/celebstrendtoday.svg" alt="CelebsTrendToday" /></div>
+              <div className="app-icon"><img src="/icons/celebstrendtoday.svg" alt="CelebsTrendToday" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>CelebsTrendToday</h4>
                 <p>How much are they really worth? Clear, sourced net-worth profiles, kept up to date.</p>
@@ -532,9 +534,9 @@ function App() {
         </p>
         <div className="contact-box">
           <form className="contact-form" onSubmit={handleContactSubmit}>
-            <input type="text" name="name" placeholder="Your name" required />
-            <input type="email" name="email" placeholder="Your email" required />
-            <textarea name="message" placeholder="What are you trying to solve?" required></textarea>
+            <input type="text" name="name" placeholder="Your name" aria-label="Your name" required />
+            <input type="email" name="email" placeholder="Your email" aria-label="Your email" required />
+            <textarea name="message" placeholder="What are you trying to solve?" aria-label="What are you trying to solve?" required></textarea>
             <button type="submit" disabled={formStatus === "sending"}>
               {formStatus === "sending" ? "Sending…" : "Send message"}
             </button>
@@ -571,8 +573,8 @@ function App() {
           </div>
           <div className="footer-right">
             <div className="footer-stores">
-              <a href="https://apps.apple.com/us/developer/phannafest-llc/id1209901791" target="_blank" rel="noopener noreferrer">App Store</a>
-              <a href="https://play.google.com/store/apps/developer?id=Phannafestllc" target="_blank" rel="noopener noreferrer">Google Play</a>
+              <a href="https://apps.apple.com/us/developer/phannafest-llc/id1209901791" target="_blank" rel="noopener noreferrer" aria-label="Cannappy apps on the App Store">App Store</a>
+              <a href="https://play.google.com/store/apps/developer?id=Phannafestllc" target="_blank" rel="noopener noreferrer" aria-label="Cannappy apps on Google Play">Google Play</a>
             </div>
             <p className="copyright">© 2026 Cannappy LLC. All rights reserved.</p>
           </div>

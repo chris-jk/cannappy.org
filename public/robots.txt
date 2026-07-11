@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# AI-readable site summary
+# https://cannappy.org/llms.txt

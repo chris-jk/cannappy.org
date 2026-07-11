@@ -1,0 +1,28 @@
+# Cannappy
+
+> Cannappy LLC is an independent app studio in Sacramento, California that designs and ships focused software for overlooked everyday problems — practical mobile and web apps for travelers, growers, creators, operators, and small teams. Each product is narrow on purpose, fast to understand, and useful from the first session.
+
+## Main sections
+
+- [Home](https://cannappy.org/): Studio overview — what Cannappy does (mobile apps, web apps, product & design, growth), a live globe of current visitors, and a contact form for pitching problems worth solving.
+- [All apps](https://cannappy.org/apps/): The complete catalog of every Cannappy product, organized by category: Productivity & Utilities, Health & Lifestyle, Cannabis, Travel, Social, Education, Creative & Legal, and Business & Marketing.
+
+## Featured products
+
+- [quickerText](https://quickertext.cannappy.org): Mac dictation app that turns your voice into clean, formatted text you approve before keeping.
+- [DraftEngine](https://draftengine.cannappy.org): Record a rough idea and turn it into a polished, published post in minutes.
+- [Hogalytics](https://apps.apple.com/us/app/hogalytics/id6741347952): Mobile app for checking your product analytics and trends from your pocket.
+- [OneFast](https://onefast.cannappy.org): Fasting companion with a live timer, stage-by-stage science, and flexible plans.
+- [Strain Guide](https://strainguide.app): Search thousands of cannabis strains with an AI budtender and learn how to grow them.
+- [Grow Guide](https://growguide.app): Daily grow tracking with an AI plant doctor and time-lapse capture.
+- [Snap Currency](https://snapcurrency.com): Point your camera at a price and instantly know what it costs in your currency; half of profits go to charity.
+- [Nomad Aigent](https://nomadaigent.cannappy.org): Chat-based search for real, scam-free housing listings abroad.
+- [It's My Birthday](https://itsmybirthday.app): Birthday reminders plus free birthday perks from places near you.
+- [StoryLingo](https://storylingo.com): Learn a language through short, current stories with quick drills.
+- [Ink Flo Studio](https://inkflo.studio): Business management for tattoo artists — clients, bookings, payments, portfolio.
+- [Free Custody Help](https://freecustodyhelp.com): Organize evidence, build a timeline, and get clear next steps for a custody case.
+- [LetsGoSite](https://letsgosite.com): Websites built for local businesses before they ever pay.
+
+## Contact
+
+- Contact form on the [homepage](https://cannappy.org/); Cannappy LLC, 1401 21st St #12541, Sacramento, CA.
