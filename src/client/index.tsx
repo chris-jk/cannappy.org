@@ -233,18 +233,26 @@ function App() {
       <section className="portfolio" id="apps">
         <p className="section-label">Our apps</p>
         <h2>
-          Products with a clear job, a working business model, and room to
-          improve.
+          Products with a clear job, a working business model, and updates that
+          keep shipping.
         </h2>
 
         <div className="cat">
           <h3 className="cat-title">Productivity &amp; Utilities</h3>
           <div className="app-grid">
+            <a href="/fyta" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">fy</div>
+              <div className="app-text">
+                <h4>fyta</h4>
+                <p>YouTube without the ads that interrupt you. A real player with no pre-roll or mid-roll, background play, sponsor-segment skipping, and your subscriptions &mdash; no sign-in.</p>
+                <div className="app-meta"><span className="type">Android app</span><span className="where">cannappy.org/fyta</span></div>
+              </div>
+            </a>
             <a href="https://quickertext.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
               <div className="app-icon"><img src="https://quickertext.cannappy.org/static/logo-512.png" alt="quickerText" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>quickerText</h4>
-                <p>Talk instead of type. Get clean, formatted text from your voice &mdash; and decide exactly what gets fixed before you keep it.</p>
+                <p>Talk instead of type. Get clean, formatted text from your voice — and decide exactly what gets fixed before you keep it.</p>
                 <div className="app-meta"><span className="type">Mac app</span><span className="where">quickertext.cannappy.org</span></div>
               </div>
             </a>
@@ -264,23 +272,23 @@ function App() {
                 <div className="app-meta"><span className="type">Website</span><span className="where">draftengine.cannappy.org</span></div>
               </div>
             </a>
-            <div className="app">
+            <div className="app is-muted">
               <div className="app-icon">TG</div>
               <div className="app-text">
                 <h4>TextGrabber</h4>
-                <p>Grab text from anything on screen &mdash; images, video, PDFs &mdash; with one shortcut. Never retype again.</p>
+                <p>Grab text from anything on screen — images, video, PDFs — with one shortcut. Never retype again.</p>
                 <div className="app-meta"><span className="type">Mac app</span></div>
               </div>
             </div>
-            <div className="app">
+            <div className="app is-muted">
               <div className="app-icon">NF</div>
               <div className="app-text">
                 <h4>New File</h4>
-                <p>Create a new file anywhere in one click &mdash; the thing your Mac should have done all along.</p>
+                <p>Create a new file anywhere in one click — the thing your Mac should have done all along.</p>
                 <div className="app-meta"><span className="type">Mac app</span></div>
               </div>
             </div>
-            <div className="app">
+            <div className="app is-muted">
               <div className="app-icon">KA</div>
               <div className="app-text">
                 <h4>Kill All</h4>
@@ -288,9 +296,16 @@ function App() {
                 <div className="app-meta"><span className="type">Mac app</span></div>
               </div>
             </div>
+            <a href="https://lets.askthis.app" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">AT</div>
+              <div className="app-text">
+                <h4>AskThis</h4>
+                <p>Listens to your interview as it happens and suggests where to take it next &mdash; the threads worth pulling, so you never blank mid-conversation.</p>
+                <div className="app-meta"><span className="type">Web app</span><span className="where">lets.askthis.app</span></div>
+              </div>
+            </a>
           </div>
         </div>
-
         <div className="cat">
           <h3 className="cat-title">Health &amp; Lifestyle</h3>
           <div className="app-grid">
@@ -298,7 +313,7 @@ function App() {
               <div className="app-icon">OF</div>
               <div className="app-text">
                 <h4>OneFast</h4>
-                <p>Fast with confidence. A live timer, the science behind each stage, and plans that fit your life &mdash; from a daily window to a multi-day reset.</p>
+                <p>Fast with confidence. A live timer, the science behind each stage, and plans that fit your life — from a daily window to a multi-day reset.</p>
                 <div className="app-meta"><span className="type">Website</span><span className="where">onefast.cannappy.org</span></div>
               </div>
             </a>
@@ -314,7 +329,7 @@ function App() {
               <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/c0/0e/4cc00e97-534b-aeb6-e343-2c7fdc09b860/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg" alt="Virtu Vista" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>Virtu Vista</h4>
-                <p>A two-minute daily reflection that keeps what matters in front of you &mdash; and helps you actually live by it.</p>
+                <p>A two-minute daily reflection that keeps what matters in front of you — and helps you actually live by it.</p>
                 <div className="app-meta"><span className="type">Mobile app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
               </div>
             </a>
@@ -326,9 +341,16 @@ function App() {
                 <div className="app-meta"><span className="type">Website</span><span className="where">peptidessacramento.com</span></div>
               </div>
             </a>
+            <a href="https://fatfork.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">FF</div>
+              <div className="app-text">
+                <h4>fatfork</h4>
+                <p>Calorie tracking that reads your food and your Apple Watch workouts from a photo, then shows the number you actually have left today.</p>
+                <div className="app-meta"><span className="type">Web app</span><span className="where">fatfork.cannappy.org</span></div>
+              </div>
+            </a>
           </div>
         </div>
-
         <div className="cat">
           <h3 className="cat-title">Cannabis</h3>
           <div className="app-grid">
@@ -356,9 +378,16 @@ function App() {
                 <div className="app-meta"><span className="type">Website</span><span className="where">games.strainguide.app</span></div>
               </div>
             </a>
+            <a href="https://kushy.app" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">KY</div>
+              <div className="app-text">
+                <h4>Kushy</h4>
+                <p>A community cannabis feed and a crowdsourced deals board &mdash; see what people are smoking and what&rsquo;s on offer near you.</p>
+                <div className="app-meta"><span className="type">Web app</span><span className="where">kushy.app</span></div>
+              </div>
+            </a>
           </div>
         </div>
-
         <div className="cat">
           <h3 className="cat-title">Travel</h3>
           <div className="app-grid">
@@ -366,7 +395,7 @@ function App() {
               <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/4c/d8/954cd831-e76b-4b51-b4fe-cf67d57f978d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Snap Currency" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>Snap Currency</h4>
-                <p>Know what anything really costs, instantly. Point your camera at a price, say it, or type the math &mdash; and half of every profit goes to charity.</p>
+                <p>Know what anything really costs, instantly. Point your camera at a price, say it, or type the math — and half of every profit goes to charity.</p>
                 <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">snapcurrency.com</span><span className="store">App Store</span><span className="store">Google Play</span></div>
               </div>
             </a>
@@ -374,13 +403,12 @@ function App() {
               <div className="app-icon">NA</div>
               <div className="app-text">
                 <h4>Nomad Aigent</h4>
-                <p>Find a place to live abroad without the scams. Tell a chat what you&rsquo;re after and get real listings that fit &mdash; no endless group-scrolling.</p>
+                <p>Find a place to live abroad without the scams. Tell a chat what you&rsquo;re after and get real listings that fit — no endless group-scrolling.</p>
                 <div className="app-meta"><span className="type">Website</span><span className="where">nomadaigent.cannappy.org</span></div>
               </div>
             </a>
           </div>
         </div>
-
         <div className="cat">
           <h3 className="cat-title">Social</h3>
           <div className="app-grid">
@@ -388,21 +416,12 @@ function App() {
               <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7b/33/a1/7b33a1a4-8f60-2cc6-8899-67e17428b328/AppIcon-1x_U007emarketing-0-7-0-0-85-220-0.png/512x512bb.jpg" alt="It's My Birthday" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>It&rsquo;s My Birthday</h4>
-                <p>Never miss the people who matter &mdash; and cash in on free birthday perks from places near you.</p>
+                <p>Never miss the people who matter — and cash in on free birthday perks from places near you.</p>
                 <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">itsmybirthday.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
-              </div>
-            </a>
-            <a href="https://lets.askthis.app" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">AT</div>
-              <div className="app-text">
-                <h4>AskThis</h4>
-                <p>Ask anything and get real answers from the people and communities who actually know.</p>
-                <div className="app-meta"><span className="type">Website</span><span className="where">lets.askthis.app</span></div>
               </div>
             </a>
           </div>
         </div>
-
         <div className="cat">
           <h3 className="cat-title">Education</h3>
           <div className="app-grid">
@@ -410,13 +429,12 @@ function App() {
               <div className="app-icon"><img src="/icons/storylingo.png" alt="StoryLingo" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>StoryLingo</h4>
-                <p>Learn a language the way you picked up your first &mdash; short, current stories you actually want to read, with quick drills that make it stick.</p>
+                <p>Learn a language the way you picked up your first — short, current stories you actually want to read, with quick drills that make it stick.</p>
                 <div className="app-meta"><span className="type">Website</span><span className="where">storylingo.com</span></div>
               </div>
             </a>
           </div>
         </div>
-
         <div className="cat">
           <h3 className="cat-title">Creative &amp; Legal</h3>
           <div className="app-grid">
@@ -424,7 +442,7 @@ function App() {
               <div className="app-icon"><img src="/icons/inkflo.png" alt="Ink Flo Studio" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>Ink Flo Studio</h4>
-                <p>Everything a tattoo artist needs to run the business side &mdash; clients, bookings, payments, and a portfolio that wins work.</p>
+                <p>Everything a tattoo artist needs to run the business side — clients, bookings, payments, and a portfolio that wins work.</p>
                 <div className="app-meta"><span className="type">Website</span><span className="where">inkflo.studio</span></div>
               </div>
             </a>
@@ -438,7 +456,6 @@ function App() {
             </a>
           </div>
         </div>
-
         <div className="cat">
           <h3 className="cat-title">Business &amp; Marketing</h3>
           <div className="app-grid">
@@ -446,7 +463,7 @@ function App() {
               <div className="app-icon"><img src="/icons/letsgosite.png" alt="LetsGoSite" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>LetsGoSite</h4>
-                <p>We build local businesses a website before they ever pay &mdash; so they can see exactly what they&rsquo;re getting, then make it theirs.</p>
+                <p>We build local businesses a website before they ever pay — so they can see exactly what they&rsquo;re getting, then make it theirs.</p>
                 <div className="app-meta"><span className="type">Website</span><span className="where">letsgosite.com</span></div>
               </div>
             </a>
@@ -458,9 +475,146 @@ function App() {
                 <div className="app-meta"><span className="type">Website</span><span className="where">celebstrendtoday.com</span></div>
               </div>
             </a>
+            <a href="https://swipewise.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">SW</div>
+              <div className="app-text">
+                <h4>SwipeWise</h4>
+                <p>Which card to swipe, and what your money is actually doing — balances coloured by debt versus asset, real APR maths, and projected spend.</p>
+                <div className="app-meta"><span className="type">Web app</span><span className="where">swipewise.cannappy.org</span></div>
+              </div>
+            </a>
           </div>
         </div>
-
+        <div className="cat">
+          <h3 className="cat-title">Client work</h3>
+          <div className="app-grid">
+            <a href="https://placervillepowersports.com" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">PP</div>
+              <div className="app-text">
+                <h4>Placerville Powersports</h4>
+                <p>Dealer site for a 30-year Sierra Foothills shop. Shopify backend, live catalog pulled from the Western Power Sports API, drop-ship ordering, and newsletter signup.</p>
+                <div className="app-meta"><span className="type">Website</span><span className="where">placervillepowersports.com</span></div>
+              </div>
+            </a>
+            <a href="https://djmicrose.com" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">DJ</div>
+              <div className="app-text">
+                <h4>DJ Mic Rose</h4>
+                <p>Booking site for a working DJ — date and time picker, validated enquiry form with typo correction, and bookings delivered straight to the inbox.</p>
+                <div className="app-meta"><span className="type">Website</span><span className="where">djmicrose.com</span></div>
+              </div>
+            </a>
+            <a href="https://sierraimages.org" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">SI</div>
+              <div className="app-text">
+                <h4>Sierra Images</h4>
+                <p>Photography marketplace on Laravel: galleries, photographer and customer roles, Stripe checkout, Cloudinary delivery, and automated commission tracking.</p>
+                <div className="app-meta"><span className="type">Web app</span><span className="where">sierraimages.org</span></div>
+              </div>
+            </a>
+            <a href="https://thepaediatricnurse.com" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">PN</div>
+              <div className="app-text">
+                <h4>The Paediatric Nurse</h4>
+                <p>Content site for a paediatric nursing practice, with analytics and search console wired in from day one.</p>
+                <div className="app-meta"><span className="type">Website</span><span className="where">thepaediatricnurse.com</span></div>
+              </div>
+            </a>
+            <a href="https://bestwesterngamesoundtracks.com" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">BW</div>
+              <div className="app-text">
+                <h4>Best Western Game Soundtracks</h4>
+                <p>A catalogue site for game soundtracks, built on the same fast static stack as the rest of our niche properties.</p>
+                <div className="app-meta"><span className="type">Website</span><span className="where">bestwesterngamesoundtracks.com</span></div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div className="cat">
+          <h3 className="cat-title">Open source</h3>
+          <div className="app-grid">
+            <a href="https://signalbot.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">SB</div>
+              <div className="app-text">
+                <h4>signalbot</h4>
+                <p>Insider and Congress trading disclosures, ingested, normalized and backtested — with an MCP connector that hands the whole dataset to an AI agent.</p>
+                <div className="app-meta"><span className="type">Web app + open source</span><span className="where">signalbot.cannappy.org</span><span className="store">GitHub</span></div>
+              </div>
+            </a>
+            <a href="https://github.com/chris-jk/freeply" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">FP</div>
+              <div className="app-text">
+                <h4>freeply</h4>
+                <p>Instagram comment-to-DM automation. Someone comments your keyword, they get the link in their DMs. Self-hostable on Cloudflare's free tier.</p>
+                <div className="app-meta"><span className="type">Open source</span><span className="store">GitHub</span></div>
+              </div>
+            </a>
+            <a href="https://github.com/chris-jk/focus-app-mac" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">FO</div>
+              <div className="app-text">
+                <h4>Focus</h4>
+                <p>A Mac menu bar focus app: Pomodoro timer, a day planner that starts your blocks for you, and a parking lot for ideas.</p>
+                <div className="app-meta"><span className="type">Mac app + open source</span><span className="store">GitHub</span></div>
+              </div>
+            </a>
+            <a href="https://github.com/chris-jk/desktop-switch" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">DS</div>
+              <div className="app-text">
+                <h4>Desktop Switch</h4>
+                <p>Hides and shows your Mac desktop icons from the menu bar, or with a keyboard shortcut.</p>
+                <div className="app-meta"><span className="type">Mac app + open source</span><span className="store">GitHub</span></div>
+              </div>
+            </a>
+            <a href="https://github.com/chris-jk/SpeakHUD" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">SH</div>
+              <div className="app-text">
+                <h4>SpeakHUD</h4>
+                <p>Text-to-speech HUD for the Mac — reads your clipboard aloud with speed control and word-by-word highlighting.</p>
+                <div className="app-meta"><span className="type">Mac app + open source</span><span className="store">GitHub</span></div>
+              </div>
+            </a>
+            <a href="https://github.com/chris-jk/claude-bs-detector" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">BS</div>
+              <div className="app-text">
+                <h4>BS Detector</h4>
+                <p>Fact-checks a short-form video claim by claim: transcribe it, pull out every assertion, verify each one, and show the receipts.</p>
+                <div className="app-meta"><span className="type">AI skill + open source</span><span className="store">GitHub</span></div>
+              </div>
+            </a>
+            <a href="https://github.com/chris-jk/claude-outliers" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">OL</div>
+              <div className="app-text">
+                <h4>Outliers</h4>
+                <p>Finds the videos on any channel that beat that channel's own baseline — the research loop behind knowing what actually works.</p>
+                <div className="app-meta"><span className="type">AI skill + open source</span><span className="store">GitHub</span></div>
+              </div>
+            </a>
+            <a href="https://github.com/chris-jk/claude-youtube-editor" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">YE</div>
+              <div className="app-text">
+                <h4>Claude YouTube Editor</h4>
+                <p>Record the talking head; the pipeline does the rest — the cut, the visuals, the voice, the sound effects, the thumbnail, and the upload.</p>
+                <div className="app-meta"><span className="type">Open source</span><span className="store">GitHub</span></div>
+              </div>
+            </a>
+            <a href="https://github.com/chris-jk/Meta-Ads-Spy-Claude-Code-Airtable" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">MA</div>
+              <div className="app-text">
+                <h4>Meta Ads Spy</h4>
+                <p>Pulls competitor ads out of the Meta Ad Library and lands them in Airtable, ready to study.</p>
+                <div className="app-meta"><span className="type">Open source</span><span className="store">GitHub</span></div>
+              </div>
+            </a>
+            <a href="https://github.com/chris-jk/MioBio" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">MB</div>
+              <div className="app-text">
+                <h4>MioBio</h4>
+                <p>A one-file link-in-bio page that sends each visitor to the right app store automatically. No framework, no build step.</p>
+                <div className="app-meta"><span className="type">Open source</span><span className="store">GitHub</span></div>
+              </div>
+            </a>
+          </div>
+        </div>
         <div className="cat">
           <h3 className="cat-title">From our own workshop</h3>
           <div className="app-grid">
@@ -468,7 +622,7 @@ function App() {
               <div className="app-icon">RR</div>
               <div className="app-text">
                 <h4>RankItRalph</h4>
-                <p>Our in-house growth engine. It finds what people are searching for and turns it into content that earns its place &mdash; on autopilot.</p>
+                <p>Our in-house growth engine. It finds what people are searching for and turns it into content that earns its place — on autopilot.</p>
                 <div className="app-meta"><span className="type">Internal tool</span></div>
               </div>
             </div>
@@ -508,18 +662,61 @@ function App() {
               <div className="app-icon">SP</div>
               <div className="app-text">
                 <h4>Social Poster</h4>
-                <p>Shares what we build with the right communities &mdash; helpfully, after earning a place in them.</p>
+                <p>Shares what we build with the right communities — helpfully, after earning a place in them.</p>
+                <div className="app-meta"><span className="type">Internal tool</span></div>
+              </div>
+            </div>
+            <div className="app is-muted">
+              <div className="app-icon">CO</div>
+              <div className="app-text">
+                <h4>Cannappy Offers</h4>
+                <p>Our own ad server. Replaced a third-party network across two apps and two websites in four days, with per-build delivery controls and a revenue digest that says what to act on.</p>
+                <div className="app-meta"><span className="type">Internal tool</span></div>
+              </div>
+            </div>
+            <div className="app is-muted">
+              <div className="app-icon">EO</div>
+              <div className="app-text">
+                <h4>Email Ops</h4>
+                <p>Every transactional and lifecycle email we send, plus inbound routing, DMARC handling and unsubscribes — one pipeline instead of six.</p>
+                <div className="app-meta"><span className="type">Internal tool</span></div>
+              </div>
+            </div>
+            <div className="app is-muted">
+              <div className="app-icon">AG</div>
+              <div className="app-text">
+                <h4>API Gateway</h4>
+                <p>The single front door our apps talk to, so remote config, feature flags and kill switches live in one place.</p>
+                <div className="app-meta"><span className="type">Internal tool</span></div>
+              </div>
+            </div>
+            <div className="app is-muted">
+              <div className="app-icon">FB</div>
+              <div className="app-text">
+                <h4>Feedback Ops</h4>
+                <p>In-app feedback that closes the loop — screenshots, a follow-up ladder, and a note back to the person who reported the bug once it's fixed.</p>
+                <div className="app-meta"><span className="type">Internal tool</span></div>
+              </div>
+            </div>
+            <div className="app is-muted">
+              <div className="app-icon">SG</div>
+              <div className="app-text">
+                <h4>Secret Gateway</h4>
+                <p>Keeps API keys out of AI context entirely. The model asks the gateway; the gateway holds the secret.</p>
+                <div className="app-meta"><span className="type">Internal tool</span></div>
+              </div>
+            </div>
+            <div className="app is-muted">
+              <div className="app-icon">OR</div>
+              <div className="app-text">
+                <h4>Opportunity Radar</h4>
+                <p>Crawls, enriches and scores markets worth building in, so we pick the next product on evidence.</p>
                 <div className="app-meta"><span className="type">Internal tool</span></div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="portfolio-cta">
-          <a href="/apps" className="portfolio-link">
-            See every app &rarr;
-          </a>
-        </div>
       </section>
 
       {/* Contact */}
