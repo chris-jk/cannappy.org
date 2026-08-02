@@ -412,12 +412,12 @@ function App() {
         <div className="cat">
           <h3 className="cat-title">Social</h3>
           <div className="app-grid">
-            <a href="https://itsmybirthday.app" className="app" target="_blank" rel="noopener noreferrer">
+            <a href="https://birthday.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
               <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7b/33/a1/7b33a1a4-8f60-2cc6-8899-67e17428b328/AppIcon-1x_U007emarketing-0-7-0-0-85-220-0.png/512x512bb.jpg" alt="It's My Birthday" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>It&rsquo;s My Birthday</h4>
                 <p>Never miss the people who matter — and cash in on free birthday perks from places near you.</p>
-                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">itsmybirthday.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Mobile app</span><span className="where">birthday.cannappy.org</span><span className="store">App Store</span><span className="store">Google Play</span></div>
               </div>
             </a>
           </div>
@@ -438,14 +438,14 @@ function App() {
         <div className="cat">
           <h3 className="cat-title">Creative &amp; Legal</h3>
           <div className="app-grid">
-            <a href="https://inkflo.studio" className="app" target="_blank" rel="noopener noreferrer">
+            <div className="app is-muted">
               <div className="app-icon"><img src="/icons/inkflo.png" alt="Ink Flo Studio" width={52} height={52} /></div>
               <div className="app-text">
                 <h4>Ink Flo Studio</h4>
                 <p>Everything a tattoo artist needs to run the business side — clients, bookings, payments, and a portfolio that wins work.</p>
-                <div className="app-meta"><span className="type">Website</span><span className="where">inkflo.studio</span></div>
+                <div className="app-meta"><span className="type">Website</span></div>
               </div>
-            </a>
+            </div>
             <a href="https://freecustodyhelp.com" className="app" target="_blank" rel="noopener noreferrer">
               <div className="app-icon"><img src="/icons/freecustodyhelp.png" alt="Free Custody Help" width={52} height={52} /></div>
               <div className="app-text">

@@ -18,9 +18,9 @@
 - [Grow Guide](https://growguide.app): Daily grow tracking with an AI plant doctor and time-lapse capture.
 - [Snap Currency](https://snapcurrency.com): Point your camera at a price and instantly know what it costs in your currency; half of profits go to charity.
 - [Nomad Aigent](https://nomadaigent.cannappy.org): Chat-based search for real, scam-free housing listings abroad.
-- [It's My Birthday](https://itsmybirthday.app): Birthday reminders plus free birthday perks from places near you.
+- [It's My Birthday](https://birthday.cannappy.org): Birthday reminders plus free birthday perks from places near you.
 - [StoryLingo](https://storylingo.com): Learn a language through short, current stories with quick drills.
-- [Ink Flo Studio](https://inkflo.studio): Business management for tattoo artists — clients, bookings, payments, portfolio.
+- Ink Flo Studio: Business management for tattoo artists — clients, bookings, payments, portfolio.
 - [Free Custody Help](https://freecustodyhelp.com): Organize evidence, build a timeline, and get clear next steps for a custody case.
 - [LetsGoSite](https://letsgosite.com): Websites built for local businesses before they ever pay.
 
