@@ -258,6 +258,38 @@
     .app-meta .type { color: var(--text); }
     .app-meta .where { color: var(--accent); font-weight: 650; }
     .app-meta .store { color: var(--text-3); }
+    /* card became a <div> so store badges can be real links */
+    .app { position: relative; }
+    .app.has-link:hover { background: var(--surface-hover); box-shadow: inset 3px 0 0 var(--accent); }
+    .app.has-link:hover h2 .card-link { color: var(--text); }
+    .app-text h2 .card-link { color: inherit; text-decoration: none; }
+    .app-text h2 .card-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+
+    .app-meta a.store,
+    .app-meta span {
+      padding-right: 0.55rem;
+      border-right: 1px solid var(--border-hover);
+    }
+    .app-meta a.store:last-child { padding-right: 0; border-right: 0; }
+    .app-meta a.store {
+      position: relative; z-index: 2;
+      color: var(--text-3); text-decoration: none;
+    }
+    .app-meta a.store:hover { color: var(--accent); text-decoration: underline; }
+
+    .app-text h2 .rating {
+      margin-left: 0.5rem;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #ffd166;
+      white-space: nowrap;
+    }
+    .app-text h2 .rating .rc {
+      margin-left: 0.3rem;
+      color: var(--text-3);
+      font-weight: 550;
+    }
+
     .app-meta .pill {
       color: var(--text-3);
       font-weight: 500;
@@ -331,6 +363,48 @@
 
   <div class="container">
 
+    <!-- CANNABIS -->
+    <h2 class="cat-title">Cannabis</h2>
+    <div class="apps">
+
+      <div class="app has-link">
+        <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/b4/ec/67b4ecd6-06bf-e277-2991-b4e67063e065/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Strain Guide" width="52" height="52"></div>
+        <div class="app-text">
+          <h2><a class="card-link" href="https://strainguide.app" target="_blank" rel="noopener">Strain Guide</a><span class="rating" title="App Store rating">&#9733; 4.8<span class="rc">886 ratings</span></span></h2>
+          <p class="desc">Find your perfect strain. Search thousands with an AI budtender, save what works for you, and learn how to grow it.</p>
+          <div class="app-meta"><span class="type">Website + mobile app</span><span class="where">strainguide.app</span><a class="store" href="https://apps.apple.com/us/app/strain-guide/id1596314933" target="_blank" rel="noopener">App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=us.kushy.news" target="_blank" rel="noopener">Google Play</a></div>
+        </div>
+      </div>
+
+      <div class="app has-link">
+        <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2f/78/94/2f7894d8-1a5e-8d27-8bd3-f7adf13f61d1/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Grow Guide" width="52" height="52"></div>
+        <div class="app-text">
+          <h2><a class="card-link" href="https://growguide.app" target="_blank" rel="noopener">Grow Guide</a><span class="rating" title="App Store rating">&#9733; 4.9<span class="rc">121 ratings</span></span></h2>
+          <p class="desc">Grow better. Track every day, get an AI plant doctor the moment something looks off, and capture the whole journey on time-lapse.</p>
+          <div class="app-meta"><span class="type">Website + mobile app</span><span class="where">growguide.app</span><a class="store" href="https://apps.apple.com/us/app/grow-guide/id6637720578" target="_blank" rel="noopener">App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=app.growguide" target="_blank" rel="noopener">Google Play</a></div>
+        </div>
+      </div>
+
+      <a class="app" href="https://games.strainguide.app/" target="_blank" rel="noopener">
+        <div class="app-icon">CA</div>
+        <div class="app-text">
+          <h2>Canna Arcade</h2>
+          <p class="desc">Quick, cannabis-themed games with leaderboards and daily challenges. Easy fun for a spare few minutes.</p>
+          <div class="app-meta"><span class="type">Website</span><span class="where">games.strainguide.app</span></div>
+        </div>
+      </a>
+
+      <a class="app" href="https://kushy.app" target="_blank" rel="noopener">
+        <div class="app-icon">KY</div>
+        <div class="app-text">
+          <h2>Kushy</h2>
+          <p class="desc">A community cannabis feed and a crowdsourced deals board &mdash; see what people are smoking and what&rsquo;s on offer near you.</p>
+          <div class="app-meta"><span class="type">Web app</span><span class="where">kushy.app</span></div>
+        </div>
+      </a>
+
+    </div>
+
     <!-- PRODUCTIVITY & UTILITIES -->
     <h2 class="cat-title">Productivity &amp; Utilities</h2>
     <div class="apps">
@@ -353,14 +427,14 @@
         </div>
       </a>
 
-      <a class="app" href="https://apps.apple.com/us/app/hogalytics/id6741347952" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/37/b8/b0/37b8b08a-2d44-6bf4-77e4-65791b03e544/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Hogalytics" width="52" height="52"></div>
         <div class="app-text">
-          <h2>Hogalytics</h2>
+          <h2><a class="card-link" href="https://apps.apple.com/us/app/hogalytics/id6741347952" target="_blank" rel="noopener">Hogalytics</a></h2>
           <p class="desc">Your product numbers in your pocket. Check what&rsquo;s moving and spot trends without ever opening a laptop.</p>
-          <div class="app-meta"><span class="type">Mobile app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
+          <div class="app-meta"><span class="type">Mobile app</span><a class="store" href="https://apps.apple.com/us/app/hogalytics/id6741347952" target="_blank" rel="noopener">App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=app.hogalytics" target="_blank" rel="noopener">Google Play</a></div>
         </div>
-      </a>
+      </div>
 
       <a class="app" href="https://draftengine.cannappy.org" target="_blank" rel="noopener">
         <div class="app-icon">DE</div>
@@ -422,23 +496,23 @@
         </div>
       </a>
 
-      <a class="app" href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4b/6f/44/4b6f444d-5505-9a67-bdea-316e775a7e98/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Awaken" width="52" height="52"></div>
         <div class="app-text">
-          <h2>Awaken</h2>
+          <h2><a class="card-link" href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" target="_blank" rel="noopener">Awaken</a></h2>
           <p class="desc">One year, one daily practice. A guided journey through the wisdom shared by spiritual traditions across the world.</p>
-          <div class="app-meta"><span class="type">Mobile app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
+          <div class="app-meta"><span class="type">Mobile app</span><a class="store" href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" target="_blank" rel="noopener">App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=org.cannappy.awaken" target="_blank" rel="noopener">Google Play</a></div>
         </div>
-      </a>
+      </div>
 
-      <a class="app" href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/c0/0e/4cc00e97-534b-aeb6-e343-2c7fdc09b860/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg" alt="Virtu Vista" width="52" height="52"></div>
         <div class="app-text">
-          <h2>Virtu Vista</h2>
+          <h2><a class="card-link" href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" target="_blank" rel="noopener">Virtu Vista</a></h2>
           <p class="desc">A two-minute daily reflection that keeps what matters in front of you — and helps you actually live by it.</p>
-          <div class="app-meta"><span class="type">Mobile app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
+          <div class="app-meta"><span class="type">Mobile app</span><a class="store" href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" target="_blank" rel="noopener">App Store</a><span class="store">Google Play</span></div>
         </div>
-      </a>
+      </div>
 
       <a class="app" href="https://peptidessacramento.com" target="_blank" rel="noopener">
         <div class="app-icon">CP</div>
@@ -460,60 +534,18 @@
 
     </div>
 
-    <!-- CANNABIS -->
-    <h2 class="cat-title">Cannabis</h2>
-    <div class="apps">
-
-      <a class="app" href="https://strainguide.app" target="_blank" rel="noopener">
-        <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/b4/ec/67b4ecd6-06bf-e277-2991-b4e67063e065/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Strain Guide" width="52" height="52"></div>
-        <div class="app-text">
-          <h2>Strain Guide</h2>
-          <p class="desc">Find your perfect strain. Search thousands with an AI budtender, save what works for you, and learn how to grow it.</p>
-          <div class="app-meta"><span class="type">Website + mobile app</span><span class="where">strainguide.app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
-        </div>
-      </a>
-
-      <a class="app" href="https://growguide.app" target="_blank" rel="noopener">
-        <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2f/78/94/2f7894d8-1a5e-8d27-8bd3-f7adf13f61d1/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Grow Guide" width="52" height="52"></div>
-        <div class="app-text">
-          <h2>Grow Guide</h2>
-          <p class="desc">Grow better. Track every day, get an AI plant doctor the moment something looks off, and capture the whole journey on time-lapse.</p>
-          <div class="app-meta"><span class="type">Website + mobile app</span><span class="where">growguide.app</span><span class="store">App Store</span><span class="store">Google Play</span></div>
-        </div>
-      </a>
-
-      <a class="app" href="https://games.strainguide.app/" target="_blank" rel="noopener">
-        <div class="app-icon">CA</div>
-        <div class="app-text">
-          <h2>Canna Arcade</h2>
-          <p class="desc">Quick, cannabis-themed games with leaderboards and daily challenges. Easy fun for a spare few minutes.</p>
-          <div class="app-meta"><span class="type">Website</span><span class="where">games.strainguide.app</span></div>
-        </div>
-      </a>
-
-      <a class="app" href="https://kushy.app" target="_blank" rel="noopener">
-        <div class="app-icon">KY</div>
-        <div class="app-text">
-          <h2>Kushy</h2>
-          <p class="desc">A community cannabis feed and a crowdsourced deals board &mdash; see what people are smoking and what&rsquo;s on offer near you.</p>
-          <div class="app-meta"><span class="type">Web app</span><span class="where">kushy.app</span></div>
-        </div>
-      </a>
-
-    </div>
-
     <!-- TRAVEL -->
     <h2 class="cat-title">Travel</h2>
     <div class="apps">
 
-      <a class="app" href="https://apps.apple.com/us/app/snap-currency/id6763781236" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/4c/d8/954cd831-e76b-4b51-b4fe-cf67d57f978d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Snap Currency" width="52" height="52"></div>
         <div class="app-text">
-          <h2>Snap Currency</h2>
+          <h2><a class="card-link" href="https://apps.apple.com/us/app/snap-currency/id6763781236" target="_blank" rel="noopener">Snap Currency</a></h2>
           <p class="desc">Know what anything really costs, instantly. Point your camera at a price, say it, or type the math — and half of every profit goes to charity.</p>
-          <div class="app-meta"><span class="type">Website + mobile app</span><span class="where">snapcurrency.com</span><span class="store">App Store</span><span class="store">Google Play</span></div>
+          <div class="app-meta"><span class="type">Website + mobile app</span><span class="where">snapcurrency.com</span><a class="store" href="https://apps.apple.com/us/app/snap-currency/id6763781236" target="_blank" rel="noopener">App Store</a><span class="store">Google Play</span></div>
         </div>
-      </a>
+      </div>
 
       <a class="app" href="https://nomadaigent.cannappy.org" target="_blank" rel="noopener">
         <div class="app-icon">NA</div>
@@ -530,14 +562,14 @@
     <h2 class="cat-title">Social</h2>
     <div class="apps">
 
-      <a class="app" href="https://birthday.cannappy.org" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7b/33/a1/7b33a1a4-8f60-2cc6-8899-67e17428b328/AppIcon-1x_U007emarketing-0-7-0-0-85-220-0.png/512x512bb.jpg" alt="It's My Birthday" width="52" height="52"></div>
         <div class="app-text">
-          <h2>It&rsquo;s My Birthday</h2>
+          <h2><a class="card-link" href="https://birthday.cannappy.org" target="_blank" rel="noopener">It&rsquo;s My Birthday</a></h2>
           <p class="desc">Never miss the people who matter — and cash in on free birthday perks from places near you.</p>
-          <div class="app-meta"><span class="type">Mobile app</span><span class="where">birthday.cannappy.org</span><span class="store">App Store</span><span class="store">Google Play</span></div>
+          <div class="app-meta"><span class="type">Mobile app</span><span class="where">birthday.cannappy.org</span><a class="store" href="https://apps.apple.com/us/app/its-my-birthday-freebies/id6475056772" target="_blank" rel="noopener">App Store</a><a class="store" href="https://play.google.com/store/apps/details?id=com.birthdayProject" target="_blank" rel="noopener">Google Play</a></div>
         </div>
-      </a>
+      </div>
 
 
     </div>
@@ -670,95 +702,95 @@
     <h2 class="cat-title">Open source</h2>
     <div class="apps">
 
-      <a class="app" href="https://signalbot.cannappy.org" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon">SB</div>
         <div class="app-text">
-          <h2>signalbot</h2>
+          <h2><a class="card-link" href="https://signalbot.cannappy.org" target="_blank" rel="noopener">signalbot</a></h2>
           <p class="desc">Insider and Congress trading disclosures, ingested, normalized and backtested — with an MCP connector that hands the whole dataset to an AI agent.</p>
-          <div class="app-meta"><span class="type">Web app + open source</span><span class="where">signalbot.cannappy.org</span><span class="store">GitHub</span></div>
+          <div class="app-meta"><span class="type">Web app + open source</span><span class="where">signalbot.cannappy.org</span><a class="store" href="https://github.com/chris-jk/signalbot" target="_blank" rel="noopener">GitHub</a></div>
         </div>
-      </a>
+      </div>
 
-      <a class="app" href="https://github.com/chris-jk/freeply" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon">FP</div>
         <div class="app-text">
-          <h2>freeply</h2>
+          <h2><a class="card-link" href="https://github.com/chris-jk/freeply" target="_blank" rel="noopener">freeply</a></h2>
           <p class="desc">Instagram comment-to-DM automation. Someone comments your keyword, they get the link in their DMs. Self-hostable on Cloudflare's free tier.</p>
-          <div class="app-meta"><span class="type">Open source</span><span class="store">GitHub</span></div>
+          <div class="app-meta"><span class="type">Open source</span><a class="store" href="https://github.com/chris-jk/freeply" target="_blank" rel="noopener">GitHub</a></div>
         </div>
-      </a>
+      </div>
 
-      <a class="app" href="https://github.com/chris-jk/focus-app-mac" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon">FO</div>
         <div class="app-text">
-          <h2>Focus</h2>
+          <h2><a class="card-link" href="https://github.com/chris-jk/focus-app-mac" target="_blank" rel="noopener">Focus</a></h2>
           <p class="desc">A Mac menu bar focus app: Pomodoro timer, a day planner that starts your blocks for you, and a parking lot for ideas.</p>
-          <div class="app-meta"><span class="type">Mac app + open source</span><span class="store">GitHub</span></div>
+          <div class="app-meta"><span class="type">Mac app + open source</span><a class="store" href="https://github.com/chris-jk/focus-app-mac" target="_blank" rel="noopener">GitHub</a></div>
         </div>
-      </a>
+      </div>
 
-      <a class="app" href="https://github.com/chris-jk/desktop-switch" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon">DS</div>
         <div class="app-text">
-          <h2>Desktop Switch</h2>
+          <h2><a class="card-link" href="https://github.com/chris-jk/desktop-switch" target="_blank" rel="noopener">Desktop Switch</a></h2>
           <p class="desc">Hides and shows your Mac desktop icons from the menu bar, or with a keyboard shortcut.</p>
-          <div class="app-meta"><span class="type">Mac app + open source</span><span class="store">GitHub</span></div>
+          <div class="app-meta"><span class="type">Mac app + open source</span><a class="store" href="https://github.com/chris-jk/desktop-switch" target="_blank" rel="noopener">GitHub</a></div>
         </div>
-      </a>
+      </div>
 
-      <a class="app" href="https://github.com/chris-jk/SpeakHUD" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon">SH</div>
         <div class="app-text">
-          <h2>SpeakHUD</h2>
+          <h2><a class="card-link" href="https://github.com/chris-jk/SpeakHUD" target="_blank" rel="noopener">SpeakHUD</a></h2>
           <p class="desc">Text-to-speech HUD for the Mac — reads your clipboard aloud with speed control and word-by-word highlighting.</p>
-          <div class="app-meta"><span class="type">Mac app + open source</span><span class="store">GitHub</span></div>
+          <div class="app-meta"><span class="type">Mac app + open source</span><a class="store" href="https://github.com/chris-jk/SpeakHUD" target="_blank" rel="noopener">GitHub</a></div>
         </div>
-      </a>
+      </div>
 
-      <a class="app" href="https://github.com/chris-jk/claude-bs-detector" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon">BS</div>
         <div class="app-text">
-          <h2>BS Detector</h2>
+          <h2><a class="card-link" href="https://github.com/chris-jk/claude-bs-detector" target="_blank" rel="noopener">BS Detector</a></h2>
           <p class="desc">Fact-checks a short-form video claim by claim: transcribe it, pull out every assertion, verify each one, and show the receipts.</p>
-          <div class="app-meta"><span class="type">AI skill + open source</span><span class="store">GitHub</span></div>
+          <div class="app-meta"><span class="type">AI skill + open source</span><a class="store" href="https://github.com/chris-jk/claude-bs-detector" target="_blank" rel="noopener">GitHub</a></div>
         </div>
-      </a>
+      </div>
 
-      <a class="app" href="https://github.com/chris-jk/claude-outliers" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon">OL</div>
         <div class="app-text">
-          <h2>Outliers</h2>
+          <h2><a class="card-link" href="https://github.com/chris-jk/claude-outliers" target="_blank" rel="noopener">Outliers</a></h2>
           <p class="desc">Finds the videos on any channel that beat that channel's own baseline — the research loop behind knowing what actually works.</p>
-          <div class="app-meta"><span class="type">AI skill + open source</span><span class="store">GitHub</span></div>
+          <div class="app-meta"><span class="type">AI skill + open source</span><a class="store" href="https://github.com/chris-jk/claude-outliers" target="_blank" rel="noopener">GitHub</a></div>
         </div>
-      </a>
+      </div>
 
-      <a class="app" href="https://github.com/chris-jk/claude-youtube-editor" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon">YE</div>
         <div class="app-text">
-          <h2>Claude YouTube Editor</h2>
+          <h2><a class="card-link" href="https://github.com/chris-jk/claude-youtube-editor" target="_blank" rel="noopener">Claude YouTube Editor</a></h2>
           <p class="desc">Record the talking head; the pipeline does the rest — the cut, the visuals, the voice, the sound effects, the thumbnail, and the upload.</p>
-          <div class="app-meta"><span class="type">Open source</span><span class="store">GitHub</span></div>
+          <div class="app-meta"><span class="type">Open source</span><a class="store" href="https://github.com/chris-jk/claude-youtube-editor" target="_blank" rel="noopener">GitHub</a></div>
         </div>
-      </a>
+      </div>
 
-      <a class="app" href="https://github.com/chris-jk/Meta-Ads-Spy-Claude-Code-Airtable" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon">MA</div>
         <div class="app-text">
-          <h2>Meta Ads Spy</h2>
+          <h2><a class="card-link" href="https://github.com/chris-jk/Meta-Ads-Spy-Claude-Code-Airtable" target="_blank" rel="noopener">Meta Ads Spy</a></h2>
           <p class="desc">Pulls competitor ads out of the Meta Ad Library and lands them in Airtable, ready to study.</p>
-          <div class="app-meta"><span class="type">Open source</span><span class="store">GitHub</span></div>
+          <div class="app-meta"><span class="type">Open source</span><a class="store" href="https://github.com/chris-jk/Meta-Ads-Spy-Claude-Code-Airtable" target="_blank" rel="noopener">GitHub</a></div>
         </div>
-      </a>
+      </div>
 
-      <a class="app" href="https://github.com/chris-jk/MioBio" target="_blank" rel="noopener">
+      <div class="app has-link">
         <div class="app-icon">MB</div>
         <div class="app-text">
-          <h2>MioBio</h2>
+          <h2><a class="card-link" href="https://github.com/chris-jk/MioBio" target="_blank" rel="noopener">MioBio</a></h2>
           <p class="desc">A one-file link-in-bio page that sends each visitor to the right app store automatically. No framework, no build step.</p>
-          <div class="app-meta"><span class="type">Open source</span><span class="store">GitHub</span></div>
+          <div class="app-meta"><span class="type">Open source</span><a class="store" href="https://github.com/chris-jk/MioBio" target="_blank" rel="noopener">GitHub</a></div>
         </div>
-      </a>
+      </div>
 
     </div>
 

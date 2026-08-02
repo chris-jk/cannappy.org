@@ -238,6 +238,43 @@ function App() {
         </h2>
 
         <div className="cat">
+          <h3 className="cat-title">Cannabis</h3>
+          <div className="app-grid">
+            <div className="app has-link">
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/b4/ec/67b4ecd6-06bf-e277-2991-b4e67063e065/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Strain Guide" width={52} height={52} /></div>
+              <div className="app-text">
+                <h4><a className="card-link" href="https://strainguide.app" target="_blank" rel="noopener noreferrer">Strain Guide</a><span className="rating" title="App Store rating">&#9733; 4.8<span className="rc">886 ratings</span></span></h4>
+                <p>Find your perfect strain. Search thousands with an AI budtender, save what works for you, and learn how to grow it.</p>
+                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">strainguide.app</span><a className="store" href="https://apps.apple.com/us/app/strain-guide/id1596314933" target="_blank" rel="noopener">App Store</a><a className="store" href="https://play.google.com/store/apps/details?id=us.kushy.news" target="_blank" rel="noopener">Google Play</a></div>
+              </div>
+            </div>
+            <div className="app has-link">
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2f/78/94/2f7894d8-1a5e-8d27-8bd3-f7adf13f61d1/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Grow Guide" width={52} height={52} /></div>
+              <div className="app-text">
+                <h4><a className="card-link" href="https://growguide.app" target="_blank" rel="noopener noreferrer">Grow Guide</a><span className="rating" title="App Store rating">&#9733; 4.9<span className="rc">121 ratings</span></span></h4>
+                <p>Grow better. Track every day, get an AI plant doctor the moment something looks off, and capture the whole journey on time-lapse.</p>
+                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">growguide.app</span><a className="store" href="https://apps.apple.com/us/app/grow-guide/id6637720578" target="_blank" rel="noopener">App Store</a><a className="store" href="https://play.google.com/store/apps/details?id=app.growguide" target="_blank" rel="noopener">Google Play</a></div>
+              </div>
+            </div>
+            <a href="https://games.strainguide.app/" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">CA</div>
+              <div className="app-text">
+                <h4>Canna Arcade</h4>
+                <p>Quick, cannabis-themed games with leaderboards and daily challenges. Easy fun for a spare few minutes.</p>
+                <div className="app-meta"><span className="type">Website</span><span className="where">games.strainguide.app</span></div>
+              </div>
+            </a>
+            <a href="https://kushy.app" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon">KY</div>
+              <div className="app-text">
+                <h4>Kushy</h4>
+                <p>A community cannabis feed and a crowdsourced deals board &mdash; see what people are smoking and what&rsquo;s on offer near you.</p>
+                <div className="app-meta"><span className="type">Web app</span><span className="where">kushy.app</span></div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div className="cat">
           <h3 className="cat-title">Productivity &amp; Utilities</h3>
           <div className="app-grid">
             <a href="/fyta" className="app" target="_blank" rel="noopener noreferrer">
@@ -256,14 +293,14 @@ function App() {
                 <div className="app-meta"><span className="type">Mac app</span><span className="where">quickertext.cannappy.org</span></div>
               </div>
             </a>
-            <a href="https://apps.apple.com/us/app/hogalytics/id6741347952" className="app" target="_blank" rel="noopener noreferrer">
+            <div className="app has-link">
               <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/37/b8/b0/37b8b08a-2d44-6bf4-77e4-65791b03e544/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Hogalytics" width={52} height={52} /></div>
               <div className="app-text">
-                <h4>Hogalytics</h4>
+                <h4><a className="card-link" href="https://apps.apple.com/us/app/hogalytics/id6741347952" target="_blank" rel="noopener noreferrer">Hogalytics</a></h4>
                 <p>Your product numbers in your pocket. Check what&rsquo;s moving and spot trends without ever opening a laptop.</p>
-                <div className="app-meta"><span className="type">Mobile app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Mobile app</span><a className="store" href="https://apps.apple.com/us/app/hogalytics/id6741347952" target="_blank" rel="noopener">App Store</a><a className="store" href="https://play.google.com/store/apps/details?id=app.hogalytics" target="_blank" rel="noopener">Google Play</a></div>
               </div>
-            </a>
+            </div>
             <a href="https://draftengine.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
               <div className="app-icon">DE</div>
               <div className="app-text">
@@ -317,22 +354,22 @@ function App() {
                 <div className="app-meta"><span className="type">Website</span><span className="where">onefast.cannappy.org</span></div>
               </div>
             </a>
-            <a href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" className="app" target="_blank" rel="noopener noreferrer">
+            <div className="app has-link">
               <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4b/6f/44/4b6f444d-5505-9a67-bdea-316e775a7e98/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Awaken" width={52} height={52} /></div>
               <div className="app-text">
-                <h4>Awaken</h4>
+                <h4><a className="card-link" href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" target="_blank" rel="noopener noreferrer">Awaken</a></h4>
                 <p>One year, one daily practice. A guided journey through the wisdom shared by spiritual traditions across the world.</p>
-                <div className="app-meta"><span className="type">Mobile app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Mobile app</span><a className="store" href="https://apps.apple.com/us/app/awaken-sacred-wisdom/id6759455864" target="_blank" rel="noopener">App Store</a><a className="store" href="https://play.google.com/store/apps/details?id=org.cannappy.awaken" target="_blank" rel="noopener">Google Play</a></div>
               </div>
-            </a>
-            <a href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" className="app" target="_blank" rel="noopener noreferrer">
+            </div>
+            <div className="app has-link">
               <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/c0/0e/4cc00e97-534b-aeb6-e343-2c7fdc09b860/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg" alt="Virtu Vista" width={52} height={52} /></div>
               <div className="app-text">
-                <h4>Virtu Vista</h4>
+                <h4><a className="card-link" href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" target="_blank" rel="noopener noreferrer">Virtu Vista</a></h4>
                 <p>A two-minute daily reflection that keeps what matters in front of you — and helps you actually live by it.</p>
-                <div className="app-meta"><span className="type">Mobile app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Mobile app</span><a className="store" href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" target="_blank" rel="noopener">App Store</a><span className="store">Google Play</span></div>
               </div>
-            </a>
+            </div>
             <a href="https://peptidessacramento.com" className="app" target="_blank" rel="noopener noreferrer">
               <div className="app-icon">CP</div>
               <div className="app-text">
@@ -352,53 +389,16 @@ function App() {
           </div>
         </div>
         <div className="cat">
-          <h3 className="cat-title">Cannabis</h3>
-          <div className="app-grid">
-            <a href="https://strainguide.app" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/67/b4/ec/67b4ecd6-06bf-e277-2991-b4e67063e065/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Strain Guide" width={52} height={52} /></div>
-              <div className="app-text">
-                <h4>Strain Guide</h4>
-                <p>Find your perfect strain. Search thousands with an AI budtender, save what works for you, and learn how to grow it.</p>
-                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">strainguide.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
-              </div>
-            </a>
-            <a href="https://growguide.app" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2f/78/94/2f7894d8-1a5e-8d27-8bd3-f7adf13f61d1/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg" alt="Grow Guide" width={52} height={52} /></div>
-              <div className="app-text">
-                <h4>Grow Guide</h4>
-                <p>Grow better. Track every day, get an AI plant doctor the moment something looks off, and capture the whole journey on time-lapse.</p>
-                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">growguide.app</span><span className="store">App Store</span><span className="store">Google Play</span></div>
-              </div>
-            </a>
-            <a href="https://games.strainguide.app/" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">CA</div>
-              <div className="app-text">
-                <h4>Canna Arcade</h4>
-                <p>Quick, cannabis-themed games with leaderboards and daily challenges. Easy fun for a spare few minutes.</p>
-                <div className="app-meta"><span className="type">Website</span><span className="where">games.strainguide.app</span></div>
-              </div>
-            </a>
-            <a href="https://kushy.app" className="app" target="_blank" rel="noopener noreferrer">
-              <div className="app-icon">KY</div>
-              <div className="app-text">
-                <h4>Kushy</h4>
-                <p>A community cannabis feed and a crowdsourced deals board &mdash; see what people are smoking and what&rsquo;s on offer near you.</p>
-                <div className="app-meta"><span className="type">Web app</span><span className="where">kushy.app</span></div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div className="cat">
           <h3 className="cat-title">Travel</h3>
           <div className="app-grid">
-            <a href="https://apps.apple.com/us/app/snap-currency/id6763781236" className="app" target="_blank" rel="noopener noreferrer">
+            <div className="app has-link">
               <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/4c/d8/954cd831-e76b-4b51-b4fe-cf67d57f978d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Snap Currency" width={52} height={52} /></div>
               <div className="app-text">
-                <h4>Snap Currency</h4>
+                <h4><a className="card-link" href="https://apps.apple.com/us/app/snap-currency/id6763781236" target="_blank" rel="noopener noreferrer">Snap Currency</a></h4>
                 <p>Know what anything really costs, instantly. Point your camera at a price, say it, or type the math — and half of every profit goes to charity.</p>
-                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">snapcurrency.com</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">snapcurrency.com</span><a className="store" href="https://apps.apple.com/us/app/snap-currency/id6763781236" target="_blank" rel="noopener">App Store</a><span className="store">Google Play</span></div>
               </div>
-            </a>
+            </div>
             <a href="https://nomadaigent.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
               <div className="app-icon">NA</div>
               <div className="app-text">
@@ -412,14 +412,14 @@ function App() {
         <div className="cat">
           <h3 className="cat-title">Social</h3>
           <div className="app-grid">
-            <a href="https://birthday.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
+            <div className="app has-link">
               <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7b/33/a1/7b33a1a4-8f60-2cc6-8899-67e17428b328/AppIcon-1x_U007emarketing-0-7-0-0-85-220-0.png/512x512bb.jpg" alt="It's My Birthday" width={52} height={52} /></div>
               <div className="app-text">
-                <h4>It&rsquo;s My Birthday</h4>
+                <h4><a className="card-link" href="https://birthday.cannappy.org" target="_blank" rel="noopener noreferrer">It&rsquo;s My Birthday</a></h4>
                 <p>Never miss the people who matter — and cash in on free birthday perks from places near you.</p>
-                <div className="app-meta"><span className="type">Mobile app</span><span className="where">birthday.cannappy.org</span><span className="store">App Store</span><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Mobile app</span><span className="where">birthday.cannappy.org</span><a className="store" href="https://apps.apple.com/us/app/its-my-birthday-freebies/id6475056772" target="_blank" rel="noopener">App Store</a><a className="store" href="https://play.google.com/store/apps/details?id=com.birthdayProject" target="_blank" rel="noopener">Google Play</a></div>
               </div>
-            </a>
+            </div>
           </div>
         </div>
         <div className="cat">
@@ -533,86 +533,86 @@ function App() {
         <div className="cat">
           <h3 className="cat-title">Open source</h3>
           <div className="app-grid">
-            <a href="https://signalbot.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
+            <div className="app has-link">
               <div className="app-icon">SB</div>
               <div className="app-text">
-                <h4>signalbot</h4>
+                <h4><a className="card-link" href="https://signalbot.cannappy.org" target="_blank" rel="noopener noreferrer">signalbot</a></h4>
                 <p>Insider and Congress trading disclosures, ingested, normalized and backtested — with an MCP connector that hands the whole dataset to an AI agent.</p>
-                <div className="app-meta"><span className="type">Web app + open source</span><span className="where">signalbot.cannappy.org</span><span className="store">GitHub</span></div>
+                <div className="app-meta"><span className="type">Web app + open source</span><span className="where">signalbot.cannappy.org</span><a className="store" href="https://github.com/chris-jk/signalbot" target="_blank" rel="noopener">GitHub</a></div>
               </div>
-            </a>
-            <a href="https://github.com/chris-jk/freeply" className="app" target="_blank" rel="noopener noreferrer">
+            </div>
+            <div className="app has-link">
               <div className="app-icon">FP</div>
               <div className="app-text">
-                <h4>freeply</h4>
+                <h4><a className="card-link" href="https://github.com/chris-jk/freeply" target="_blank" rel="noopener noreferrer">freeply</a></h4>
                 <p>Instagram comment-to-DM automation. Someone comments your keyword, they get the link in their DMs. Self-hostable on Cloudflare's free tier.</p>
-                <div className="app-meta"><span className="type">Open source</span><span className="store">GitHub</span></div>
+                <div className="app-meta"><span className="type">Open source</span><a className="store" href="https://github.com/chris-jk/freeply" target="_blank" rel="noopener">GitHub</a></div>
               </div>
-            </a>
-            <a href="https://github.com/chris-jk/focus-app-mac" className="app" target="_blank" rel="noopener noreferrer">
+            </div>
+            <div className="app has-link">
               <div className="app-icon">FO</div>
               <div className="app-text">
-                <h4>Focus</h4>
+                <h4><a className="card-link" href="https://github.com/chris-jk/focus-app-mac" target="_blank" rel="noopener noreferrer">Focus</a></h4>
                 <p>A Mac menu bar focus app: Pomodoro timer, a day planner that starts your blocks for you, and a parking lot for ideas.</p>
-                <div className="app-meta"><span className="type">Mac app + open source</span><span className="store">GitHub</span></div>
+                <div className="app-meta"><span className="type">Mac app + open source</span><a className="store" href="https://github.com/chris-jk/focus-app-mac" target="_blank" rel="noopener">GitHub</a></div>
               </div>
-            </a>
-            <a href="https://github.com/chris-jk/desktop-switch" className="app" target="_blank" rel="noopener noreferrer">
+            </div>
+            <div className="app has-link">
               <div className="app-icon">DS</div>
               <div className="app-text">
-                <h4>Desktop Switch</h4>
+                <h4><a className="card-link" href="https://github.com/chris-jk/desktop-switch" target="_blank" rel="noopener noreferrer">Desktop Switch</a></h4>
                 <p>Hides and shows your Mac desktop icons from the menu bar, or with a keyboard shortcut.</p>
-                <div className="app-meta"><span className="type">Mac app + open source</span><span className="store">GitHub</span></div>
+                <div className="app-meta"><span className="type">Mac app + open source</span><a className="store" href="https://github.com/chris-jk/desktop-switch" target="_blank" rel="noopener">GitHub</a></div>
               </div>
-            </a>
-            <a href="https://github.com/chris-jk/SpeakHUD" className="app" target="_blank" rel="noopener noreferrer">
+            </div>
+            <div className="app has-link">
               <div className="app-icon">SH</div>
               <div className="app-text">
-                <h4>SpeakHUD</h4>
+                <h4><a className="card-link" href="https://github.com/chris-jk/SpeakHUD" target="_blank" rel="noopener noreferrer">SpeakHUD</a></h4>
                 <p>Text-to-speech HUD for the Mac — reads your clipboard aloud with speed control and word-by-word highlighting.</p>
-                <div className="app-meta"><span className="type">Mac app + open source</span><span className="store">GitHub</span></div>
+                <div className="app-meta"><span className="type">Mac app + open source</span><a className="store" href="https://github.com/chris-jk/SpeakHUD" target="_blank" rel="noopener">GitHub</a></div>
               </div>
-            </a>
-            <a href="https://github.com/chris-jk/claude-bs-detector" className="app" target="_blank" rel="noopener noreferrer">
+            </div>
+            <div className="app has-link">
               <div className="app-icon">BS</div>
               <div className="app-text">
-                <h4>BS Detector</h4>
+                <h4><a className="card-link" href="https://github.com/chris-jk/claude-bs-detector" target="_blank" rel="noopener noreferrer">BS Detector</a></h4>
                 <p>Fact-checks a short-form video claim by claim: transcribe it, pull out every assertion, verify each one, and show the receipts.</p>
-                <div className="app-meta"><span className="type">AI skill + open source</span><span className="store">GitHub</span></div>
+                <div className="app-meta"><span className="type">AI skill + open source</span><a className="store" href="https://github.com/chris-jk/claude-bs-detector" target="_blank" rel="noopener">GitHub</a></div>
               </div>
-            </a>
-            <a href="https://github.com/chris-jk/claude-outliers" className="app" target="_blank" rel="noopener noreferrer">
+            </div>
+            <div className="app has-link">
               <div className="app-icon">OL</div>
               <div className="app-text">
-                <h4>Outliers</h4>
+                <h4><a className="card-link" href="https://github.com/chris-jk/claude-outliers" target="_blank" rel="noopener noreferrer">Outliers</a></h4>
                 <p>Finds the videos on any channel that beat that channel's own baseline — the research loop behind knowing what actually works.</p>
-                <div className="app-meta"><span className="type">AI skill + open source</span><span className="store">GitHub</span></div>
+                <div className="app-meta"><span className="type">AI skill + open source</span><a className="store" href="https://github.com/chris-jk/claude-outliers" target="_blank" rel="noopener">GitHub</a></div>
               </div>
-            </a>
-            <a href="https://github.com/chris-jk/claude-youtube-editor" className="app" target="_blank" rel="noopener noreferrer">
+            </div>
+            <div className="app has-link">
               <div className="app-icon">YE</div>
               <div className="app-text">
-                <h4>Claude YouTube Editor</h4>
+                <h4><a className="card-link" href="https://github.com/chris-jk/claude-youtube-editor" target="_blank" rel="noopener noreferrer">Claude YouTube Editor</a></h4>
                 <p>Record the talking head; the pipeline does the rest — the cut, the visuals, the voice, the sound effects, the thumbnail, and the upload.</p>
-                <div className="app-meta"><span className="type">Open source</span><span className="store">GitHub</span></div>
+                <div className="app-meta"><span className="type">Open source</span><a className="store" href="https://github.com/chris-jk/claude-youtube-editor" target="_blank" rel="noopener">GitHub</a></div>
               </div>
-            </a>
-            <a href="https://github.com/chris-jk/Meta-Ads-Spy-Claude-Code-Airtable" className="app" target="_blank" rel="noopener noreferrer">
+            </div>
+            <div className="app has-link">
               <div className="app-icon">MA</div>
               <div className="app-text">
-                <h4>Meta Ads Spy</h4>
+                <h4><a className="card-link" href="https://github.com/chris-jk/Meta-Ads-Spy-Claude-Code-Airtable" target="_blank" rel="noopener noreferrer">Meta Ads Spy</a></h4>
                 <p>Pulls competitor ads out of the Meta Ad Library and lands them in Airtable, ready to study.</p>
-                <div className="app-meta"><span className="type">Open source</span><span className="store">GitHub</span></div>
+                <div className="app-meta"><span className="type">Open source</span><a className="store" href="https://github.com/chris-jk/Meta-Ads-Spy-Claude-Code-Airtable" target="_blank" rel="noopener">GitHub</a></div>
               </div>
-            </a>
-            <a href="https://github.com/chris-jk/MioBio" className="app" target="_blank" rel="noopener noreferrer">
+            </div>
+            <div className="app has-link">
               <div className="app-icon">MB</div>
               <div className="app-text">
-                <h4>MioBio</h4>
+                <h4><a className="card-link" href="https://github.com/chris-jk/MioBio" target="_blank" rel="noopener noreferrer">MioBio</a></h4>
                 <p>A one-file link-in-bio page that sends each visitor to the right app store automatically. No framework, no build step.</p>
-                <div className="app-meta"><span className="type">Open source</span><span className="store">GitHub</span></div>
+                <div className="app-meta"><span className="type">Open source</span><a className="store" href="https://github.com/chris-jk/MioBio" target="_blank" rel="noopener">GitHub</a></div>
               </div>
-            </a>
+            </div>
           </div>
         </div>
         <div className="cat">
