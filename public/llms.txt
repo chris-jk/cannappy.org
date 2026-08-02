@@ -23,6 +23,27 @@
 - [Free Custody Help](https://freecustodyhelp.com): Organize evidence, build a timeline, and get clear next steps for a custody case.
 - [LetsGoSite](https://letsgosite.com): Websites built for local businesses before they ever pay.
 
+## Client work
+
+- [Placerville Powersports](https://placervillepowersports.com): Dealer site for a 30-year Sierra Foothills shop — Shopify backend, live catalog from the Western Power Sports API, drop-ship ordering, newsletter signup.
+- [DJ Mic Rose](https://djmicrose.com): Booking site for a working DJ — date/time picker, validated enquiry form, bookings to the inbox.
+- [Sierra Images](https://sierraimages.org): Photography marketplace on Laravel — galleries, photographer/customer roles, Stripe checkout, Cloudinary delivery, automated commission tracking.
+- [The Paediatric Nurse](https://thepaediatricnurse.com): Content site for a paediatric nursing practice.
+- [Best Western Game Soundtracks](https://bestwesterngamesoundtracks.com): Catalogue site for game soundtracks.
+
+## Open source
+
+- [signalbot](https://signalbot.cannappy.org): Insider and Congress trading disclosures, ingested, normalized and backtested, with an MCP connector for AI agents.
+- [freeply](https://github.com/chris-jk/freeply): Instagram comment-to-DM automation, self-hostable on Cloudflare.
+- [Focus](https://github.com/chris-jk/focus-app-mac): Mac menu bar Pomodoro timer and day planner.
+- [Desktop Switch](https://github.com/chris-jk/desktop-switch): Menu bar toggle for Mac desktop icons.
+- [SpeakHUD](https://github.com/chris-jk/SpeakHUD): Text-to-speech HUD with word highlighting.
+- [BS Detector](https://github.com/chris-jk/claude-bs-detector): Fact-checks a short-form video claim by claim.
+- [Outliers](https://github.com/chris-jk/claude-outliers): Finds the videos overperforming a channel's own baseline.
+- [Claude YouTube Editor](https://github.com/chris-jk/claude-youtube-editor): Raw recording to published video — cut, visuals, voice, thumbnail, upload.
+- [Meta Ads Spy](https://github.com/chris-jk/Meta-Ads-Spy-Claude-Code-Airtable): Competitor ads from the Meta Ad Library into Airtable.
+- [MioBio](https://github.com/chris-jk/MioBio): One-file link-in-bio page with automatic app-store routing.
+
 ## Contact
 
 - Contact form on the [homepage](https://cannappy.org/); Cannappy LLC, 1401 21st St #12541, Sacramento, CA.
