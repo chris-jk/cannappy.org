@@ -18,7 +18,76 @@ export type SubmissionsEnv = {
   CLOUDFLARE_STREAM_API_TOKEN?: string; // secret, needs Stream:Edit
   SUPABASE_URL?: string;
   SUPABASE_ANON_KEY?: string; // secret (publishable, but keep it out of git)
+  // The new-submission email reuses the contact form's Resend setup. Optional:
+  // without a key the upload still completes, you just don't hear about it.
+  RESEND_API_KEY?: string;
+  CONTACT_TO?: string;
+  CONTACT_FROM?: string;
 };
+
+type CompletedSubmission = {
+  id: string;
+  strain_name: string;
+  strain_slug: string | null;
+  handle: string;
+  platform: string | null;
+  stream_uid: string;
+};
+
+function escapeHtml(value: string): string {
+  return value.replace(
+    /[&<>"']/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string,
+  );
+}
+
+/**
+ * Emails CONTACT_TO that a review finished uploading, so new submissions don't
+ * sit unseen in Supabase. Called only when the row actually moved from
+ * 'uploading' to 'pending', so a retried /complete doesn't email twice.
+ *
+ * Never throws and never fails the request: the user's upload is done either
+ * way, and a mail outage shouldn't tell them otherwise.
+ */
+async function notifyNewSubmission(env: SubmissionsEnv, row: CompletedSubmission): Promise<void> {
+  if (!env.RESEND_API_KEY) {
+    console.error("video submission email skipped: RESEND_API_KEY is not set");
+    return;
+  }
+  const streamUrl = `https://dash.cloudflare.com/${env.CF_ACCOUNT_ID}/stream/videos/${row.stream_uid}`;
+  const lines = [
+    `Strain: ${row.strain_name}${row.strain_slug ? ` (${row.strain_slug})` : ""}`,
+    `Credit: @${row.handle}`,
+    `Platform: ${row.platform ?? "unknown"}`,
+    `Submission id: ${row.id}`,
+    `Watch: ${streamUrl}`,
+  ];
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        from: env.CONTACT_FROM ?? "Cannappy Contact <onboarding@resend.dev>",
+        to: [env.CONTACT_TO ?? "amgmpro@gmail.com"],
+        subject: `[StrainGuide] New video review: ${row.strain_name} by @${row.handle}`,
+        text: `A strain review video finished uploading and is pending review.\n\n${lines.join("\n")}\n\nApprove or reject it in Supabase: video_submissions.`,
+        html: `<p>A strain review video finished uploading and is <strong>pending review</strong>.</p>
+<p><strong>Strain:</strong> ${escapeHtml(row.strain_name)}${row.strain_slug ? ` (${escapeHtml(row.strain_slug)})` : ""}<br>
+<strong>Credit:</strong> @${escapeHtml(row.handle)}<br>
+<strong>Platform:</strong> ${escapeHtml(row.platform ?? "unknown")}<br>
+<strong>Submission id:</strong> ${escapeHtml(row.id)}</p>
+<p><a href="${escapeHtml(streamUrl)}">Watch it in Cloudflare Stream</a></p>
+<p style="color:#5f625f;font-size:13px">Approve or reject it in Supabase: <code>video_submissions</code>.</p>`,
+      }),
+    });
+    if (!res.ok) console.error("video submission email failed", res.status, await res.text());
+  } catch (e) {
+    console.error("video submission email threw", e);
+  }
+}
 
 const MAX_DURATION_SECONDS = 200; // 3 minutes + slack
 const MAX_BYTES = 1_500_000_000; // 1.5 GB — a 3-minute 4K phone clip fits
@@ -219,7 +288,7 @@ export async function handleCompleteSubmission(
   const res = await rest(
     env,
     token,
-    `video_submissions?id=eq.${id}&status=eq.uploading&select=id`,
+    `video_submissions?id=eq.${id}&status=eq.uploading&select=id,strain_name,strain_slug,handle,platform,stream_uid`,
     {
       method: "PATCH",
       prefer: "return=representation",
@@ -233,7 +302,9 @@ export async function handleCompleteSubmission(
     console.error("video_submissions complete failed", res.status, await res.text());
     return json({ error: "Couldn't finish your submission." }, 502);
   }
-  const rows = (await res.json()) as Array<{ id: string }>;
+  const rows = (await res.json()) as CompletedSubmission[];
+  // Zero rows means this was a retry of an already-completed submission.
+  if (rows.length === 1) await notifyNewSubmission(env, rows[0]);
   return json({ ok: true, updated: rows.length });
 }
 
