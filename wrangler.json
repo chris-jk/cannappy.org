@@ -15,6 +15,7 @@
     "CONTACT_TO": "amgmpro@gmail.com",
     "CONTACT_FROM": "Cannappy Website <website@mail.cannappy.org>",
     "CF_ACCOUNT_ID": "a5c588da001d1dd63e92d484fc248076",
+    "STREAM_CUSTOMER_HOST": "customer-wgw2mann4t2qiz1h.cloudflarestream.com",
     "SUPABASE_URL": "https://gxwgqoxhujmbrhbupuvi.supabase.co"
   },
   "build": {

@@ -23,6 +23,11 @@ export type SubmissionsEnv = {
   RESEND_API_KEY?: string;
   CONTACT_TO?: string;
   CONTACT_FROM?: string;
+  // The email's watch link. Stream playback needs a signed token that lives at
+  // most 24h, so the email carries a link to this Worker instead, HMAC-signed
+  // over the video uid; each click mints a fresh short-lived token.
+  STREAM_CUSTOMER_HOST?: string; // e.g. customer-xxxx.cloudflarestream.com
+  WATCH_LINK_SECRET?: string; // secret
 };
 
 type CompletedSubmission = {
@@ -55,12 +60,14 @@ async function notifyNewSubmission(env: SubmissionsEnv, row: CompletedSubmission
     return;
   }
   const streamUrl = `https://dash.cloudflare.com/${env.CF_ACCOUNT_ID}/stream/videos/${row.stream_uid}`;
+  const watchUrl = await watchLink(env, row.stream_uid);
   const lines = [
     `Strain: ${row.strain_name}${row.strain_slug ? ` (${row.strain_slug})` : ""}`,
     `Credit: @${row.handle}`,
     `Platform: ${row.platform ?? "unknown"}`,
     `Submission id: ${row.id}`,
-    `Watch: ${streamUrl}`,
+    ...(watchUrl ? [`Watch: ${watchUrl}`] : []),
+    `Dashboard: ${streamUrl}`,
   ];
   try {
     const res = await fetch("https://api.resend.com/emails", {
@@ -79,7 +86,7 @@ async function notifyNewSubmission(env: SubmissionsEnv, row: CompletedSubmission
 <strong>Credit:</strong> @${escapeHtml(row.handle)}<br>
 <strong>Platform:</strong> ${escapeHtml(row.platform ?? "unknown")}<br>
 <strong>Submission id:</strong> ${escapeHtml(row.id)}</p>
-<p><a href="${escapeHtml(streamUrl)}">Watch it in Cloudflare Stream</a></p>
+<p>${watchUrl ? `<a href="${escapeHtml(watchUrl)}">Watch the video</a> · ` : ""}<a href="${escapeHtml(streamUrl)}">Open in Cloudflare Stream</a></p>
 <p style="color:#5f625f;font-size:13px">Approve or reject it in Supabase: <code>video_submissions</code>.</p>`,
       }),
     });
@@ -87,6 +94,57 @@ async function notifyNewSubmission(env: SubmissionsEnv, row: CompletedSubmission
   } catch (e) {
     console.error("video submission email threw", e);
   }
+}
+
+async function hmac(secret: string, message: string): Promise<string> {
+  const key = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const sig = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(message));
+  return [...new Uint8Array(sig)].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+/** A non-expiring link that only this Worker can turn into playback. */
+async function watchLink(env: SubmissionsEnv, uid: string): Promise<string | null> {
+  if (!env.WATCH_LINK_SECRET || !env.STREAM_CUSTOMER_HOST) return null;
+  const sig = await hmac(env.WATCH_LINK_SECRET, uid);
+  return `https://cannappy.org/api/strainguide/watch/${uid}?sig=${sig}`;
+}
+
+/** GET /api/strainguide/watch/:uid?sig= → redirect to a 1-hour signed player URL. */
+export async function handleWatch(env: SubmissionsEnv, uid: string, url: URL): Promise<Response> {
+  if (!env.WATCH_LINK_SECRET || !env.STREAM_CUSTOMER_HOST || !env.CF_ACCOUNT_ID || !env.CLOUDFLARE_STREAM_API_TOKEN) {
+    return new Response("Not configured", { status: 500 });
+  }
+  if (!/^[0-9a-f]{32}$/.test(uid)) return new Response("Not found", { status: 404 });
+  const expected = await hmac(env.WATCH_LINK_SECRET, uid);
+  const given = url.searchParams.get("sig") ?? "";
+  let diff = expected.length ^ given.length;
+  for (let i = 0; i < expected.length; i++) diff |= expected.charCodeAt(i) ^ (given.charCodeAt(i) || 0);
+  if (diff !== 0) return new Response("Not found", { status: 404 });
+
+  const res = await fetch(
+    `https://api.cloudflare.com/client/v4/accounts/${env.CF_ACCOUNT_ID}/stream/${uid}/token`,
+    {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${env.CLOUDFLARE_STREAM_API_TOKEN}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ exp: Math.floor(Date.now() / 1000) + 3600 }),
+    },
+  );
+  const body = (await res.json().catch(() => null)) as { result?: { token?: string } } | null;
+  const token = body?.result?.token;
+  if (!res.ok || !token) {
+    console.error("Stream token mint failed", res.status, JSON.stringify(body));
+    return new Response("Couldn't open the video. Try again in a minute.", { status: 502 });
+  }
+  return Response.redirect(`https://${env.STREAM_CUSTOMER_HOST}/${token}/watch`, 302);
 }
 
 const MAX_DURATION_SECONDS = 200; // 3 minutes + slack
@@ -314,6 +372,8 @@ export function routeSubmissions(
   env: SubmissionsEnv,
   url: URL,
 ): Promise<Response> | null {
+  const watch = /^\/api\/strainguide\/watch\/([^/]+)$/.exec(url.pathname);
+  if (watch && request.method === "GET") return handleWatch(env, watch[1], url);
   if (request.method !== "POST") return null;
   if (url.pathname === "/api/strainguide/submissions") {
     return handleCreateSubmission(request, env);
