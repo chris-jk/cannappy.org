@@ -13,7 +13,7 @@
   },
   "vars": {
     "CONTACT_TO": "amgmpro@gmail.com",
-    "CONTACT_FROM": "Cannappy Website <cannappy-website@letsgosite.com>",
+    "CONTACT_FROM": "Cannappy Website <website@mail.cannappy.org>",
     "CF_ACCOUNT_ID": "a5c588da001d1dd63e92d484fc248076",
     "SUPABASE_URL": "https://gxwgqoxhujmbrhbupuvi.supabase.co"
   },
