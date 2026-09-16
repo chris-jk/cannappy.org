@@ -1,5 +1,8 @@
 import { routePartykitRequest, Server } from "partyserver";
 
+import { routeSubmissions } from "./submissions";
+import type { SubmissionsEnv } from "./submissions";
+
 import type { OutgoingMessage, Position } from "../shared";
 import type { Connection, ConnectionContext } from "partyserver";
 
@@ -185,6 +188,8 @@ export default {
     if (request.method === "POST" && url.pathname === "/contact") {
       return handleContact(request, env as ContactEnv);
     }
+    const submissions = routeSubmissions(request, env as SubmissionsEnv, url);
+    if (submissions) return submissions;
     return (
       (await routePartykitRequest(request, { ...env })) ||
       new Response("Not Found", { status: 404 })

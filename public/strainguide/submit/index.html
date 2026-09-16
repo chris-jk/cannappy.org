@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Submit a strain review — StrainGuide</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0d0f0e">
+  <script>
+    (() => {
+      const q = new URLSearchParams(location.search).get("theme");
+      const theme = q === "light" || (!q && localStorage.getItem("theme") === "light") ? "light" : "dark";
+      document.documentElement.dataset.theme = theme;
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#0d0f0e" : "#f7f6f2");
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      color-scheme: dark;
+      --bg: #0d0f0e; --surface: #151816; --surface-2: #1e231f;
+      --border: #272d28; --border-hover: #3a443d;
+      --text: #f3f1eb; --text-2: #a5aaa3; --text-3: #6f766f;
+      --accent: #7bd88f; --accent-soft: rgba(123, 216, 143, 0.13);
+      --danger: #ff6b5e; --danger-soft: rgba(255, 107, 94, 0.12);
+      --sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    [data-theme="light"] {
+      color-scheme: light;
+      --bg: #f7f6f2; --surface: #ffffff; --surface-2: #efede6;
+      --border: #dedbd2; --border-hover: #c9c4b8;
+      --text: #171717; --text-2: #5f625f; --text-3: #8b8f8a;
+      --accent: #2f6f4e; --accent-soft: #e4efe7;
+      --danger: #c8412f; --danger-soft: #f6e2de;
+    }
+    body {
+      font-family: var(--sans); background: var(--bg); color: var(--text-2);
+      line-height: 1.55; -webkit-font-smoothing: antialiased; min-height: 100vh;
+      padding: max(1rem, env(safe-area-inset-top)) 1rem max(2rem, env(safe-area-inset-bottom));
+    }
+    main { max-width: 520px; margin: 0 auto; }
+    h1 { color: var(--text); font-size: 1.45rem; font-weight: 800; letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 0.5rem; }
+    .lede { font-size: 0.95rem; margin-bottom: 1.25rem; }
+    .lede strong { color: var(--text); }
+    .rewards { display: grid; gap: 0.5rem; margin: 0 0 1.4rem; }
+    .reward { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 0.7rem 0.9rem; font-size: 0.86rem; }
+    .reward b { color: var(--text); display: block; margin-bottom: 0.1rem; }
+    .reward.pick { border-color: var(--accent); background: var(--accent-soft); }
+    label { display: block; color: var(--text); font-size: 0.86rem; font-weight: 650; margin: 0 0 0.35rem; }
+    .field { margin-bottom: 1rem; }
+    input[type="text"] {
+      width: 100%; font: inherit; font-size: 1rem; color: var(--text);
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 0.75rem 0.9rem; outline: none;
+    }
+    input[type="text"]:focus { border-color: var(--accent); }
+    input[type="text"][readonly] { color: var(--text-2); background: var(--surface-2); }
+    .hint { font-size: 0.78rem; color: var(--text-3); margin-top: 0.3rem; }
+    .drop {
+      display: flex; align-items: center; gap: 0.8rem; cursor: pointer;
+      background: var(--surface); border: 1px dashed var(--border-hover); border-radius: 14px; padding: 0.9rem;
+    }
+    .drop:active { background: var(--surface-2); }
+    .drop .icon { width: 44px; height: 44px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; flex: none; }
+    .drop .txt b { color: var(--text); display: block; font-size: 0.92rem; }
+    .drop .txt span { font-size: 0.8rem; color: var(--text-3); }
+    .drop input { display: none; }
+    .spec { margin: 0.6rem 0 0 1.1rem; font-size: 0.82rem; color: var(--text-3); }
+    .spec li { margin-bottom: 0.15rem; }
+    .terms { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 0.9rem; margin: 1.1rem 0; }
+    .terms h2 { color: var(--text); font-size: 0.86rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .terms ol { margin-left: 1.1rem; font-size: 0.8rem; }
+    .terms li { margin-bottom: 0.35rem; }
+    .check { display: flex; gap: 0.6rem; align-items: flex-start; margin-top: 0.8rem; color: var(--text); font-size: 0.86rem; font-weight: 600; cursor: pointer; }
+    .check input { width: 20px; height: 20px; flex: none; margin-top: 0.05rem; accent-color: var(--accent); }
+    .btn {
+      width: 100%; font: inherit; font-size: 1rem; font-weight: 750; border: 0; border-radius: 999px;
+      padding: 0.95rem; cursor: pointer; background: var(--accent); color: #05130b;
+    }
+    [data-theme="light"] .btn { color: #fff; }
+    .btn:disabled { opacity: 0.45; cursor: default; }
+    .progress { display: none; margin-top: 1rem; }
+    .bar { height: 8px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
+    .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width 0.25s; }
+    .progress p { font-size: 0.82rem; margin-top: 0.4rem; }
+    .error { display: none; background: var(--danger-soft); color: var(--danger); border-radius: 12px; padding: 0.7rem 0.9rem; font-size: 0.86rem; margin-top: 0.9rem; }
+    .done { display: none; text-align: center; padding: 2.5rem 0; }
+    .done .big { font-size: 3rem; margin-bottom: 0.6rem; }
+    .done h1 { margin-bottom: 0.5rem; }
+    .done p { margin-bottom: 0.5rem; }
+    .fine { font-size: 0.76rem; color: var(--text-3); margin-top: 1rem; text-align: center; }
+  </style>
+</head>
+<body>
+<main>
+  <section id="form-view">
+    <h1>Film your strain review. Get on the page.</h1>
+    <p class="lede">The strain, the look, the smell, the effects. <strong>45 seconds to 3 minutes</strong>, phone footage is fine. Featured reviews get embedded on that strain's page in StrainGuide and published on the DojaFarm channel.</p>
+
+    <div class="rewards">
+      <div class="reward"><b>Featured</b>Embedded on the strain page + DojaFarm + your credit + <b style="display:inline">1 year of Premium</b></div>
+      <div class="reward pick"><b>Monthly pick</b>All of that + <b style="display:inline">lifetime Premium</b> + its own feature video</div>
+    </div>
+
+    <form id="f" novalidate>
+      <div class="field">
+        <label for="strain">Strain</label>
+        <input type="text" id="strain" name="strain" placeholder="e.g. Blue Dream" maxlength="120" autocomplete="off" required>
+      </div>
+      <div class="field">
+        <label for="handle">Credit me as</label>
+        <input type="text" id="handle" name="handle" placeholder="@yourhandle" maxlength="41" autocomplete="off" autocapitalize="off" required>
+        <p class="hint">Shown on the strain page and in the video credits.</p>
+      </div>
+      <div class="field">
+        <label>Video</label>
+        <label class="drop" for="file">
+          <span class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 10l4.55-2.28A1 1 0 0 1 21 8.62v6.76a1 1 0 0 1-1.45.9L15 14"/><rect x="3" y="6" width="12" height="12" rx="2"/></svg></span>
+          <span class="txt"><b id="file-label">Choose a video</b><span id="file-meta">Vertical for Shorts, horizontal is fine too</span></span>
+          <input type="file" id="file" name="file" accept="video/*">
+        </label>
+        <ul class="spec">
+          <li>Flower up close, the packaging or label, and you talking</li>
+          <li>Cover: look, smell, taste, effects, who it's for</li>
+          <li>Reviews are the format, not sessions</li>
+        </ul>
+      </div>
+
+      <div class="terms">
+        <h2>Before you submit</h2>
+        <ol>
+          <li>I am 21 or older.</li>
+          <li>I am located where adult cannabis use is legal, and this review was filmed there.</li>
+          <li>I own this footage and everything in it, and nobody else appears in it without their consent.</li>
+          <li>I grant Cannappy LLC a non-exclusive, worldwide, perpetual, royalty-free license to edit, publish, and distribute this video and my name/handle in StrainGuide, on the DojaFarm channel, and on associated accounts.</li>
+          <li>Submissions are not guaranteed to be featured; rewards are issued only for featured or selected reviews.</li>
+          <li>I have not been paid by any brand to make this review, or if I have, I've said so in the video.</li>
+          <li>Cannappy may decline or remove any submission at its discretion.</li>
+        </ol>
+        <label class="check"><input type="checkbox" id="attest"> I confirm all of the above</label>
+      </div>
+
+      <button class="btn" id="submit" type="submit" disabled>Submit review</button>
+      <div class="progress" id="progress"><div class="bar"><i id="bar"></i></div><p id="progress-text">Uploading…</p></div>
+      <div class="error" id="error"></div>
+      <p class="fine">Premium rewards are issued by promo code. One review a month is picked for lifetime Premium.</p>
+    </form>
+  </section>
+
+  <section class="done" id="done-view">
+    <div class="big">🎬</div>
+    <h1>Got it.</h1>
+    <p>Your review is in the queue. If it's featured you'll hear from us in the app with your Premium code.</p>
+    <p class="fine">You can close this screen.</p>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/tus-js-client@4.3.1/dist/tus.min.js"></script>
+<script>
+(() => {
+  const qs = new URLSearchParams(location.search);
+  const hash = new URLSearchParams(location.hash.replace(/^#/, ""));
+  const token = hash.get("token") || "";
+  const platform = qs.get("platform") || "web";
+  const strainSlug = qs.get("slug") || null;
+
+  const $ = (id) => document.getElementById(id);
+  const form = $("f"), strain = $("strain"), handle = $("handle"), file = $("file");
+  const attest = $("attest"), submit = $("submit"), error = $("error");
+  const progress = $("progress"), bar = $("bar"), progressText = $("progress-text");
+
+  if (qs.get("strain")) {
+    strain.value = qs.get("strain");
+    if (strainSlug) strain.readOnly = true;
+  }
+  if (qs.get("handle")) handle.value = qs.get("handle");
+
+  const showError = (msg) => { error.textContent = msg; error.style.display = msg ? "block" : "none"; };
+  const fmt = (n) => n > 1e9 ? (n / 1e9).toFixed(2) + " GB" : (n / 1e6).toFixed(0) + " MB";
+
+  if (!token) showError("Open this screen from the StrainGuide app so we can credit your account.");
+
+  const refresh = () => {
+    submit.disabled = !(token && strain.value.trim() && handle.value.trim() && file.files[0] && attest.checked);
+  };
+  [strain, handle, attest].forEach((el) => el.addEventListener("input", refresh));
+  file.addEventListener("change", () => {
+    const f = file.files[0];
+    $("file-label").textContent = f ? f.name : "Choose a video";
+    $("file-meta").textContent = f ? fmt(f.size) : "Vertical for Shorts, horizontal is fine too";
+    refresh();
+  });
+
+  async function api(path, body) {
+    const res = await fetch(path, {
+      method: "POST",
+      headers: { "content-type": "application/json", authorization: `Bearer ${token}` },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || "Something went wrong.");
+    return data;
+  }
+
+  function uploadToStream(f, uploadUrl) {
+    return new Promise((resolve, reject) => {
+      const u = new tus.Upload(f, {
+        uploadUrl,
+        chunkSize: 50 * 1024 * 1024, // Stream wants multiples of 256 KiB, ≥ 5 MB
+        retryDelays: [0, 1000, 3000, 5000, 10000],
+        metadata: { filename: f.name, filetype: f.type },
+        onProgress: (sent, total) => {
+          const pct = total ? Math.round((sent / total) * 100) : 0;
+          bar.style.width = pct + "%";
+          progressText.textContent = `Uploading… ${pct}% (${fmt(sent)} of ${fmt(total)})`;
+        },
+        onSuccess: resolve,
+        onError: reject,
+      });
+      u.start();
+    });
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (submit.disabled) return;
+    showError("");
+    const f = file.files[0];
+    submit.disabled = true;
+    progress.style.display = "block";
+    bar.style.width = "0%";
+    progressText.textContent = "Getting ready…";
+    try {
+      const created = await api("/api/strainguide/submissions", {
+        strainName: strain.value.trim(),
+        strainSlug,
+        handle: handle.value.trim(),
+        platform,
+        fileSize: f.size,
+        attested: attest.checked,
+      });
+      await uploadToStream(f, created.uploadUrl);
+      progressText.textContent = "Finishing…";
+      await api(`/api/strainguide/submissions/${created.id}/complete`, {});
+      $("form-view").style.display = "none";
+      $("done-view").style.display = "block";
+      window.scrollTo(0, 0);
+      try { if (window.StrainGuide) window.StrainGuide.postMessage("submitted"); } catch (_) {}
+    } catch (err) {
+      progress.style.display = "none";
+      showError(err && err.message ? err.message : "Upload failed. Check your connection and try again.");
+      refresh();
+    }
+  });
+})();
+</script>
+</body>
+</html>
