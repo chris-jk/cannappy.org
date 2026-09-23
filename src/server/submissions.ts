@@ -21,6 +21,8 @@ export type SubmissionsEnv = {
   // The new-submission email reuses the contact form's Resend setup. Optional:
   // without a key the upload still completes, you just don't hear about it.
   RESEND_API_KEY?: string;
+  // ntfy.sh topic (secret): when set, a new review is a phone push, not an email.
+  NTFY_TOPIC?: string;
   CONTACT_TO?: string;
   CONTACT_FROM?: string;
   // The email's watch link. Stream playback needs a signed token that lives at
@@ -55,6 +57,25 @@ function escapeHtml(value: string): string {
  * way, and a mail outage shouldn't tell them otherwise.
  */
 async function notifyNewSubmission(env: SubmissionsEnv, row: CompletedSubmission): Promise<void> {
+  // A pending review needs the owner's approval, so it goes to the phone when a
+  // topic is set (owner, 2026-09-23: fewer emails); otherwise the email below.
+  if (env.NTFY_TOPIC) {
+    const watchUrl = await watchLink(env, row.stream_uid);
+    try {
+      await fetch(`https://ntfy.sh/${env.NTFY_TOPIC}`, {
+        method: "POST",
+        body: `${row.strain_name} by @${row.handle} (${row.platform ?? "unknown"}) is pending review. Approve or reject in Supabase: video_submissions.`,
+        headers: {
+          Title: "Strain Guide: new video review",
+          Priority: "high",
+          ...(watchUrl ? { Click: watchUrl } : {}),
+        },
+      });
+    } catch (e) {
+      console.error("video submission push threw", e);
+    }
+    return;
+  }
   if (!env.RESEND_API_KEY) {
     console.error("video submission email skipped: RESEND_API_KEY is not set");
     return;
