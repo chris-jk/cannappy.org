@@ -13,6 +13,8 @@
 //
 // Curation (approve / reject / feature) is not here; it's a service-role job.
 
+import { pushPhone } from "./push";
+
 export type SubmissionsEnv = {
   CF_ACCOUNT_ID?: string;
   CLOUDFLARE_STREAM_API_TOKEN?: string; // secret, needs Stream:Edit
@@ -21,8 +23,10 @@ export type SubmissionsEnv = {
   // The new-submission email reuses the contact form's Resend setup. Optional:
   // without a key the upload still completes, you just don't hear about it.
   RESEND_API_KEY?: string;
-  // ntfy.sh topic (secret): when set, a new review is a phone push, not an email.
-  NTFY_TOPIC?: string;
+  // Pushover credentials (secrets): a new review is a phone push first, and an
+  // email only when the push does not land.
+  PUSHOVER_USER?: string;
+  PUSHOVER_TOKEN?: string;
   CONTACT_TO?: string;
   CONTACT_FROM?: string;
   // The email's watch link. Stream playback needs a signed token that lives at
@@ -49,39 +53,33 @@ function escapeHtml(value: string): string {
 }
 
 /**
- * Emails CONTACT_TO that a review finished uploading, so new submissions don't
+ * Tells the owner that a review finished uploading, so new submissions don't
  * sit unseen in Supabase. Called only when the row actually moved from
- * 'uploading' to 'pending', so a retried /complete doesn't email twice.
+ * 'uploading' to 'pending', so a retried /complete doesn't notify twice.
+ *
+ * A pending review needs the owner's approval, so it goes to the phone first
+ * (owner, 2026-09-23: fewer emails) via Pushover; the email to CONTACT_TO goes
+ * only when the push did not land (no credentials, refused, unreachable), so a
+ * review is never announced nowhere. The push carries the strain, the public
+ * @handle and the watch link — nothing private.
  *
  * Never throws and never fails the request: the user's upload is done either
- * way, and a mail outage shouldn't tell them otherwise.
+ * way, and a push or mail outage shouldn't tell them otherwise.
  */
 async function notifyNewSubmission(env: SubmissionsEnv, row: CompletedSubmission): Promise<void> {
-  // A pending review needs the owner's approval, so it goes to the phone when a
-  // topic is set (owner, 2026-09-23: fewer emails); otherwise the email below.
-  if (env.NTFY_TOPIC) {
-    const watchUrl = await watchLink(env, row.stream_uid);
-    try {
-      await fetch(`https://ntfy.sh/${env.NTFY_TOPIC}`, {
-        method: "POST",
-        body: `${row.strain_name} by @${row.handle} (${row.platform ?? "unknown"}) is pending review. Approve or reject in Supabase: video_submissions.`,
-        headers: {
-          Title: "Strain Guide: new video review",
-          Priority: "high",
-          ...(watchUrl ? { Click: watchUrl } : {}),
-        },
-      });
-    } catch (e) {
-      console.error("video submission push threw", e);
-    }
-    return;
-  }
+  const watchUrl = await watchLink(env, row.stream_uid);
+  const pushed = await pushPhone(env, {
+    title: "Strain Guide: new video review",
+    message: `${row.strain_name} by @${row.handle} (${row.platform ?? "unknown"}) is pending review. Approve or reject in Supabase: video_submissions.`,
+    priority: "high",
+    ...(watchUrl ? { click: watchUrl } : {}),
+  });
+  if (pushed) return;
   if (!env.RESEND_API_KEY) {
-    console.error("video submission email skipped: RESEND_API_KEY is not set");
+    console.error("video submission notice lost: the push did not land and RESEND_API_KEY is not set");
     return;
   }
   const streamUrl = `https://dash.cloudflare.com/${env.CF_ACCOUNT_ID}/stream/videos/${row.stream_uid}`;
-  const watchUrl = await watchLink(env, row.stream_uid);
   const lines = [
     `Strain: ${row.strain_name}${row.strain_slug ? ` (${row.strain_slug})` : ""}`,
     `Credit: @${row.handle}`,
