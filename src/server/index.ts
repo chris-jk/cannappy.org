@@ -2,6 +2,7 @@ import { routePartykitRequest, Server } from "partyserver";
 
 import { routeSubmissions } from "./submissions";
 import type { SubmissionsEnv } from "./submissions";
+import { CONTACT_HEADS_UP, opsNotify } from "./ops-notify";
 
 import type { OutgoingMessage, Position } from "../shared";
 import type { Connection, ConnectionContext } from "partyserver";
@@ -81,12 +82,13 @@ export class Globe extends Server {
 }
 
 // Extra bindings the contact endpoint expects. These are set as secrets/vars
-// (RESEND_API_KEY via `wrangler secret put`); CONTACT_TO / CONTACT_FROM are
-// optional overrides with sensible defaults below.
+// (RESEND_API_KEY and OPS_NOTIFY_TOKEN via `wrangler secret put`); CONTACT_TO /
+// CONTACT_FROM are optional overrides with sensible defaults below.
 type ContactEnv = Env & {
   RESEND_API_KEY?: string;
   CONTACT_TO?: string;
   CONTACT_FROM?: string;
+  OPS_NOTIFY_TOKEN?: string;
 };
 
 const JSON_HEADERS = { "content-type": "application/json" };
@@ -108,6 +110,7 @@ function escapeHtml(value: string): string {
 async function handleContact(
   request: Request,
   env: ContactEnv,
+  ctx: ExecutionContext,
 ): Promise<Response> {
   let body: { name?: string; email?: string; message?: string };
   try {
@@ -179,14 +182,24 @@ ${message}`,
     );
   }
 
+  // The email above is the message (reply from the inbox). Beside it, a phone
+  // heads-up through ops-notify with fixed text — no name, address or message.
+  // Best-effort after the response: a failed or muted heads-up never touches
+  // the email or this reply.
+  ctx.waitUntil(opsNotify(env, CONTACT_HEADS_UP).catch(() => "failed"));
+
   return Response.json({ ok: true });
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(
+    request: Request,
+    env: Env,
+    ctx: ExecutionContext,
+  ): Promise<Response> {
     const url = new URL(request.url);
     if (request.method === "POST" && url.pathname === "/contact") {
-      return handleContact(request, env as ContactEnv);
+      return handleContact(request, env as ContactEnv, ctx);
     }
     const submissions = routeSubmissions(request, env as SubmissionsEnv, url);
     if (submissions) return submissions;
