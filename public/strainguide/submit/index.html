@@ -92,6 +92,8 @@
     .done h1 { margin-bottom: 0.5rem; }
     .done p { margin-bottom: 0.5rem; }
     .fine { font-size: 0.76rem; color: var(--text-3); margin-top: 1rem; text-align: center; }
+    main a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+    .rules-link { display: inline-block; margin-top: 0.3rem; font-size: 0.8rem; font-weight: 600; }
   </style>
 </head>
 <body>
@@ -102,7 +104,7 @@
 
     <div class="rewards">
       <div class="reward"><b>Featured</b>Embedded on the strain page + published on DojaFarm + a shout-out with your credit</div>
-      <div class="reward pick"><b>Monthly pick</b>All of that + its own feature video + <b style="display:inline">1 year of Premium</b></div>
+      <div class="reward pick"><b>Monthly pick</b>All of that + its own feature video + <b style="display:inline">1 year of Premium</b><br><a class="rules-link" href="https://strainguide.app/official-rules" target="_blank" rel="noopener">Official rules</a></div>
     </div>
 
     <form id="f" novalidate>
@@ -125,7 +127,7 @@
         <ul class="spec">
           <li>Flower up close, the packaging or label, and you talking</li>
           <li>Cover: look, smell, taste, effects, who it's for</li>
-          <li>Reviews are the format, not sessions</li>
+          <li>Reviews are the format, not sessions: no consuming on camera</li>
         </ul>
       </div>
 
@@ -139,6 +141,7 @@
           <li>Submissions are not guaranteed to be featured; the Premium reward goes only to the monthly pick.</li>
           <li>I have not been paid by any brand to make this review, or if I have, I've said so in the video.</li>
           <li>Cannappy may decline or remove any submission at its discretion.</li>
+          <li>The monthly pick follows its <a href="https://strainguide.app/official-rules" target="_blank" rel="noopener">Official Rules</a>, and I agree to them.</li>
         </ol>
         <label class="check"><input type="checkbox" id="attest"> I confirm all of the above</label>
       </div>
@@ -146,7 +149,7 @@
       <button class="btn" id="submit" type="submit" disabled>Submit review</button>
       <div class="progress" id="progress"><div class="bar"><i id="bar"></i></div><p id="progress-text">Uploading…</p></div>
       <div class="error" id="error"></div>
-      <p class="fine">One review a month is picked for its own feature video and a year of Premium, issued by promo code.</p>
+      <p class="fine">One review a month is picked for its own feature video and a year of Premium, issued by promo code. <a href="https://strainguide.app/official-rules" target="_blank" rel="noopener">Official rules</a>.</p>
     </form>
   </section>
 
