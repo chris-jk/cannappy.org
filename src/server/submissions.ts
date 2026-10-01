@@ -23,8 +23,8 @@ export type SubmissionsEnv = {
   // The new-submission email reuses the contact form's Resend setup. Optional:
   // without a key the upload still completes, you just don't hear about it.
   RESEND_API_KEY?: string;
-  // Pushover credentials (secrets): a new review is a phone push first, and an
-  // email only when the push does not land.
+  // Pushover credentials (secrets), checked by push-relay: a new review is a
+  // phone push (ntfy) first, and an email only when the push does not land.
   PUSHOVER_USER?: string;
   PUSHOVER_TOKEN?: string;
   CONTACT_TO?: string;
@@ -58,9 +58,10 @@ function escapeHtml(value: string): string {
  * 'uploading' to 'pending', so a retried /complete doesn't notify twice.
  *
  * A pending review needs the owner's approval, so it goes to the phone first
- * (owner, 2026-09-23: fewer emails) via Pushover; the email to CONTACT_TO goes
- * only when the push did not land (no credentials, refused, unreachable), so a
- * review is never announced nowhere. The push carries the strain, the public
+ * (owner, 2026-09-23: fewer emails), to ntfy through push-relay
+ * (src/server/push.ts); the email to CONTACT_TO goes only when the push did
+ * not land (no credentials, refused, unreachable), so a review is never
+ * announced nowhere. The push carries the strain, the public
  * @handle and the watch link — nothing private.
  *
  * Never throws and never fails the request: the user's upload is done either

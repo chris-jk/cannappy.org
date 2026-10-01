@@ -1,13 +1,12 @@
-// Operator pushes to the owner's phone via Pushover (PUSHOVER_USER /
-// PUSHOVER_TOKEN secrets).
-//
-// ntfy.sh was the first choice, but it drops every request from Cloudflare
-// Workers (verified 2026-09-29: fetches time out), while api.pushover.net
-// answers in ~80ms. Pushover is a third party: never put contact addresses or
-// other private user data in a push — pushPhone redacts email addresses as a
-// backstop. Twin of email-ops src/push.ts and growguide-web src/lib/push.js.
+// Operator pushes to the owner's phone. They land in ntfy through push-relay
+// (cannappy/push-relay), an AWS Lambda that takes a Pushover-shaped request:
+// ntfy.sh drops every request from Cloudflare Workers (verified 2026-09-29) but
+// answers from AWS. The relay checks the PUSHOVER_USER / PUSHOVER_TOKEN secrets
+// before it publishes. Never put contact addresses or other private user data
+// in a push — pushPhone redacts email addresses as a backstop. Twin of
+// email-ops src/push.ts and growguide-web src/lib/push.js.
 
-const API = "https://api.pushover.net/1/messages.json";
+const API = "https://7ag3vsvr6orbopz4vy5wx4nqi40aduim.lambda-url.us-east-1.on.aws/";
 
 /** Pushover priority: -1 quiet (no sound), 0 normal, 1 high (bypasses quiet
  * hours). 2 (emergency) is never used: it needs retry/expire acknowledgement. */
