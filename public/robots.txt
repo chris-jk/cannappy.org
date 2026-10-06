@@ -3,3 +3,5 @@ Allow: /
 
 # AI-readable site summary
 # https://cannappy.org/llms.txt
+
+Sitemap: https://cannappy.org/sitemap.xml

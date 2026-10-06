@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Development for Startups and Small Businesses | Cannappy</title>
+  <meta name="description" content="Hire app developers who ship their own apps. Cannappy builds iPhone and Android apps with Flutter; a first version starts at $15,000. See prices, timelines and our live apps.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cannappy.org/app-development/">
+  <meta name="theme-color" content="#0d0f0e">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Cannappy">
+  <meta property="og:title" content="App Development for Startups and Small Businesses | Cannappy">
+  <meta property="og:description" content="Hire app developers who ship their own apps. Cannappy builds iPhone and Android apps with Flutter; a first version starts at $15,000. See prices, timelines and our live apps.">
+  <meta property="og:url" content="https://cannappy.org/app-development/">
+  <script>
+    (() => {
+      const theme = localStorage.getItem("theme") === "light" ? "light" : "dark";
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { color-scheme: dark; --bg:#0d0f0e; --surface:#151816; --surface-2:#1e231f; --border:#272d28; --text:#f3f1eb; --muted:#a8aca5; --accent:#7bd88f; --accent-soft:rgba(123,216,143,0.13); --on-accent:#0d0f0e; --sans:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+:root[data-theme="light"] { color-scheme: light; --bg:#f7f6f2; --surface:#ffffff; --surface-2:#f0eee8; --border:#dedbd2; --text:#171717; --muted:#5f625f; --accent:#2f6f4e; --accent-soft:#e4efe7; --on-accent:#ffffff; }
+body { background: var(--bg); color: var(--text); font: 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); }
+.wrap { max-width: 46rem; margin: 0 auto; padding: 0 20px; }
+header.top { border-bottom: 1px solid var(--border); }
+header.top .wrap { max-width: 72rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 22px; padding-top: 16px; padding-bottom: 16px; }
+.brand { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; color: var(--text); text-decoration: none; }
+.brand span { color: var(--accent); }
+nav.top { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.93rem; }
+nav.top a { color: var(--muted); text-decoration: none; }
+nav.top a:hover { color: var(--text); }
+.hero { padding: 56px 0 8px; }
+.eyebrow { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+h1 { font-size: clamp(2.1rem, 6.4vw, 3.3rem); line-height: 1.08; letter-spacing: -0.025em; font-weight: 800; }
+h2 { font-size: clamp(1.45rem, 4vw, 1.9rem); line-height: 1.2; letter-spacing: -0.015em; font-weight: 700; margin: 56px 0 14px; }
+h3 { font-size: 1.08rem; font-weight: 700; }
+p { margin: 0 0 14px; }
+.lede { font-size: 1.16rem; margin-top: 20px; }
+.muted { color: var(--muted); }
+.small { font-size: 0.88rem; }
+.cta { display: inline-block; margin-top: 18px; background: var(--accent); color: var(--on-accent); font-weight: 700; padding: 13px 22px; border-radius: 12px; text-decoration: none; }
+.three { margin-top: 34px; background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 0 14px 14px 0; padding: 20px 22px; }
+.three h2 { margin: 0 0 10px; font-size: 1.15rem; }
+ul { padding-left: 1.2rem; }
+li { margin: 8px 0; }
+li::marker { color: var(--accent); }
+.prices { display: grid; gap: 12px; margin: 18px 0; }
+.price { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; }
+.price .row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
+.price .amount { font-weight: 800; color: var(--accent); white-space: nowrap; }
+.price p { margin: 6px 0 0; color: var(--muted); font-size: 0.96rem; }
+ol.steps { list-style: none; padding: 0; counter-reset: step; }
+ol.steps li { counter-increment: step; position: relative; padding-left: 46px; margin: 18px 0; }
+ol.steps li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-weight: 800; display: grid; place-items: center; font-size: 0.9rem; }
+.faq h3 { margin: 26px 0 6px; }
+.faq p { color: var(--muted); }
+.apps { display: grid; gap: 12px; margin-top: 16px; }
+.app { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 20px; }
+.app p { margin: 4px 0 0; color: var(--muted); font-size: 0.96rem; }
+form.contact { margin-top: 18px; display: grid; gap: 12px; }
+form.contact input, form.contact textarea { width: 100%; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 13px 14px; font: inherit; }
+form.contact textarea { min-height: 140px; resize: vertical; }
+form.contact button { justify-self: start; background: var(--accent); color: var(--on-accent); font: inherit; font-weight: 700; border: 0; border-radius: 12px; padding: 13px 24px; cursor: pointer; }
+form.contact button[disabled] { opacity: 0.6; cursor: default; }
+#contact-note { min-height: 1.5em; }
+footer.bottom { border-top: 1px solid var(--border); margin-top: 72px; padding: 26px 0 40px; }
+footer.bottom .wrap { max-width: 72rem; display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: center; font-size: 0.9rem; }
+footer.bottom a { color: var(--muted); text-decoration: none; }
+footer.bottom p { margin: 0 0 0 auto; color: var(--muted); }
+</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Cannappy LLC",
+  "url": "https://cannappy.org/",
+  "description": "Hire app developers who ship their own apps. Cannappy builds iPhone and Android apps with Flutter; a first version starts at $15,000. See prices, timelines and our live apps.",
+  "areaServed": "United States",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sacramento",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does it cost to hire an app developer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cannappy builds a first version of an app from $15,000, and most first versions cost $15,000 to $40,000. Advice by the hour is $150."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to build an app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most first versions take Cannappy two to three months from the first call to the app stores."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does Cannappy use Flutter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Flutter lets one team build the iPhone and Android apps from the same code, so Cannappy ships both at once and you pay for one build instead of two."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Cannappy take over an app someone else started?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Send the code and Cannappy will tell you plainly what it needs before quoting anything."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Cannappy add AI features to apps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Cannappy's own apps use AI to answer questions and check photos, and the same can be built into yours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Cannappy based?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cannappy LLC is based in Sacramento, California, and works with clients across the United States by phone and video."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Cannappy",
+      "item": "https://cannappy.org/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "App development",
+      "item": "https://cannappy.org/app-development/"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="/">Cann<span>app</span>y</a>
+      <nav class="top" aria-label="Site">
+        <a href="/apps/">Our apps</a>
+        <a href="/ai-consulting-small-business/">AI consulting</a>
+        <a href="/app-development/">App development</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">App development</p>
+      <h1>Hire app developers who ship their own apps.</h1>
+      <p class="lede">Cannappy builds iPhone and Android apps for startups and small businesses from one codebase, using Flutter. A first version starts at $15,000, and most land between $15,000 and $40,000. Cannappy also builds and runs its own apps, including Strain Guide, rated 4.8 stars from more than 900 App Store ratings, so you are hiring people who ship.</p>
+      <p class="muted small">By Cannappy LLC · Updated <time datetime="2026-10-06">October 6, 2026</time></p>
+      <a class="cta" href="#contact">Get a fixed quote</a>
+    </section>
+
+    <section class="three" aria-labelledby="three-title">
+      <h2 id="three-title">Cannappy&#x27;s app development in three lines</h2>
+      <ul>
+        <li>A first version of an app from Cannappy starts at $15,000; most cost $15,000 to $40,000.</li>
+        <li>Cannappy builds for iPhone and Android at once with Flutter, so you pay for one build instead of two.</li>
+        <li>Cannappy runs its own apps in the App Store and Google Play, so the people who build your app know how to launch and maintain one.</li>
+      </ul>
+    </section>
+
+    <section id="pricing">
+      <h2>How much does it cost to build an app?</h2>
+      <p>Every build is quoted as a fixed price against a list of screens, before any work starts.</p>
+      <div class="prices">
+        <div class="price"><div class="row"><h3>A first version</h3><div class="amount">from $15,000</div></div><p>iPhone and Android, design, sign-in, your core feature, and getting it into both stores.</p></div>
+        <div class="price"><div class="row"><h3>Most first versions</h3><div class="amount">$15,000 to $40,000</div></div><p>The price moves with the number of screens and how much has to connect to other systems.</p></div>
+        <div class="price"><div class="row"><h3>Care after launch</h3><div class="amount">from $750 a month</div></div><p>Updates for new phones and store rules, fixes, and small changes.</p></div>
+        <div class="price"><div class="row"><h3>Advice by the hour</h3><div class="amount">$150 an hour</div></div><p>A plan checked, an estimate sanity-tested, or a second opinion on an app someone else built.</p></div>
+      </div>
+      <p class="muted small">For comparison, 2026 price guides put a freelancer-built Flutter first version at $8,000 to $35,000 and an agency-built one at $40,000 to $150,000 or more (<a href="https://theflutterk.it.com/cost-to-build/flutter-app" rel="noopener">The Flutter Kit</a>), and a simple app or first version at $15,000 to $50,000 (<a href="https://golance.com/blogs/how-much-to-build-a-mobile-app-2026" rel="noopener">goLance</a>).</p>
+    </section>
+
+    <section>
+      <h2>What do you get?</h2>
+      <ul>
+        <li>Design for every screen, built for a phone first.</li>
+        <li>The iPhone app and the Android app, from one codebase.</li>
+        <li>The server side: accounts, your data, payments and notifications.</li>
+        <li>Store listings, screenshots and submission to the App Store and Google Play.</li>
+        <li>Numbers that show what people actually do in the app.</li>
+        <li>AI features where they earn their place.</li>
+      </ul>
+      <h2>Which apps has Cannappy built?</h2>
+      <p>These are our own, live in the stores today:</p>
+      <div class="apps">
+        <div class="app"><h3><a href="https://apps.apple.com/us/app/strain-guide/id1596314933" rel="noopener">Strain Guide</a></h3><p>Rated 4.8 stars from more than 900 App Store ratings. Search thousands of strains with an AI budtender.</p></div>
+        <div class="app"><h3><a href="https://apps.apple.com/us/app/grow-guide/id6637720578" rel="noopener">Grow Guide</a></h3><p>Rated 4.9 stars on the App Store, and on <a href="https://play.google.com/store/apps/details?id=app.growguide" rel="noopener">Google Play</a>. A grow journal with an AI plant doctor and time-lapse.</p></div>
+        <div class="app"><h3><a href="https://apps.apple.com/us/app/its-my-birthday-freebies/id6475056772" rel="noopener">It's My Birthday: Freebies</a></h3><p>On the App Store and <a href="https://play.google.com/store/apps/details?id=com.birthdayProject" rel="noopener">Google Play</a>. Finds the birthday freebies near you.</p></div>
+      </div>
+      <p style="margin-top:14px"><a href="/apps/">See every app we run</a>.</p>
+      <p>For clients, Cannappy has built a dealer site for <a href="https://placervillepowersports.com" rel="noopener">Placerville Powersports</a> with a live parts catalog and drop-ship ordering, and a photography marketplace for <a href="https://sierraimages.org" rel="noopener">Sierra Images</a> with galleries, checkout and automated commission tracking.</p>
+    </section>
+
+    <section>
+      <h2>How does a build work?</h2>
+      <ol class="steps">
+        <li><strong>Tell us what the app has to do.</strong> <span class="muted">Use the form below. The first conversation is free.</span></li>
+        <li><strong>We send a fixed price against a list of screens.</strong> <span class="muted">You know what you are getting and what it costs before anything is built.</span></li>
+        <li><strong>You get builds on your own phone as we go.</strong> <span class="muted">You tap through the real app, not pictures of it.</span></li>
+        <li><strong>We put it in both stores.</strong> <span class="muted">Add a care plan if you want us to keep it updated.</span></li>
+      </ol>
+    </section>
+
+    <section class="faq">
+      <h2>Questions people ask before hiring an app developer</h2>
+        <h3>How much does it cost to hire an app developer?</h3>
+        <p>Cannappy builds a first version of an app from $15,000, and most first versions cost $15,000 to $40,000. Advice by the hour is $150.</p>
+        <h3>How long does it take to build an app?</h3>
+        <p>Most first versions take Cannappy two to three months from the first call to the app stores.</p>
+        <h3>Why does Cannappy use Flutter?</h3>
+        <p>Flutter lets one team build the iPhone and Android apps from the same code, so Cannappy ships both at once and you pay for one build instead of two.</p>
+        <h3>Can Cannappy take over an app someone else started?</h3>
+        <p>Yes. Send the code and Cannappy will tell you plainly what it needs before quoting anything.</p>
+        <h3>Does Cannappy add AI features to apps?</h3>
+        <p>Yes. Cannappy&#x27;s own apps use AI to answer questions and check photos, and the same can be built into yours.</p>
+        <h3>Where is Cannappy based?</h3>
+        <p>Cannappy LLC is based in Sacramento, California, and works with clients across the United States by phone and video.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Tell us what the app has to do</h2>
+      <p class="muted">It goes straight to our inbox. We reply by email with questions or a fixed quote.</p>
+      <form class="contact" id="contact-form" data-topic="App development page">
+        <input type="text" name="name" placeholder="Your name" aria-label="Your name" required>
+        <input type="email" name="email" placeholder="Your email" aria-label="Your email" required>
+        <textarea name="message" placeholder="Who is it for, and what is the one thing it must do well?" aria-label="Who is it for, and what is the one thing it must do well?" required></textarea>
+        <button type="submit">Send it</button>
+        <p class="muted small" id="contact-note" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="bottom">
+    <div class="wrap">
+      <a href="/">Home</a>
+      <a href="/apps/">Our apps</a>
+      <a href="/ai-consulting-small-business/">AI consulting</a>
+      <p>© 2026 Cannappy LLC · Sacramento, California</p>
+    </div>
+  </footer>
+  <script>
+  (() => {
+    const form = document.getElementById('contact-form');
+    const note = document.getElementById('contact-note');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const button = form.querySelector('button');
+      const data = new FormData(form);
+      button.disabled = true;
+      note.textContent = 'Sending…';
+      try {
+        const res = await fetch('/contact', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            name: data.get('name'),
+            email: data.get('email'),
+            message: '[' + form.dataset.topic + '] ' + data.get('message'),
+          }),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (res.ok && body.ok) {
+          form.reset();
+          note.textContent = 'Thanks. Your message is in our inbox and we will reply by email.';
+        } else {
+          note.textContent = body.error || 'That did not go through. Please try again.';
+        }
+      } catch (error) {
+        note.textContent = 'That did not go through. Please check your connection and try again.';
+      }
+      button.disabled = false;
+    });
+  })();
+  </script>
+</body>
+</html>
