@@ -363,11 +363,11 @@ function App() {
               </div>
             </div>
             <div className="app has-link">
-              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4c/c0/0e/4cc00e97-534b-aeb6-e343-2c7fdc09b860/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg" alt="Virtu Vista" width={52} height={52} /></div>
+              <div className="app-icon"><img src="/icons/lawsofpower.png" alt="Laws of Power" width={52} height={52} /></div>
               <div className="app-text">
-                <h4><a className="card-link" href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" target="_blank" rel="noopener noreferrer">Virtu Vista</a></h4>
-                <p>A two-minute daily reflection that keeps what matters in front of you — and helps you actually live by it.</p>
-                <div className="app-meta"><span className="type">Mobile app</span><a className="store" href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" target="_blank" rel="noopener">App Store</a><span className="store">Google Play</span></div>
+                <h4><a className="card-link" href="https://lawsofpower.cannappy.org" target="_blank" rel="noopener noreferrer">Laws of Power: Daily Deck</a></h4>
+                <p>A dark daily card deck: one idea a day from Robert Greene's seven books, with a Sunday wild card. Everyone draws the same card.</p>
+                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">lawsofpower.cannappy.org</span><a className="store" href="https://apps.apple.com/us/app/virtu-vista-daily-reflections/id6483758700" target="_blank" rel="noopener">App Store</a><a className="store" href="https://play.google.com/store/apps/details?id=com.virtuvista" target="_blank" rel="noopener">Google Play</a></div>
               </div>
             </div>
             <a href="https://peptidessacramento.com" className="app" target="_blank" rel="noopener noreferrer">
@@ -392,11 +392,11 @@ function App() {
           <h3 className="cat-title">Travel</h3>
           <div className="app-grid">
             <div className="app has-link">
-              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/4c/d8/954cd831-e76b-4b51-b4fe-cf67d57f978d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Snap Currency" width={52} height={52} /></div>
+              <div className="app-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/95/4c/d8/954cd831-e76b-4b51-b4fe-cf67d57f978d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg" alt="Travel Currency" width={52} height={52} /></div>
               <div className="app-text">
-                <h4><a className="card-link" href="https://apps.apple.com/us/app/snap-currency/id6763781236" target="_blank" rel="noopener noreferrer">Snap Currency</a></h4>
+                <h4><a className="card-link" href="https://snapcurrency.cannappy.org" target="_blank" rel="noopener noreferrer">Travel Currency</a></h4>
                 <p>Know what anything really costs, instantly. Point your camera at a price, say it, or type the math — and half of every profit goes to charity.</p>
-                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">snapcurrency.com</span><a className="store" href="https://apps.apple.com/us/app/snap-currency/id6763781236" target="_blank" rel="noopener">App Store</a><span className="store">Google Play</span></div>
+                <div className="app-meta"><span className="type">Website + mobile app</span><span className="where">snapcurrency.cannappy.org</span><a className="store" href="https://apps.apple.com/us/app/snap-currency/id6763781236" target="_blank" rel="noopener">App Store</a><a className="store" href="https://play.google.com/store/apps/details?id=org.cannappy.plon" target="_blank" rel="noopener">Google Play</a></div>
               </div>
             </div>
             <a href="https://nomadaigent.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
@@ -431,6 +431,14 @@ function App() {
                 <h4>StoryLingo</h4>
                 <p>Learn a language the way you picked up your first — short, current stories you actually want to read, with quick drills that make it stick.</p>
                 <div className="app-meta"><span className="type">Website</span><span className="where">storylingo.com</span></div>
+              </div>
+            </a>
+            <a href="https://locker.cannappy.org" className="app" target="_blank" rel="noopener noreferrer">
+              <div className="app-icon"><img src="/icons/locker.png" alt="Locker" width={52} height={52} /></div>
+              <div className="app-text">
+                <h4>Locker</h4>
+                <p>Practice opening a school, gym or work combination lock online. Turn a realistic dial and get clear feedback when you miss a step.</p>
+                <div className="app-meta"><span className="type">Website</span><span className="where">locker.cannappy.org</span></div>
               </div>
             </a>
           </div>
